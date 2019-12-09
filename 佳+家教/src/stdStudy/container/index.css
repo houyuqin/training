@@ -3,11 +3,11 @@
     height: 680px;
     width: 100%;
    
-    background: url('../img/zhouzhou.png') center center / cover no-repeat ;
+    background: url('../../img/zhouzhou.png') center center / cover no-repeat ;
 }
 .zaa
 {
-    background: url('../img/2.gif') center center / cover no-repeat ;
+    background: url('../../img/z2.gif') center center / cover no-repeat ;
 }
 
 .zbor{

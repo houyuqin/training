@@ -72,7 +72,7 @@ export default class AppHome extends Component {
                 <NavBar
                     style={{ backgroundColor: '#708090', color: 'white' }}
                     leftContent={[
-                        <Link to='/'><div style={{ color: 'white', marginRight: '16px' }} ><img src={require('../img/2.png')} style={{ width: '20px', height: '20px', color: 'white' }}></img></div></Link>
+                        <Link to='/'><div style={{ color: 'white', marginRight: '16px' }} ><img src={require('../../img/z2.png')} style={{ width: '20px', height: '20px', color: 'white' }}></img></div></Link>
                     ]}
                 >我的作业</NavBar>
                 <Tabs tabs={tabs2}
@@ -84,8 +84,8 @@ export default class AppHome extends Component {
                             <div style={{ height: '200px', width: '100%', borderBottom: '2px solid white' }}>
                                 <div style={{ width: '75%',height:'190px' ,float: 'left' }} className='zho'>
                         <h1>任务{idx+1}</h1><p style={{color:'black'}}>{item}</p></div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '170px', marginLeft: 30 }}><img src={require('../img/5.png')} style={{ height: 25, width: 25 }} onClick={()=>this.addCom(idx)}></img></div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '170px', marginLeft: 10 }}><img src={require('../img/7.png')} style={{ height: 25, width: 25 }} onClick={()=>this.dele(idx)}></img></div>
+                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '170px', marginLeft: 30 }}><img src={require('../../img/z5.png')} style={{ height: 25, width: 25 }} onClick={()=>this.addCom(idx)}></img></div>
+                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '170px', marginLeft: 10 }}><img src={require('../../img/z7.png')} style={{ height: 25, width: 25 }} onClick={()=>this.dele(idx)}></img></div>
                             </div>
                         ))}
                     </div>
@@ -93,8 +93,8 @@ export default class AppHome extends Component {
                         {this.state.data1.map((item, idx) => (
                             <div style={{ height: '60px', width: '100%', borderBottom: '2px solid white' }}>
                                 <div style={{ paddingTop: 20, width: '75%',height:'40px', float: 'left' ,overflow:'hidden',color:'black'}}>{item}</div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 30 }}><img src={require('../img/6.png')} style={{ height: 25, width: 25 }} ></img></div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 10 }}><img src={require('../img/7.png')} style={{ height: 25, width: 25 }} onClick={()=>this.dele1(idx)}></img></div>
+                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 30 }}><img src={require('../../img/z6.png')} style={{ height: 25, width: 25 }} ></img></div>
+                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 10 }}><img src={require('../../img/z7.png')} style={{ height: 25, width: 25 }} onClick={()=>this.dele1(idx)}></img></div>
 
                             </div>
                         ))}

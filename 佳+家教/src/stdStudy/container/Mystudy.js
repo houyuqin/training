@@ -17,13 +17,13 @@ export default class Message extends Component {
               <NavBar
                         style={{ backgroundColor: '#708090', color: 'white' }}
                         leftContent={[
-                            <Link to='/'><div style={{ color: 'white', marginRight: '16px' }} ><img src={require('../img/2.png')} style={{ width: '20px', height: '20px', color: 'white' }}></img></div></Link>
+                            <Link to='/'><div style={{ color: 'white', marginRight: '16px' }} ><img src={require('../../img/z2.png')} style={{ width: '20px', height: '20px', color: 'white' }}></img></div></Link>
                         ]}
                     >自我练习</NavBar>
                     {
                         this.state.data.map((item,idx)=>(
                             <div style={{width:'100%',height:'70px',borderBottom:'2px solid white',padding:'10px'}} >
-                                <div style={{float:'left',width:'50px',height:'70px'}}><img src={require('../img/4.png')} style={{height:'30px',width:'50px',marginTop:'20px'}}></img></div>
+                                <div style={{float:'left',width:'50px',height:'70px'}}><img src={require('../../img/z4.png')} style={{height:'30px',width:'50px',marginTop:'20px'}}></img></div>
                                <div style={{lineHeight:5,overflow:'hidden',height:'50px',width:'87%'}} className='zit'><a href={item} >{this.state.data1[idx]}</a></div>
                                 </div>
                         ))

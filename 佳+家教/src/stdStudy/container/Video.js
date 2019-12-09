@@ -6,7 +6,7 @@ export default class Message extends Component {
     constructor() {
         super();
         this.state = {
-            data: [require('../img/0.jpg'),require('../img/1.jpg'),require('../img/3.jpg')]
+            data: [require('../../img/z0.jpg'),require('../../img/z1.jpg'),require('../../img/z3.jpg')]
         }
     }
     render() {
@@ -15,7 +15,7 @@ export default class Message extends Component {
                 <NavBar
                     style={{ backgroundColor: '#708090', color: 'white' }}
                     leftContent={[
-                        <Link to='/'><div style={{ color: 'white', marginRight: '16px' }} ><img src={require('../img/2.png')} style={{ width: '20px', height: '20px', color: 'white' }}></img></div></Link>
+                        <Link to='/'><div style={{ color: 'white', marginRight: '16px' }} ><img src={require('../../img/z2.png')} style={{ width: '20px', height: '20px', color: 'white' }}></img></div></Link>
                     ]}
                 >我的视频</NavBar>
                 {

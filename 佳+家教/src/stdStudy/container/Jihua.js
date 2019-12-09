@@ -78,7 +78,7 @@ export default class Message extends Component {
         // simulate img loading
         setTimeout(() => {
             this.setState({
-                data: [require('../img/6.jpg'), require('../img/5.jpg'), require('../img/4.jpg')],
+                data: [require('../../img/z6.jpg'), require('../../img/z5.jpg'), require('../../img/z4.jpg')],
             });
         }, 100);
     }
@@ -88,7 +88,7 @@ export default class Message extends Component {
                 <NavBar
                     style={{ backgroundColor: '#708090', color: 'white' }}
                     leftContent={[
-                        <Link to='/'><div style={{ color: 'white', marginRight: '16px' }} ><img src={require('../img/2.png')} style={{ width: '20px', height: '20px', color: 'white' }}></img></div></Link>
+                        <Link to='/'><div style={{ color: 'white', marginRight: '16px' }} ><img src={require('../../img/z2.png')} style={{ width: '20px', height: '20px', color: 'white' }}></img></div></Link>
                     ]}
                 >学习计划</NavBar>
                 <Carousel
@@ -140,14 +140,14 @@ export default class Message extends Component {
                             <textarea style={{  height: '100px',width:'100%'}} placeholder="在此输入我的计划" id='text' name='text' onChange={(e)=>this.change(e)}></textarea>
                             <div style={{ height: 60, marginBottom: 20, width: '60%', margin: '0 auto'}}>
                            
-                                <img src={require('../img/8.png')} style={{ height: 40, width: '20%', marginLeft: '40%' }} onClick={() => this.add()}></img>
+                                <img src={require('../../img/z8.png')} style={{ height: 40, width: '20%', marginLeft: '40%' }} onClick={() => this.add()}></img>
                             </div>
                             <div><h2>需完成的计划：</h2></div>
                             {
                       this.state.task1.map((item,idx)=>(
                           <div style={{height:50,width:'100%',border:'1px solid #3fcccb'}}>
                               <div style={{height:50,width:'90%',float:'left', overflow:'hidden',lineHeight:5}}><p>{item}</p></div>
-                          <div style={{float:'right' ,height:40,width:40,marginTop:5}}><img src={require('../img/9.png')} style={{ height: 25, width: 25, float:'right' }} onClick={() => this.dell(idx)}></img></div></div>
+                          <div style={{float:'right' ,height:40,width:40,marginTop:5}}><img src={require('../../img/z9.png')} style={{ height: 25, width: 25, float:'right' }} onClick={() => this.dell(idx)}></img></div></div>
                       ))
                   }
                         </div>
