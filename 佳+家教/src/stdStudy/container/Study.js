@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavBar} from 'antd-mobile';
 import { Link } from 'react-router-dom';
-import './index.css'
+
 export default class Study extends Component {
     render() {
         return (
