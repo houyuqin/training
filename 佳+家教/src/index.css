@@ -85,7 +85,7 @@ p{
 .cback{
     width: 100%;
     height: 100%;
-    background:rgb(115, 176, 211);
+    background-color:rgb(115, 176, 211);
    
 }
 .cdeng{
@@ -123,12 +123,7 @@ p{
     margin-left: 20px;
     float: left;
 }
-.czuojian{
-    font-size: 25px;
-    color: rgb(57, 74, 122);
-    height: 20%;
-    background-color: rgb(115, 176, 211);
-}
+
 /*header*/
 /*main*/
 #user{

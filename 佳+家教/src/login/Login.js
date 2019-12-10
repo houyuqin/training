@@ -1,4 +1,4 @@
-import { Tabs} from 'antd-mobile';
+import { Tabs, NavBar,Icon} from 'antd-mobile';
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 
@@ -10,7 +10,7 @@ export default class Login extends Component {
     render() {
         return (
             <div className="cback" >
-                <Link to="/"><div className="czuojian">˂</div></Link>
+                <NavBar style={{fontSize: '25px',color: 'rgb(57, 74, 122)',backgroundColor: 'rgb(115, 176, 211)'}} icon={<Link to='/'><Icon style={{color:'black'}} type="left" /></Link>}></NavBar>
                 <div className="ctab">
                     <Tabs tabs={tabs2}
                     style={{backgroundColor: 'rgb(222, 233, 240)'}}
