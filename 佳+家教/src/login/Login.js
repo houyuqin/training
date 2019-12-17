@@ -47,7 +47,7 @@ export default class Login extends Component {
                 } 
                 
         })
-        fetch('http://148.70.183.184:8006/stdmine')
+        fetch('http://148.70.183.184:8003/logon')
             .then((res)=>res.json())
             .then((res)=>{                
                 for(var i=0;i<res.length;i++){                      

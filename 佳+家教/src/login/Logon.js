@@ -42,7 +42,7 @@ export default class Login extends Component {
                         });                       
                 }              
             })
-            fetch('http://148.70.183.184:8006/stdmine')
+            fetch('http://148.70.183.184:8003/logon')
             .then((res)=>res.json())
             .then((res)=>{                
                 for(var i=0;i<res.length;i++){                       
@@ -325,7 +325,7 @@ export default class Login extends Component {
                 b.wphonenumber=this.cstd11.value;        
                 b.pwd=this.cstd12.value;
                 b.coo=1;
-                fetch("http://148.70.183.184:8006/stdmine", {
+                fetch("http://148.70.183.184:8003/logon", {
                     method: "POST",
                     headers: {
                         'Content-Type': 'text/plain; charset=UTF-8'

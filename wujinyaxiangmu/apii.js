@@ -30,6 +30,25 @@ app.get('/stdmine',async c=>{
   
 })
 
+app.get('/stdmine/:id',async c=>{
+    let sql='select * FROM stdinfo WHERE wphonenumber=$1'; 
+    let ret=await pgdb.query(sql,[
+        c.param.id
+    ])
+    if(ret.rowCount<=0)
+    {
+        c.res.body={
+            status:-1,
+            errmsg:'can not delete user'
+        }
+    }else{
+       c.res.body={
+           status:0,
+           data:ret.rows
+       }
+    }    
+})
+
 app.get('/stdmine/:usr',async c=>{
     let sql='SELECT wusername,wsex,wphonenumber,wclass,wschool,weixinnumber,code,pwd,coo FROM stdinfo WHERE usr=$1';
     let ret=await pgdb.query(sql,[c.param.usr]);
