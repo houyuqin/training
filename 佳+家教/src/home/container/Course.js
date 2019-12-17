@@ -13,11 +13,12 @@ export default class Course extends Component{
     rtn=()=>{
         this.props.history.go(-1);
     }
-    love=(vedio0)=>{
+    love=(vedio0,price0)=>{
         let class0 =this.props.location.search.split('=')[1];
-        console.log(vedio0,class0);
+        let usernum0 = window.location.search.split('=')[1];
+        console.log(vedio0,class0,price0,usernum0);
         // let name0 = 'usr';
-        let a = {vedio:vedio0,class:class0}
+        let a = {vedio:vedio0,class:class0,price:price0,usernum:usernum0}
         fetch(`http://148.70.183.184:8000/mylove`,{
             method:"POST",
             headers:{
@@ -29,7 +30,7 @@ export default class Course extends Component{
                 alert('收藏成功！');
                 return res.json(a);
             }else{
-                return Promise.reject(res.json())
+                alert('该视频已在收藏列表！');
             }
         }).then((data)=>{
             console.log(data);
@@ -38,6 +39,7 @@ export default class Course extends Component{
         });
     }
     componentDidMount(){
+        console.log(window.location.search.split('=')[1])
         let id = this.props.location.search.split('=')[1];
         fetch("http://148.70.183.184:8000/course/"+id)
         .then(res=>res.json())
@@ -63,10 +65,10 @@ export default class Course extends Component{
                     <div key={item.id}
                     style={{width:'98%',marginLeft:5,border:'1px dotted blue',fontWeight:'bold'}}>
                         <div style={{width:'100%',fontSize:18,color:'red'}}>{item.name}</div>
-                        {/* <Link to={'/play+'+item.vedio}> */}
-                        <Player ref="player" videoId="video-1">
-                            <source src={item.vedio}/>
-                        </Player>
+                        {/* <Link to={'/play?'+item.vedio}> */}
+                            <Player ref="player" videoId="video-1">
+                                <source src={item.vedio}/>
+                            </Player>
                         {/* </Link> */}
 
                         
@@ -76,9 +78,13 @@ export default class Course extends Component{
 
                         <Button 
                         style={{marginLeft:30,width:100,height:50,float:'left'}}
-                        onClick={()=>{this.love(item.vedio)}}>
+                        onClick={()=>{this.love(item.vedio,item.price)}}>
                         收藏</Button> 
-                        <Button style={{marginLeft:30,width:100,height:50,float:'left'}}><Link to={'/buy?'+item.price+'?'+item.name+'?'+item.vedio+'?'+this.props.location.search.split('=')[1]}>购买</Link></Button> 
+                        <Button style={{marginLeft:30,width:100,height:50,float:'left'}}>
+                            <Link to={'/buy?'+item.price+'?'+item.name+'?'+item.vedio+'?'+this.props.location.search.split('=')[1]}>
+                                购买
+                            </Link>
+                        </Button> 
                     </div>
                 
                 ))
