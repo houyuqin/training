@@ -2,12 +2,34 @@ import React, { Component } from 'react'
 import { Tabs, Badge } from 'antd-mobile';
 import { NavBar ,Icon} from 'antd-mobile';
 import { Link } from 'react-router-dom';
+import { Player } from 'video-react';
+
 
 const tabs = [
     { title: <Badge >视频</Badge> },
     { title: <Badge >文件资料</Badge> },
 ];
 export default class Wodeshoucang extends Component {
+    constructor(){
+        super();
+        this.state = {
+            data:[],
+          
+        }
+    }
+
+    componentDidMount(){   
+        fetch('http://148.70.183.184:8000/mylove', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({data:res.data})
+            })
+    }
     render() {
         return (
             <div style={{width:'100%',height:'100%',overflowY:'hidden',backgroundColor:'#fafaf8'}}>
@@ -17,14 +39,20 @@ export default class Wodeshoucang extends Component {
                 >我的收藏</NavBar>
                 <Tabs tabs={tabs}>
                     <div style={{overflow:'scroll',height:'100%'}}>
-                        <div className='wodeshoucangdiv'>
-                            <p style={{fontSize:'15px',color:'black'}}>收藏视频一</p>
-                            <img style={{width:'90%',height:'150px'}} src={require('../../img/11.jpg')}/>
-                        </div>
-                        <div className='wodeshoucangdiv'>
-                            <p style={{fontSize:'15px',color:'black'}}>收藏视频二</p>
-                            <img style={{width:'90%',height:'150px'}} src={require('../../img/11.jpg')}/>
-                        </div>
+                        
+                            {
+                                this.state.data.map(item=>(
+                                    <div>
+                                        <div className='wodeshoucangdiv'>
+                                            <p style={{fontSize:'20px',color:'black'}}>{item.class} vedio</p>
+                                            <Player style={{width:'90%',height:'150px'}}  ref="player" videoId="video-1">
+                                                <source src={item.video}/>
+                                            </Player>
+                                        </div>
+                                       
+                                    </div>
+                                ))
+                            } 
                         
                     </div>
                     <div style={{textIndent:'2em',fontSize:'16px',overflow:'scroll',height:'100%', justifyContent: 'center',paddingTop:'10px'}}>

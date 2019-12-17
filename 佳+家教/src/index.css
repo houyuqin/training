@@ -59,7 +59,7 @@ p{
     font-size: 20px;
     color: rgb(61, 59, 59);
     font-weight: bold;
-    margin-top: 150%;
+    margin-top: 125%;
     border:none;
     margin-left: 17px;
     float: left;
@@ -76,12 +76,14 @@ p{
     color: rgb(61, 59, 59);
     border:none;
     margin-left: 7px;
-    margin-top: 150%;
+    margin-top: 125%;
     float: left;
     background-color: cornflowerblue;
     z-index: 100;
 }
-
+.ccname{
+    padding-top: 50px;
+}
 .cback{
     width: 100%;
     height: 100%;
@@ -358,11 +360,10 @@ p{
 .stdminebody ul{
     width: 100%;
     height: 400px;
-    padding: 30px 40px;
+    padding: 30px 40px;  
 }
 .stdminebody li{
     height: 60px;
-
 }
 .stdminebody img{
     width: 40px;
@@ -428,6 +429,7 @@ p{
     background-color: white;
     border-radius: 10px;
 }
+
 .stdminebody1 li{
     height: 60px;
     padding-top: 20px;
@@ -443,13 +445,10 @@ p{
     color: black;
 }
 .wodeshoucangdiv{
-    width: 370px;
-    height: 200px;
-    background-color: white;
+    width: 90%;
     border-radius: 10px;
     opacity: 0.8;
-    margin:20px 0px 0px 25px;
-    padding: 10px;
+    margin: 5px 0px 5px 20px;
 }
 .wodedingdandiv{
     width: 370px;

@@ -1,26 +1,66 @@
 import React, { Component } from 'react'
 import { NavBar ,Icon} from 'antd-mobile';
 import { Link } from 'react-router-dom';
-import { List, TextareaItem } from 'antd-mobile';
+
+let wusername='';
 
 export default class Jiaoshipingjia extends Component {
+    constructor(){
+        super();
+        this.state = {
+            data:[],   
+            data1:[]
+        }
+    }
+    componentDidMount(){
+        fetch('http://148.70.183.184:8005/tasks', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({data:res.data})
+            })    
+
+
+        let id=window.location.search.split('=')[1];
+           
+        fetch(`http://148.70.183.184:8006/stdmine/${id}`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'text/plain; charset=UTF-8'
+                    },
+                    })
+                    .then((res) => res.json())
+                    .then((res) => {
+                        this.setState({data1:res.data})
+                        wusername= this.state.data1[0].wusername;
+                    })
+        
+    }
     render() {
         return (
             <div style={{backgroundColor:'#fafaf8',height:'100%',}}>
                 <NavBar
                 style={{backgroundColor:'#708090',color:'white'}}
                 icon={<Link to='/'><Icon style={{color:'black'}} type="left" /></Link>}
-                >教师评价</NavBar>
-                <p style={{paddingTop:'10px',textIndent:'2em',fontSize:'15px',fontWeight:'bold'}}>亲爱的同学们：您好！本教师评价目的在于了解同学们对老师教学建议和学习需求，您真实的回答将为我们的课程教学提供建设性的信息，谢谢您的支持与配合！</p>
-                <List style={{margin:'10px',border:'1px solid rgb(250, 198, 101)'}}>
-                    <TextareaItem
-                        style={{padding:'10px'}}
-                        placeholder="请输入教师评价"
-                        rows={5}
-                        count={100}
-                    />
-                </List>
-                <button className='stdmineyonghufankuibutton'>提交</button>           
+                >作业评价情况</NavBar>
+                <div style={{height:'640px',overflow:'scroll'}}>
+                        {
+                            this.state.data.map((item)=>(
+                                <div style={{paddingLeft:'10px',fontSize:'15px',margin:'10px',borderLeftStyle:'dotted ' }}>
+                                    <p style={{marginLeft:'20px'}}>{item.author}</p>
+                                    <p>{item.pingjia}</p>
+                                    <p>@{wusername}</p>
+                                    <p>提交了{item.title}的任务作业</p>
+                                    <p>批改时间：{item.time}</p>
+                                
+                                </div>
+                            ))
+                        }
+                </div>
             </div>
         )
     }
