@@ -11,13 +11,13 @@ export default class Teatest extends Component {
     }
     fabu=()=>{
         var a={};
-        console.log(JSON.stringify(this.cren1.value))
+
         a.id=this.cren1.value;
         a.title=this.cren2.value;
         a.time=this.cren3.value;
         a.author=this.cren4.value;
         a.content=this.cren5.value;
-       console.log(JSON.stringify(a))
+
     
         fetch("http://148.70.183.184:8005/taskt", {
             method: "POST",
@@ -27,7 +27,11 @@ export default class Teatest extends Component {
             body: JSON.stringify(a)
           }).then(function(response) {
             // do sth
+            window.location = 'http://localhost:3000/tabt#/complete'
+            
           });    
+          
+        
     }
     render() {
         return (
@@ -39,7 +43,7 @@ export default class Teatest extends Component {
                 <div style={{height:'600px',margin:'15px',padding:'0px 35px',borderStyle:'dotted ' }}>
                     <div className="cbu3">   
                         任务编号:
-                        <input type="text" name="task" className="cren1" ref={i=>this.cren1=i}></input>
+                        <input type="text" name="task" id='id' className="cren1" ref={i=>this.cren1=i} placeholder='必须为整数类型'></input>
                     </div>
                     <div className="cbu4">   
                         任务题目:

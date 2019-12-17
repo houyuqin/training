@@ -11,11 +11,11 @@ export default class TeaStudy extends Component {
                     className='stdminenavbar'
                     mode='dark'
                     rightContent={[
-                    ]}
+                    ]}z
                     >学习</NavBar>
                 <div className="cshang">
-                    <img src="./img/w头像女孩.png" style={{width:'70px',height:'70px'}}></img>
-                    
+                   
+                <img src="./img/w头像女孩.png" style={{width:'70px',height:'70px' }} ></img>
                     <p className="cteuser1">小冰</p>
                     <p className="ctexing">星级:★★★</p>
                 </div>

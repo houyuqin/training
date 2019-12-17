@@ -4,6 +4,9 @@ import TeaRoute from './TeaRoute'
 import TeaTest from './TeaTest';
 import TeaTask from './TeaTask';
 import TeaReal from './TeaReal';
+import complete from './complete';
+import Content from './Content'
+
 export default class TeaStudy extends Component {
 
     render() {
@@ -15,6 +18,8 @@ export default class TeaStudy extends Component {
                             <Route path="/ctebuzhi" component={TeaTest}></Route>
                             <Route path="/ctebigai" component={TeaTask}></Route>
                             <Route path="/teareal" component={TeaReal}></Route>
+                            <Route path='/complete' component={complete}></Route>
+                            <Route path='/tasks/:id' component={Content}></Route>
                         </Switch>             
                 </div>            
             </Router>

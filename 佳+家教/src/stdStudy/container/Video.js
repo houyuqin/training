@@ -1,31 +1,58 @@
 import React, { Component } from 'react'
-import { NavBar } from 'antd-mobile';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { Link} from 'react-router-dom'
+import { NavBar, Icon ,Button} from 'antd-mobile';
+import { Player } from 'video-react';
 
-export default class Message extends Component {
-    constructor() {
+export default class Vedio extends Component{
+    constructor(){
         super();
-        this.state = {
-            data: [require('../../img/z0.jpg'),require('../../img/z1.jpg'),require('../../img/z3.jpg')]
+        this.state={
+            data:[]
         }
     }
-    render() {
-        return (
-            <div >
-                <NavBar
-                    style={{ backgroundColor: '#708090', color: 'white' }}
-                    leftContent={[
-                        <Link to='/'><div style={{ color: 'white', marginRight: '16px' }} ><img src={require('../../img/z2.png')} style={{ width: '20px', height: '20px', color: 'white' }}></img></div></Link>
-                    ]}
-                >我的视频</NavBar>
-                {
-                    this.state.data.map((item, idx) => (
-                        <div style={{ height: '200px', width: '100%', marginTop: '20px' }}>
-                           <img src={item} style={{height:'200px',width:'100%'}}></img>
-                        </div>
-                    ))
-                }
-            </div>
-        )
+
+    rtn=()=>{
+        this.props.history.go(-1);
     }
+
+    componentDidMount(){
+        fetch("http://148.70.183.184:8000/mylove")
+        .then(res=>res.json())
+        .then(res=>{
+            this.setState({
+                data:res.data
+            })  
+        });
+    }
+
+//  
+render(){
+    return (
+        <div 
+        style={{width:'100%',height:'100%'}}>
+            <NavBar
+            mode="dark"
+            icon={<Icon type="left" />}
+            onLeftClick={this.rtn}
+            >我的视频</NavBar>
+
+        <div style={{display: 'flex',justifyContent:'space-between',flexWrap:' wrap'}}>
+        {
+            this.state.data.map(item=>(
+                <div key={item.id}
+                style={{width:'98%',marginLeft:5,border:'1px dotted black',marginTop:5,fontWeight:'bold'}}>
+                    <Player ref="player" videoId="video-1">
+                        <source src={item.vedio}/>
+                    </Player>
+                   
+                   
+                  
+                </div>
+            
+            ))
+        }
+        </div>
+    </div>
+)}
+
 }

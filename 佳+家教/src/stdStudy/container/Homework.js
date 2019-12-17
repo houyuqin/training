@@ -1,74 +1,171 @@
 import React, { Component } from 'react'
-import { NavBar, Icon, Tabs, Carousel } from 'antd-mobile';
+import { NavBar, Icon, Tabs, Carousel, Button } from 'antd-mobile';
 import { HashRouter as Router, Route, Link } from 'react-router-dom';
+
 const tabs2 = [
     { title: '未完成' },
     { title: '已完成' },
 
 ];
+const id1 = 1;
+let ni = ''
 export default class AppHome extends Component {
     constructor() {
         super();
         this.state = {
-            data: JSON.parse(localStorage.getItem('key'))||['上海市桃浦中学 2018-2019 学年第一学期期末考试高二年级数学试卷', '上海市川沙中学2018学年高二第一学期数学期末考试卷',' 广东省深圳市福田中学2018-2019高一上期中考试数学试卷', '2018-2019年高中数学上海高考测试练习试卷'],
-            data1: JSON.parse(localStorage.getItem('key1'))||[]
+            data: [],
+            data1: [],
+            nicheng: []
         }
     }
-    addCom=(msg)=>{
-        var todo = this.state.data[msg];
-        var todo1 = this.state.data.splice(msg, 1);
-        console.log(todo1)
-        this.setState({
-            data1: [...this.state.data1, todo1]
-        }, () => {
-            localStorage.setItem('key1', JSON.stringify(this.state.data1));
-        }
-        )
-        this.setState({
-            data: [...this.state.data],
-        }, () => {
-            localStorage.setItem('key', JSON.stringify(this.state.data))
+    componentDidMount() {
+        fetch('http://148.70.183.184:8005/taskt', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
         })
-    }
-    adddoing=(msg)=>{
-        var todo = this.state.data1[msg];
-        var todo1 = this.state.data1.splice(msg, 1);
-        this.setState({
-            data: [...this.state.data, todo]
-        }, () => {
-            localStorage.setItem('key', JSON.stringify(this.state.data));
-        }
-        )
-        this.setState({
-            data1: [...this.state.data1],
-        }, () => {
-            localStorage.setItem('key1', JSON.stringify(this.state.data1))
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({ data: res.data });
+            })
+        fetch('http://148.70.183.184:8005/tasks', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
         })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({ data1: res.data });
+            })
+
+
+        var usr = window.location.search.split('=')[1];
+        fetch(`http://148.70.183.184:8006/stdmine/${usr}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({
+                    nicheng: res.data
+                })
+            })
+
     }
-    dele=(msg)=>
-    {
-        var todo = this.state.data[msg];
-        var todo1 = this.state.data.splice(msg, 1);
-        this.setState({
-            data: [...this.state.data]
-        }, () => {
-            localStorage.setItem('key', JSON.stringify(this.state.data));
-        }
-        ) 
+    componentDidUpdate() {
+        fetch('http://148.70.183.184:8005/taskt', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({ data: res.data });
+            })
+        fetch('http://148.70.183.184:8005/tasks', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({ data1: res.data });
+            })
+
+
+
     }
-    dele1=(msg)=>{
-        var todo = this.state.data1[msg];
-        var todo1 = this.state.data1.splice(msg, 1);
-        this.setState({
-            data1: [...this.state.data1]
-        }, () => {
-            localStorage.setItem('key1', JSON.stringify(this.state.data1));
-        }
-        ) 
+    addCom = (msg) => {
+
+        fetch("http://148.70.183.184:8005/tasks", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+            body: JSON.stringify(this.state.data[msg])
+        }).then((res) => {
+            alert('此任务已完成并提交！')
+        });
+
+        ni = this.state.nicheng[0].wusername;
+        fetch(`http://148.70.183.184:8005/usr/${ni}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+
+        }).then((res) => {
+        });
+        var id = this.state.data[msg].id
+        fetch(`http://148.70.183.184:8005/taskt/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+
+            })
+
+    }
+    display = () => {
+        alert('您的此项任务已完成，若要永久删除请按删除键！')
+    }
+    dele = (msg) => {
+        var id = this.state.data[msg].id
+        fetch(`http://148.70.183.184:8005/taskt/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                alert('任务删除成功!')
+            })
+    }
+    dele1 = (msg) => {
+        var id = this.state.data1[msg].id
+
+        fetch(`http://148.70.183.184:8005/tasks/${id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                alert('任务永久删除成功!')
+            })
+    }
+    show = (msg) => {
+        var id1 = this.state.data1[msg].id
+
+        fetch(`http://148.70.183.184:8005/tasks/${id1}`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+            body: JSON.stringify(this.state.data[msg])
+        }).then((res) => {
+
+        });
+        id1 = this.state.data1[msg].content;
+        console.log(id1)
+
+
     }
     render() {
         return (
             <div>
+
                 <NavBar
                     style={{ backgroundColor: '#708090', color: 'white' }}
                     leftContent={[
@@ -81,21 +178,31 @@ export default class AppHome extends Component {
                 >
                     <div className='zheader'>
                         {this.state.data.map((item, idx) => (
-                            <div style={{ height: '200px', width: '100%', borderBottom: '2px solid white' }}>
-                                <div style={{ width: '75%',height:'190px' ,float: 'left' }} className='zho'>
-                        <h1>任务{idx+1}</h1><p style={{color:'black'}}>{item}</p></div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '170px', marginLeft: 30 }}><img src={require('../../img/z5.png')} style={{ height: 25, width: 25 }} onClick={()=>this.addCom(idx)}></img></div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '170px', marginLeft: 10 }}><img src={require('../../img/z7.png')} style={{ height: 25, width: 25 }} onClick={()=>this.dele(idx)}></img></div>
+                            <div style={{ height: '240px', width: '100%', borderBottom: '2px solid white' }}>
+                                <div style={{ width: '75%', height: '210px', float: 'left', overflow: 'auto' }} className='zho'>
+                                    <h2>任务{idx + 1}&nbsp;&nbsp; <h4>{item.title}</h4> </h2>
+                                    <p style={{ fontSize: '20px', color: 'green' }}>完成时间：{item.time}</p>
+                                    <p style={{ fontSize: '20px', color: 'green' }}>发布教师:{item.author}</p>
+                                    <Button style={{ backgroundColor: '	#FFC0CB' }}><Link to={'/taskt/' + item.id} style={{ color: 'green' }}>查看全文</Link></Button>
+
+                                </div>
+                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '170px', marginLeft: 30 }}><img src={require('../../img/z5.png')} style={{ height: 25, width: 25 }} onClick={() => this.addCom(idx)}></img></div>
+                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '170px', marginLeft: 10 }}><img src={require('../../img/z7.png')} style={{ height: 25, width: 25 }} onClick={() => this.dele(idx)}></img></div>
                             </div>
                         ))}
                     </div>
                     <div >
                         {this.state.data1.map((item, idx) => (
-                            <div style={{ height: '60px', width: '100%', borderBottom: '2px solid white' }}>
-                                <div style={{ paddingTop: 20, width: '75%',height:'40px', float: 'left' ,overflow:'hidden',color:'black'}}>{item}</div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 30 }}><img src={require('../../img/z6.png')} style={{ height: 25, width: 25 }} ></img></div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 10 }}><img src={require('../../img/z7.png')} style={{ height: 25, width: 25 }} onClick={()=>this.dele1(idx)}></img></div>
+                            <div style={{ height: '50px', width: '100%', borderBottom: '2px solid white' }}>
+                                <div style={{ width: '45%', height: '40px', float: 'left', overflow: 'hidden', color: 'black' }} >
+                                    <p style={{ fontSize: '25px', color: 'black' }}>{item.id}----{item.title}</p>
 
+                                </div>
+                                <div style={{ width: '30%', height: '60px', float: 'left' }}>
+                                    <Button style={{}}><Link to={'/tasks/' + item.id} style={{ color: 'green' }}>查看全文</Link></Button>
+                                </div>
+                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 30 }}><img src={require('../../img/z6.png')} style={{ height: 25, width: 25 }} onClick={() => this.display()}></img></div>
+                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 10 }}><img src={require('../../img/z7.png')} style={{ height: 25, width: 25 }} onClick={() => this.dele1(idx)}></img></div>
                             </div>
                         ))}
                     </div>
