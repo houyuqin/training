@@ -10,13 +10,14 @@ import Llogin from './login/Llogin'
 import Login from './login/Login'
 import Logon from './login/Logon'
 import AppStd from './AppStd'
-import tongzhi from './stdMine/container/tongzhi'
+import Buy from './home/container/Buy'
+import Player0 from './home/container/Player0'
 
 export default class AppTea extends Component {
     render() {
         return (
             <Router>
-                <div>
+                <div style={{height:'100%',overflow:'scroll'}}>
                     <Route exact path='/' component={Llogin}></Route>
                     <Route path="/loginn" component={Login}></Route>
                     <Route path="/logonn" component={Logon}></Route>
@@ -24,12 +25,11 @@ export default class AppTea extends Component {
                     <Route path='/goodtea' component={GoodTea} />
                     <Route path='/ad' component={Ad} />
                     <Route path='/course' component={Course} />
+                    <Route path='/buy' component={Buy} />
+                    <Route path='/paly' component={Player0} />
                     <Route path='/vedio' component={Vedio} />
                     <Route path='/question' component={Question} />
                     <Route path='/tabs' component={AppStd} />
-                    
-                    
-                    {/* <Route path='/detail/:id' component={Detail}></Route> */}
                 </div>
             </Router>
         )

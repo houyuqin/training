@@ -1,53 +1,58 @@
 import React, { Component } from 'react'
 import { NavBar, Icon } from 'antd-mobile';
 
-var data=[];
 export default class GoodTea extends Component{
-    rtn=()=>{
-        this.props.history.push('/tabt');
+    constructor(){
+        super();
+        this.state={
+            data:[]
+        }
     }
 
-    // function fetch(url){
-    //     fetch(url).then(res=>res.json())
-    //     .then(res=>{
-    //         data += res.data;
-    //     });
-    //     return data;
-    // }
+    rtn=()=>{
+        this.props.history.go(-1);
+    }
+
+    componentDidMount(){
+        fetch("http://148.70.183.184:8000/tearcm")
+        .then(res=>res.json())
+        .then(res=>{
+            this.setState({
+                data:res.data
+            })  
+        });
+    }
+
     render(){
     return (
         <div 
-        style={{width:'100%',background:'url(./img/5.jpg) center center / contain repeat-y'}}>
+        style={{width:'100%',background:'url(./img/3.png) center center / contain repeat-y'}}
+        >
             <NavBar
             mode="dark"
             icon={<Icon type="left" />}
             onLeftClick={this.rtn}
             >名师推荐</NavBar>
 
-            <div style={{display: 'flex',justifyContent:'space-between',flexWrap:' wrap'}}>
+            <div style={{paddingLeft:30,paddingTop:5}}>
                 {
-                    [1,2,3,4,5,6].map(item=>(
-                        <div key={item}
-                        style={{width:'47%',height:250,margin:'3px 5px 3px 5px',border:'1px dotted black'}}>
-                            <img src='./img/14.jpg' 
-                            style={{width:80,height:80}} alt=''/>
-                            <p>姓名：李**</p>
-                            <p>年龄：34岁</p>
-                            <p>职位：在职教师</p>
-                            <p>毕业于首都师范大学</p>
-
+                    this.state.data.map(item=>(
+                        <div key={item} style={{height:175}}>
+                            <div style={{height:170}}>
+                                <div style={{width:'45%',float:'left'}}>
+                                <img src={item.head} alt=''
+                                style={{width:140,height:165}}/>
+                                </div>
+                                <div style={{paddingTop:15,color:'#4b4b8b',fontWeight:'bold'}}>
+                                    <p>姓名：{item.name} </p>
+                                    <p>性别：{item.sex}</p>
+                                    <p>年龄：{item.age}岁</p>
+                                    <p>毕业学院：{item.graduation}</p>
+                                    <p>目前职位：{item.position}</p>
+                                </div>
+                             </div>
                         </div>
                     ))
-
-                    // fetch('http://localhost/goodtea').map(item=>(
-                    //     <div key={item}>
-                    //         <img src={item.head} alt=""/>
-                    //         <p>{item.name}</p>
-                    //         <p>{item.age}</p>
-                    //         <p>{item.zhicheng}</p>
-                    //         <p>{item.biyeyu}</p>
-                    //     </div>
-                    // ))
                 }
             </div>
 
