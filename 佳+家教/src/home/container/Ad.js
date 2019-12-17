@@ -3,7 +3,7 @@ import { NavBar, Icon } from 'antd-mobile';
 
 export default class Ad extends Component{
     rtn=()=>{
-        this.props.history.push('/tabt');
+        this.props.history.go(-1);
     }
 
     render(){
