@@ -50,13 +50,13 @@ export default class Jiaoshipingjia extends Component {
                 <div style={{height:'640px',overflow:'scroll'}}>
                         {
                             this.state.data.map((item)=>(
-                                <div style={{fontSize:'18px',margin:'20px'}}>
+                                <div style={{fontSize:'18px',padding:'20px'}}>
                                     <p style={{marginLeft:'0px'}}>{item.author}</p>
                                     <p style={{marginLeft:'0px'}}>{item.pingjia}</p>
                                     <div style={{borderLeftStyle:'solid',paddingLeft:'5px'}}>
-                                    <p >@{wusername}</p>
-                                    <p >提交了{item.title}的任务作业</p>
-                                    <p >批改时间：{item.time}</p>
+                                    <p style={{color:'red'}}>@{wusername}</p>
+                                    <p >提交了 <span style={{color:'red'}}>{item.title}</span> 的任务作业</p>
+                                    <p style={{float:'right',color:'gray'}}>{item.time}</p>
                                     </div>
                                 </div>
                             ))

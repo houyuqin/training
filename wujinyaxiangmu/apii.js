@@ -50,7 +50,7 @@ app.get('/stdmine/:id',async c=>{
 })
 
 app.get('/stdmine/:usr',async c=>{
-    let sql='SELECT wusername,wsex,wphonenumber,wclass,wschool,weixinnumber,code,pwd,coo FROM stdinfo WHERE usr=$1';
+    let sql='SELECT wusername,wsex,wphonenumber,wclass,wschool,weixinnumber,code,pwd,coo,stdtouxiang FROM stdinfo WHERE usr=$1';
     let ret=await pgdb.query(sql,[c.param.usr]);
     c.res.body=ret.rows  
 })
@@ -82,9 +82,10 @@ app.post('/stdmine',async (ctx,next)=>{
 app.post('/stdmine/:usr',async (ctx,next)=>{
     ctx.setHeader('Content-Type','text/plain ');
     var body=JSON.parse(ctx.body);
-    let sql ='UPDATE stdinfo set wusername=$1,wsex=$2,wclass=$3,wschool=$4,weixinnumber=$5,code=$6,coo=$7 where wphonenumber=$8';
+    console.log(body);
+    let sql ='UPDATE stdinfo set wusername=$1,wsex=$2,wclass=$3,wschool=$4,weixinnumber=$5,code=$6,coo=$7,stdtouxiang=$8 where wphonenumber=$9';
     let ret=await pgdb.query(sql,[
-        body.wusername,body.wsex,body.wclass,body.wschool,body.weixinnumber,body.code,body.coo,ctx.param.usr
+        body.wusername,body.wsex,body.wclass,body.wschool,body.weixinnumber,body.code,body.coo,body.stdtouxiang,ctx.param.usr
     ]);
     if (ret.rowCount<=0)
     {
@@ -100,6 +101,14 @@ app.post('/stdmine/:usr',async (ctx,next)=>{
     }
 })
 
+app.get('/nicheng/:usr',async c=>{
+    let sql='SELECT * FROM stdinfo';
+    let ret=await pgdb.query(sql);
+    c.res.body={
+        status:'success',
+        data:ret.rows
+    }
+})
 
 app.post('/return',async (ctx,next)=>{
     ctx.setHeader('Content-Type','text/plain ');

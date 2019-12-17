@@ -3,13 +3,24 @@ import { NavBar ,Icon} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import { Tabs, Badge } from 'antd-mobile';
 
-
 const tabs = [
     { title: <Badge text={'2'}>未支付</Badge> },
     { title: <Badge>已支付</Badge> },
 ];
 
 export default class Wodedingdan extends Component {
+    componentDidMount(){   
+        fetch('http://148.70.183.184:8000/mylove', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({data:res.data})
+            })
+    }
     render() {
         return (
             <div style={{height:'100%',overflow:'hidden',backgroundColor:'#fafaf8'}}>

@@ -59,7 +59,7 @@ p{
     font-size: 20px;
     color: rgb(61, 59, 59);
     font-weight: bold;
-    margin-top: 150%;
+    margin-top: 125%;
     border:none;
     margin-left: 17px;
     float: left;
@@ -76,14 +76,13 @@ p{
     color: rgb(61, 59, 59);
     border:none;
     margin-left: 7px;
-    margin-top: 150%;
+    margin-top: 125%;
     float: left;
     background-color: cornflowerblue;
     z-index: 100;
 }
 .ccname{
-    width: 100%;
-    height: 100%;
+    padding-top: 50px;
 }
 .cback{
     width: 100%;
@@ -96,7 +95,7 @@ p{
     box-shadow:2px 2px 2px rgb(187, 184, 184);
     width: 200px;
     height: 50px;
-    margin-top: 20px;
+    margin-top: 35px;
     margin-left: 100px;
     border-radius: 7px;
     border: none;
@@ -110,7 +109,7 @@ p{
     box-shadow:2px 2px 2px rgb(187, 184, 184);
     width: 200px;
     height: 50px;
-    margin-top: 5px;
+    margin-top: 15px;
     margin-left: 100px;
     border-radius: 7px;
     border: none;
@@ -122,7 +121,7 @@ p{
 .czhu{
     font-size:18px;
     color:rgb(101, 160, 197);
-    margin-top: 40px;
+    margin-top: 50px;
     margin-left: 20px;
     float: left;
 }
@@ -293,12 +292,10 @@ p{
     box-shadow:2px 2px 2px rgb(129, 125, 125);
     padding-left: 10px;
     color: black;
-   
 }
 .cgai1{
     width: 80%;
     float: left;
-  
 }
 .cgai11{
     margin-top: 20px;
@@ -363,11 +360,10 @@ p{
 .stdminebody ul{
     width: 100%;
     height: 400px;
-    padding: 30px 40px;
+    padding: 30px 40px;  
 }
 .stdminebody li{
     height: 60px;
-
 }
 .stdminebody img{
     width: 40px;
@@ -433,6 +429,7 @@ p{
     background-color: white;
     border-radius: 10px;
 }
+
 .stdminebody1 li{
     height: 60px;
     padding-top: 20px;
