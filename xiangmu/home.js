@@ -157,17 +157,19 @@ app.post('/mylove',async c=>{
     c.setHeader('Content-Type','text/plain ');
     var body=JSON.parse(c.body)
     console.log(body);
-    let sql ='INSERT INTO mylove(vedio,class)'
-           +' VALUES($1,$2)';
+    let sql ='INSERT INTO mylove(vedio,class,price,usernum)'
+           +' VALUES($1,$2,$3,$4)';
      let ret=await pgdb.query(sql,[
          body.vedio,
-         body.class
+         body.class,
+         body.price,
+         body.usernum
      ]);
      if (ret.rowCount<=0)
      {
          c.res.body={
              status:-1,
-             errmsg:'create user failed'
+             errmsg:'create mylove failed'
          }
      }else{
          c.res.body={
@@ -181,20 +183,46 @@ app.post('/bought',async c=>{
     c.setHeader('Content-Type','text/plain ');
     var body=JSON.parse(c.body)
     console.log(body);
-    let sql ='INSERT INTO bought(vedio,class,price,time,name)'
+    let sql ='INSERT INTO bought(vedio,class,price,time,usernum)'
            +' VALUES($1,$2,$3,$4,$5)';
      let ret=await pgdb.query(sql,[
          body.vedio,
          body.class,
          body.price,
          body.time,
-         body.name
+         body.usernum
      ]);
      if (ret.rowCount<=0)
      {
          c.res.body={
              status:-1,
-             errmsg:'create user failed'
+             errmsg:'create bought failed'
+         }
+     }else{
+         c.res.body={
+            status:0,
+            data:'ok'
+         }
+     }
+})
+app.post('/tobuy',async c=>{
+    c.setHeader('Content-Type','text/plain ');
+    var body=JSON.parse(c.body)
+    console.log(body);
+    let sql ='INSERT INTO tobuy(vedio,class,price,time,usernum)'
+           +' VALUES($1,$2,$3,$4,$5)';
+     let ret=await pgdb.query(sql,[
+         body.vedio,
+         body.class,
+         body.price,
+         body.time,
+         body.usernum
+     ]);
+     if (ret.rowCount<=0)
+     {
+         c.res.body={
+             status:-1,
+             errmsg:'create bought failed'
          }
      }else{
          c.res.body={
@@ -216,10 +244,15 @@ app.get('/mylove',async c=>{
     }
 })
 app.get('/bought',async c=>{
-    // c.setHeader('Content-Type','text/plain ');
-    // var body=JSON.parse(c.body)
-    //console.log(body);
     let sql ='SELECT * FROM bought';
+     let ret=await pgdb.query(sql);
+     c.res.body={
+        status:0,
+        data:ret.rows
+    }
+})
+app.get('/tobuy',async c=>{
+    let sql ='SELECT * FROM tobuy';
      let ret=await pgdb.query(sql);
      c.res.body={
         status:0,

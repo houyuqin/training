@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { SearchBar,Carousel,Tabs,NavBar} from 'antd-mobile';
+import {Carousel,Tabs,NavBar} from 'antd-mobile';
 import {Link} from 'react-router-dom';
 
 const imgs=['./img/11.jpg',
@@ -77,10 +77,6 @@ export default class Home extends Component {
                         
                     }
                 </div>
-
-
-
-
 
                 <Link to='/ad'>
                     <div>
