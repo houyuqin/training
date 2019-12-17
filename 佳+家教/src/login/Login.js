@@ -127,7 +127,7 @@ export default class Login extends Component {
             if(this.state.tea0num == this.state.tea[i].wphonenumber && this.state.tea0pwd == this.state.tea[i].pwd)
             {
                 console.log("登录成功");
-                window.location.href="/tabs";
+                window.location.href="/tabt?num="+this.state.tea0num;
                 ccm ++;
                 console.log(ccm);
                 console.log(this.state.url); 
