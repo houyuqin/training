@@ -28,7 +28,12 @@ export default class Login extends Component {
             teacode:'',
             teapwd1:'',
             std:'',
-            tea:''
+            tea:'',
+            code:'',
+            n:{n1:Math.floor(Math.random()*10),
+            n2:Math.floor(Math.random()*10),
+            n3:Math.floor(Math.random()*10),
+            n4:Math.floor(Math.random()*10)}
         }
     }
     componentDidMount(){     
@@ -145,7 +150,11 @@ export default class Login extends Component {
         }   
     }
     handleChange7 = (e) =>{
-        if(this.state.cstd4 != 7364)
+        console.log(this.cstd3.value);
+        var mm = this.state.n.n1*1000+this.state.n.n2*100+this.state.n.n3*10+this.state.n.n4
+        console.log(mm);
+        console.log(this.state.cstd4);
+        if(this.state.cstd4 != mm)
         {
             this.setState({
                 stdcode:'验证码输入错误'
@@ -256,12 +265,12 @@ export default class Login extends Component {
         
     }
     handleChange17 = (e) =>{
+        var mm = this.state.n.n1*1000+this.state.n.n2*100+this.state.n.n3*10+this.state.n.n4;
         console.log(this.cstd13.value);
-        if(this.state.cstd14 != 6220)
+        if(this.state.cstd14 != mm && this.state.cstd14 != '')
         {
             this.setState({
                 teacode:'验证码输入错误'
-                
             })
         }
         else if(this.state.cstd14 == '')
@@ -277,11 +286,23 @@ export default class Login extends Component {
         }
         
     }
-    
+    cc(e){
+        console.log(111);
+        this.setState({
+            n:{
+                n1:Math.floor(Math.random()*10),
+                n2:Math.floor(Math.random()*10),
+                n3:Math.floor(Math.random()*10),
+                n4:Math.floor(Math.random()*10)
+            }
+            
+        })
+    }
     show3(e){
         var a={};
         var b={};
-        if(this.state.stdnumm==0 && this.cstd1.value.length == 11 && this.cstd2.value == this.cstd3.value && this.cstd4.value == 7364){
+        var mm = this.state.n.n1*1000+this.state.n.n2*100+this.state.n.n3*10+this.state.n.n4;
+        if(this.state.stdnumm==0 && this.cstd1.value.length == 11 && this.cstd2.value == this.cstd3.value && this.cstd4.value == mm){
             this.setState({
                 stdnum:''
             })
@@ -310,8 +331,8 @@ export default class Login extends Component {
         
     }
     show4(e){
-        var b={};
-        if(this.state.teanumm==0 && this.cstd11.value.length == 11 && this.cstd12.value == this.cstd13.value && this.cstd14.value == 6220){
+        var b={};var mm = this.state.n.n1*1000+this.state.n.n2*100+this.state.n.n3*10+this.state.n.n4;
+        if(this.state.teanumm==0 && this.cstd11.value.length == 11 && this.cstd12.value == this.cstd13.value && this.cstd14.value == mm){
             this.setState({
                 teanum:''
             })
@@ -400,7 +421,15 @@ export default class Login extends Component {
                             ref={i=>this.cstd4=i}
                                 style={{paddingLeft:'3px',borderRadius:'5px',boxShadow:'2px 2px 2px rgb(187, 184, 184)',fontSize:'16px',border:'1px solid rgb(211, 203, 203)',height:'40px',width:'90px',marginLeft:'20px',marginTop:'2px',float:'left'}}>
                             </input>
-                            <img src="./img/timg.jpg" alt="" style={{width:'20%',height:'15%',marginLeft:'20px',marginTop:'-3px'}}/>
+                            {/* <img src="./img/timg.jpg" alt="" style={{width:'20%',height:'15%',marginLeft:'20px',marginTop:'-3px'}}/>
+                             */}
+                            <div style={{width:'23%',height:'12%',backgroundColor:'#dcd6d6',marginLeft:'15px',marginTop:'0px',float:'left'}}>
+                                <p style={{fontSize:'23px',color:'red',float:"left",marginLeft:'15px',marginTop:'3px'}}>{this.state.n.n1}</p>
+                                <p style={{fontSize:'23px',color:'green',float:"left",marginLeft:'10px',marginTop:'7px'}}>{this.state.n.n2}</p>
+                                <p style={{fontSize:'23px',color:'yellow',float:"left",marginLeft:'4px',marginTop:'2px'}}>{this.state.n.n3}</p>
+                                <p style={{fontSize:'23px',color:'blue',float:"left",marginLeft:'9px',marginTop:'9px'}}>{this.state.n.n4}</p>
+                            </div> 
+                            <button style={{backgroundColor:'rgb(222, 233, 240)',border:'none',outline:'none',float:'left',fontSize:'13px',marginLeft:'10px',marginTop:'20px'}} onClick={(e) => this.cc(e)}>换一换</button>
                             <p
                                 style={{paddingLeft:'3px',borderRadius:'5px',fontSize:'15px',color:'red',border:'none',height:'23px',width:'240px',marginLeft:'110px',marginTop:'2px',float:'left'}}>
                             {this.state.stdcode}
@@ -451,7 +480,15 @@ export default class Login extends Component {
                             ref={i=>this.cstd14=i}
                                 style={{paddingLeft:'3px',borderRadius:'5px',boxShadow:'2px 2px 2px rgb(187, 184, 184)',fontSize:'16px',border:'1px solid rgb(211, 203, 203)',height:'40px',width:'90px',marginLeft:'20px',marginTop:'2px',float:'left'}}>
                             </input>
-                            <img src="./img/ctea.png" alt="" style={{width:'20%',height:'12%',marginLeft:'20px',marginTop:'-3px'}}/>
+                            {/* <img src="./img/ctea.png" alt="" style={{width:'20%',height:'12%',marginLeft:'20px',marginTop:'-3px'}}/>
+                             */}
+                            <div style={{width:'23%',height:'12%',backgroundColor:'#dcd6d6',marginLeft:'15px',marginTop:'0px',float:'left'}}>
+                                <p style={{fontSize:'23px',color:'red',float:"left",marginLeft:'15px',marginTop:'3px'}}>{this.state.n.n1}</p>
+                                <p style={{fontSize:'23px',color:'green',float:"left",marginLeft:'10px',marginTop:'7px'}}>{this.state.n.n2}</p>
+                                <p style={{fontSize:'23px',color:'yellow',float:"left",marginLeft:'4px',marginTop:'2px'}}>{this.state.n.n3}</p>
+                                <p style={{fontSize:'23px',color:'blue',float:"left",marginLeft:'9px',marginTop:'9px'}}>{this.state.n.n4}</p>
+                            </div> 
+                            <button style={{backgroundColor:'rgb(222, 233, 240)',border:'none',outline:'none',float:'left',fontSize:'13px',marginLeft:'10px',marginTop:'20px'}} onClick={(e) => this.cc(e)}>换一换</button>
                             <p
                                 style={{paddingLeft:'3px',borderRadius:'5px',fontSize:'15px',color:'red',border:'none',height:'23px',width:'240px',marginLeft:'110px',marginTop:'2px',float:'left'}}>
                             {this.state.teacode}
