@@ -5,7 +5,6 @@ export default class Question extends Component{
     constructor(props) {
         super(props);
         this.state = { 
-            name:"",
             one:"" ,// 定义选中的值，如果为空字符串，则默认不选中
             two:"",
             three:"",
@@ -18,13 +17,6 @@ export default class Question extends Component{
     rtn = ()=>{
         this.props.history.go(-1);
     };
-
-    getValue = (e)=>{
-        console.log(e.target.value);
-        this.setState({
-            name:e.target.value
-        })
-    }
     getValue1 = (e)=>{
         console.log(e.target.value);
         this.setState({
@@ -96,7 +88,6 @@ export default class Question extends Component{
             
             <WingBlank>
             <div style={{paddingLeft:10}}>
-                <h2>您的昵称：<input onChange={(e)=>this.getValue(e)}></input></h2>
                 <h2>1.您是否有过家教？</h2>
                 <div style={{fontSize:18,fontWeight:'bold',paddingLeft:15,color:'#0025ff'}}>
                     <input type='radio' id='1' name='a0' value='有过家教'

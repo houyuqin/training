@@ -126,13 +126,16 @@ app.get('/vedio',async c=>{
     }
 })
 app.post('/question',async c=>{
+    let sqlthree='SELECT MAX(pid) FROM question';
+    let retthree=await pgdb.query(sqlthree);
+    var pid=retthree.rows[0].max+1 || 1;
     c.setHeader('Content-Type','text/plain ');
     var body=JSON.parse(c.body)
     console.log(body);
     let sql ='INSERT INTO question(pid,had,side,request,hadclass,require,disadvans)'
            +' VALUES($1,$2,$3,$4,$5,$6,$7)';
      let ret=await pgdb.query(sql,[
-         body.name,
+         pid,
          body.one,
          body.two,
          body.three,
@@ -243,6 +246,7 @@ app.get('/mylove',async c=>{
         data:ret.rows
     }
 })
+//我的  后台
 app.get('/bought',async c=>{
     let sql ='SELECT * FROM bought';
      let ret=await pgdb.query(sql);
@@ -259,6 +263,7 @@ app.get('/tobuy',async c=>{
         data:ret.rows
     }
 })
+//后台 
 app.get('/question',async c=>{
     let sql ='SELECT * FROM question';
      let ret=await pgdb.query(sql);
@@ -267,21 +272,131 @@ app.get('/question',async c=>{
         data:ret.rows
     }
 })
-// app.get('/tearcm',async c=>{
-//     let sql = 'SELECT * FROM goodteacher';
-//     let ret = await pgdb.query(sql);
-//     c.res.body={
-//         status:0,
-//         data:ret.rows
-//     }
-// })
-// app.get('/vedio',async c=>{
-//     let sql = 'SELECT * FROM vediorcm';
-//     let ret = await pgdb.query(sql);
-//     c.res.body={
-//         status:0,
-//         data:ret.rows
-//     }
-// })
+app.delete('/tearcm',async c=>{
+    c.body=JSON.parse(c.body);
+    console.log(c.body);
+    let sql = 'DELETE FROM goodteacher WHERE name=$1';
+    let ret = await pgdb.query(sql,[
+        c.body.name
+    ])
+    if(ret.rowCount<=0){
+        c.res.body = {
+            status:-1,
+            errmsg:'can not delete teacher'
+        }
+    }else{
+        c.res.body = {
+            status:0,
+            data:'ok'
+        }; 
+    }      
+})
+app.delete('/vedio',async c=>{
+    c.body=JSON.parse(c.body);
+    console.log(c.body);
+    let sql = 'DELETE FROM vediorcm WHERE id=$1';
+    let ret = await pgdb.query(sql,[
+        c.body.id
+    ])
+    if(ret.rowCount<=0){
+        c.res.body = {
+            status:-1,
+            errmsg:'can not delete teacher'
+        }
+    }else{
+        c.res.body = {
+            status:0,
+            data:'ok'
+        }; 
+    }      
+})
+app.delete('/question',async c=>{
+    c.body=JSON.parse(c.body);
+    console.log(c.body);
+    let sql = 'DELETE FROM question WHERE pid=$1';
+    let ret = await pgdb.query(sql,[
+        c.body.pid
+    ])
+    if(ret.rowCount<=0){
+        c.res.body = {
+            status:-1,
+            errmsg:'can not delete teacher'
+        }
+    }else{
+        c.res.body = {
+            status:0,
+            data:'ok'
+        }; 
+    }      
+})
+app.post('/video/:name',async (ctx) => {
+    let sqlthree='SELECT MAX(id) FROM '+ctx.param.name;
+    let retthree=await pgdb.query(sqlthree);
+    var id=retthree.rows[0].max+1 || 1;
+    ctx.setHeader('Content-Type','text/plain ')
+    var body=JSON.parse(ctx.body)
+    console.log(body)
+    let sql ='INSERT INTO '+ctx.param.name+'(id,vedio,price,name,userphone)'
+            +' VALUES($1,$2,$3,$4,$5)';
+    let ret=await pgdb.query(sql,[
+        id,body.vedio,body.price,body.name,body.userphone
+    ]);
+    if (ret.rowCount<=0)
+    {
+        ctx.res.body={
+        status:-1,
+        errmsg:'create user failed'
+    }
+    }else{
+        ctx.res.body={
+        status:0,
+        data:'ok'
+    }
+    }
+});
 
+app.get('/vedio:userphone',async c=>{
+    var body = JSON.parse(c.body)
+    let sql = 'SELECT * FROM $1 WHERE userphone=$2';
+    let ret = await pgdb.query(sql,[
+        c.body.class,
+        c.param.userphone
+    ]);
+    c.res.body={
+        status:0,
+        data:ret.rows
+    }
+})
+app.post('/selectclass',async c=>{
+    c.setHeader('Content-Type','text/plain ');
+    var body=JSON.parse(c.body)
+    console.log(body);
+    let sql ='INSERT INTO selectclass(stdphone,teaphone)'
+           +' VALUES($1,$2)';
+     let ret=await pgdb.query(sql,[
+         body.stdphone,
+         body.teaphone
+     ]);
+     if (ret.rowCount<=0)
+     {
+         c.res.body={
+             status:-1,
+             errmsg:'create bought failed'
+         }
+     }else{
+         c.res.body={
+            status:0,
+            data:'ok'
+         }
+     }
+})
+app.get('/selectclass',async c=>{
+    var body = JSON.parse(c.body)
+    let sql = 'SELECT * FROM selectclass';
+    let ret = await pgdb.query(sql);
+    c.res.body={
+        status:0,
+        data:ret.rows
+    }
+})
 app.run(8000);
