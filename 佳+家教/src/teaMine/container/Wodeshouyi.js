@@ -8,6 +8,40 @@ const tabs = [
     { title: <Badge >收益情况</Badge> },
 ];
 export default class Wodeshouyi extends Component {
+    constructor(){
+        super();
+        this.state = {
+            data:[],
+            data1:[]
+        }
+    }
+    componentDidMount(){
+        let id=window.location.search.split('=')[1];
+   
+        fetch(`http://148.70.183.184:8000/vedio/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({data:res.data})
+                console.log(this.state.data)
+            })
+            
+        fetch('http://148.70.183.184:8000/bought', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'text/plain; charset=UTF-8'
+                },
+                })
+                .then((res) => res.json())
+                .then((res) => {
+                    this.setState({data1:res.data})
+                    console.log(this.state.data1)
+                })
+    }
     render() {
         return (
             <div style={{width:'100%',height:'100%',overflowY:'hidden'}}>
@@ -22,20 +56,20 @@ export default class Wodeshouyi extends Component {
                             <img style={{width:'90%',height:'150px'}} src={require('../../img/11.jpg')}/>
                             <p>price:￥25</p>
                         </div>
-                        <div className='wodeshoucangdiv'>
-                            <p style={{fontSize:'15px',color:'black'}}>我的视频二</p>
-                            <img style={{width:'90%',height:'150px'}} src={require('../../img/11.jpg')}/>
-                            <p>price:￥36</p>
-                        </div>
-                        
+  
                     </div>
                     <div style={{textIndent:'2em',fontSize:'16px',overflow:'scroll',height:'100%', justifyContent: 'center',paddingTop:'10px'}}>
-                        <div className='wodeshoucangdiv1'>
-                            <p style={{fontSize:'15px',color:'black'}}>收益情况</p>
-                            <p>￥25</p>
-                            
-
-                        </div>
+                            {
+                                this.state.data1.map((item)=>(
+                                    <div className='wodeshoucangdiv1'>
+                                        <p>手机号为
+                                            <span style={{color:'red'}}>{item.usernum.slice(0,3)+'***'+item.usernum.slice(7,11)}</span>
+                                            的用户已购买视频，收益
+                                            <span style={{color:'red'}}>{item.price}</span>
+                                            元</p>
+                                    </div>
+                                ))
+                            }       
                     </div>
                 </Tabs>
             </div>
