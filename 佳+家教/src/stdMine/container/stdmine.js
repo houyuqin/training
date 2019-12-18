@@ -3,6 +3,9 @@ import {HashRouter as Router,Route,Link} from 'react-router-dom';
 import { NavBar } from 'antd-mobile';
 import logo from "../../img/zhouxuan.png"
 
+var src='';
+var username='';
+
 export default class stdmine extends Component {
     
     constructor(){
@@ -25,7 +28,61 @@ export default class stdmine extends Component {
             .then((res) => res.json())
             .then((res) => {
                 this.setState({data:res.data})
-                console.log(this.state.data);
+                console.log(this.state.data[0])
+                if(!this.state.data[0].stdtouxiang && !this.state.data[0].wusername){
+                    src='./img/w头像女孩.png'
+                    username='我的昵称'
+                    console.log(src);
+                }
+                else if(this.state.data[0].stdtouxiang&&!this.state.data[0].wusername)
+                   {
+                    src='./'+this.state.data[0].stdtouxiang
+                    username='未设置'
+                   }
+                else if(!this.state.data[0].stdtouxiang&&this.state.data[0].wusername)
+                   {
+                    src='./img/w头像女孩.png'
+                    username=this.state.data[0].wusername
+                }
+                else
+                   {
+                    src='./'+this.state.data[0].stdtouxiang
+                    username=this.state.data[0].wusername
+                }    
+            })
+    }
+    componentDidUpdate(){
+        let id=window.location.search.split('=')[1];
+   
+        fetch(`http://148.70.183.184:8006/stdmine/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({data:res.data})
+                console.log(this.state.data[0])
+                if(!this.state.data[0].stdtouxiang && !this.state.data[0].wusername){
+                    src='./img/w头像女孩.png'
+                    username='我的昵称'
+                }
+                else if(this.state.data[0].stdtouxiang&&!this.state.data[0].wusername)
+                   {
+                    src='./'+this.state.data[0].stdtouxiang
+                    username='未设置'
+                   }
+                else if(!this.state.data[0].stdtouxiang&&this.state.data[0].wusername)
+                   {
+                    src='./img/w头像女孩.png'
+                    username=this.state.data[0].wusername
+                }
+                else
+                   {
+                    src='./'+this.state.data[0].stdtouxiang
+                    username=this.state.data[0].wusername
+                }    
             })
     }
     render() {
@@ -47,9 +104,9 @@ export default class stdmine extends Component {
                                 <div>
                                     <div className='stdminetopdiv'>
                                         <div>
-                                            <div className='stdminetopdiv0'><img src={'./'+item.stdtouxiang}/></div>
+                                            <div className='stdminetopdiv0'><img src={src}></img></div>
                                             <div className='stdminetopdiv1'>
-                                                {item.wusername}
+                                                {username}
                                             </div>
                                             <Link to='/gerenziliao'><div style={{color:'gray',margin:'30px 20px 0px 0px',fontSize:'30px',float:'right'}}>></div></Link>
                                             <Link to='/stdmineshezhi'><div style={{margin:'45px 30px 0px 0px',color:'gray',fontSize:'15px',float:'right',border:'1px solid gray',borderRadius:'5px'}}>编辑资料</div></Link>

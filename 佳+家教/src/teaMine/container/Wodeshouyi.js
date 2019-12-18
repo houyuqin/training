@@ -16,9 +16,9 @@ export default class Wodeshouyi extends Component {
         }
     }
     componentDidMount(){
-        let id=window.location.search.split('=')[1];
+        // let id=window.location.search.split('=')[1];
    
-        fetch(`http://148.70.183.184:8000/vedio/${id}`, {
+        fetch(`http://148.70.183.184:8000/vedio`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'text/plain; charset=UTF-8'
@@ -51,12 +51,15 @@ export default class Wodeshouyi extends Component {
                 >我的收益</NavBar>
                 <Tabs tabs={tabs}>
                     <div style={{overflow:'scroll',height:'100%'}}>
-                        <div className='wodeshoucangdiv'>
-                            <p style={{fontSize:'15px',color:'black'}}>我的视频一</p>
-                            <img style={{width:'90%',height:'150px'}} src={require('../../img/11.jpg')}/>
-                            <p>price:￥25</p>
-                        </div>
-  
+                        {
+                            this.state.data.map((item)=>(
+                                <div className='wodeshoucangdiv'>
+                                    <p style={{fontSize:'15px',color:'black'}}>{item.name}</p>
+                                    <img style={{width:'90%',height:'150px'}} src={require('../../img/11.jpg')}/>
+                                    <p>{'￥'+item.price}</p>
+                                </div>
+                            ))
+                        }       
                     </div>
                     <div style={{textIndent:'2em',fontSize:'16px',overflow:'scroll',height:'100%', justifyContent: 'center',paddingTop:'10px'}}>
                             {

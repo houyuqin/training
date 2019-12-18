@@ -85,7 +85,7 @@ export default class TeaStudy extends Component {
                     mode='dark'
                     rightContent={[
                     ]}z
-                    >学习</NavBar>
+                    >教学</NavBar>
                 <div className="cshang">
                    
                 <img src={src} style={{width:'70px',height:'70px' }} ></img>

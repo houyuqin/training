@@ -68,7 +68,7 @@ export default class Tab extends Component {
                 background: 'url(./img/学习.png) center center /  21px 21px no-repeat' }}
                 />
             }
-            title="学习"
+            title="教学"
             key="Friend"
             // dot
             selected={this.state.selectedTab === 'greenTab'}

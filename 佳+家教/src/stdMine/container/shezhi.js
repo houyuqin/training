@@ -112,7 +112,7 @@ export default class shezhi extends Component {
                                
                                 <li>
                                     <div className='stdminetopdiv2'>微信</div>
-                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya4=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='111111'/></div>
+                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya4=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='请输入微信号'/></div>
                                     
                                 </li>
                                 <li>
