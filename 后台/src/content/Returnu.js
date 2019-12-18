@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 
-export default class Teatcm extends Component {
+export default class Returnu extends Component {
     constructor(){
         super();
         this.state={
@@ -9,7 +9,7 @@ export default class Teatcm extends Component {
         }
     }
     componentDidMount(){
-        fetch("http://148.70.183.184:8000/tearcm")
+        fetch("http://148.70.183.184:8006/return")
         .then(res=>res.json())
         .then(res=>{
             this.setState({
@@ -18,7 +18,7 @@ export default class Teatcm extends Component {
         });
     }
     componentDidUpdate(){
-        fetch("http://148.70.183.184:8000/tearcm")
+        fetch("http://148.70.183.184:8006/return")
         .then(res=>res.json())
         .then(res=>{
             this.setState({
@@ -26,46 +26,43 @@ export default class Teatcm extends Component {
             })  
         });
     }
-    del=(name)=>{
-        let a = {name:name};
-        console.log(a);
-        fetch('http://148.70.183.184:8000/tearcm',{
-            method:"DELETE",
-            headers:{
-                'Accept':'application/json',
-                'Content-Type': 'text/plain',
-            },
-            body:JSON.stringify(a)
-        })
-        .then((res)=>{ 
-            if(res.status === 200){
-                alert('删除成功！');
-                return res.json();
-            }else{
-                alert('？？？');
-            }
-        })
-        .then((data)=>{
-            console.log(data);
-        }).catch((err)=>{
-            console.log(err);
-        });
-    }
-    add=()=>{
+    // del=(name)=>{
+    //     let a = {name:name};
+    //     console.log(a);
+    //     fetch('http://148.70.183.184:8006/return',{
+    //         method:"DELETE",
+    //         headers:{
+    //             'Accept':'application/json',
+    //             'Content-Type': 'text/plain',
+    //         },
+    //         body:JSON.stringify(a)
+    //     })
+    //     .then((res)=>{ 
+    //         if(res.status === 200){
+    //             alert('删除成功！');
+    //             return res.json();
+    //         }else{
+    //             alert('？？？');
+    //         }
+    //     })
+    //     .then((data)=>{
+    //         console.log(data);
+    //     }).catch((err)=>{
+    //         console.log(err);
+    //     });
+    // }
+    // add=()=>{
         
-    }
+    // }
     render(){
         return(
                <div style={{width:'80%',height:'100%',backgroundColor:'#eee',float:'left'}}>
-                   <h2 style={{height:50,borderBottom:'1px solid black',marginTop:10}}>教师信息：</h2>
                    {
                     this.state.data.map((item,idx)=>(
                             <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18,paddingLeft:15}}>
-                                <p>{item.name}
-                                <span style={{marginLeft:10}}>{item.sex}</span>
-                                <span style={{marginLeft:10}}>{item.age}</span>
-                                <span style={{marginLeft:10}}>{item.graduation}</span>
-                                <span style={{marginLeft:10}}>{item.position}</span>
+                                <p>{item.wphonenumber}
+                                <span style={{marginLeft:10}}>{item.wusername}</span>
+                                <span style={{marginLeft:10}}>{item.wcontent}</span>
 
                                 <button 
                                 style={{width:70,height:30,backgroundColor:'rgb(31, 138, 238)',float:'right',marginRight:50}}

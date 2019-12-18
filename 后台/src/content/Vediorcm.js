@@ -17,7 +17,7 @@ export default class Vediorcm extends Component {
             })  
         });
     }
-    componentDidUpdate(prevProps,prevState){
+    componentDidUpdate(){
         fetch("http://148.70.183.184:8000/vedio")
         .then(res=>res.json())
         .then(res=>{
@@ -26,20 +26,45 @@ export default class Vediorcm extends Component {
             })  
         });
     }
-
+    del=(id)=>{
+        let a = {id:id};
+        console.log(a);
+        fetch('http://148.70.183.184:8000/vedio',{
+            method:"DELETE",
+            headers:{
+                'Accept':'application/json',
+                'Content-Type': 'text/plain',
+            },
+            body:JSON.stringify(a)
+        })
+        .then((res)=>{ 
+            if(res.status === 200){
+                alert('删除成功！');
+                return res.json();
+            }else{
+                alert('？？？');
+            }
+        })
+        .then((data)=>{
+            console.log(data);
+        }).catch((err)=>{
+            console.log(err);
+        });
+    }
+    add = ()=>{
+        
+    }
     render(){
         return(
                <div style={{width:'80%',height:'100%',backgroundColor:'#eee',float:'left'}}>{
                     this.state.data.map((item,idx)=>(
                             <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18}}>
                                 <p>{item.name}
-                                <span>{item.sex}</span>
-                                <span>{item.age}</span>
-                                <span>{item.graduation}</span>
-                                <span>{item.position}</span>
+                                <span>{item.price}</span>
+                                <span>{item.vedio}</span>
                                 <button 
-                                style={{width:70,height:30,backgroundColor:'rgb(142, 193, 255)',float:'right',marginRight:50}}
-                                onClick={()=>this.del(item.name)}
+                                style={{width:70,height:30,backgroundColor:'rgb(31, 138, 238)',float:'right',marginRight:50,color:'white'}}
+                                onClick={()=>this.del(item.id)}
                                 >
                                     删除
                                 </button>

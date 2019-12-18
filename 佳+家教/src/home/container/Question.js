@@ -50,13 +50,10 @@ export default class Question extends Component{
         })
     }
     getValue5 = (e)=>{
-        if(e.keyCode === 13){
-            console.log(e.target.value);
-            this.setState({
-                five:e.target.value
-            })
-        }
-
+        console.log(e.target.value);
+        this.setState({
+            five:e.target.value
+        })
     }
     getValue6 = (e)=>{
         console.log(e.target.value);
@@ -79,7 +76,7 @@ export default class Question extends Component{
                 alert('提交成功！');
                 return res.json();
             }else{
-                alert('提交字段过长，请简述！');
+                alert('该昵称已提交或提交字段过长！');
             }
         }).then((data)=>{
             console.log(data);
