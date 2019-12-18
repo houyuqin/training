@@ -20,13 +20,17 @@ export default class TeaStudy extends Component {
             one:e.target.value
         })
     }
+    componentWillMount(){
+       
+    }
     fabu=()=>{
-       video.id=this.cren1.value;
+       
        video.price=this.cren3.value;
        video.name=this.cren2.value;
        video.vedio=`./vedio/${this.state.files}`
+       video.userphone=window.location.search.split('=')[1]
       var name=this.state.one
-       console.log(video)
+       
        fetch(`http://148.70.183.184:8000/video/${name}`, {
         method: "POST",
         headers: {
@@ -60,10 +64,7 @@ export default class TeaStudy extends Component {
                 >上传视频</NavBar>
                 <div style={{margin:'15px',height:'600px',padding:'0px 20px',borderStyle:'dotted ' ,overflow:'scroll'}}>
                 
-                    <div className="cbu3">   
-                        视频编号:
-                        <input type="text" name="task" id='id' className="cren1" ref={i=>this.cren1=i} placeholder='必须为整数类型'></input>
-                    </div>
+                    
                     <div className="cbu4">   
                         
                         <h4>视频科目：</h4>
