@@ -43,6 +43,40 @@ export default class TeaStudy extends Component {
                }
             })
    }
+   componentDidUpdate() {
+    var usr=window.location.search.split('=')[1]
+       fetch(`http://148.70.183.184:8006/teamine/${usr}`,{
+        method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+              
+                this.setState({ data: res.data });
+               if(!this.state.data[0].teatouxiang&&!this.state.data[0].wusername){
+                src='./img/w头像女孩.png'
+                username='未设置'
+               }
+               else if(this.state.data[0].teatouxiang&&!this.state.data[0].wusername)
+               {
+                src='./'+this.state.data[0].teatouxiang
+                username='未设置'
+               }
+               else if(!this.state.data[0].teatouxiang&&this.state.data[0].wusername)
+               {
+                src='./img/w头像女孩.png'
+                username=this.state.data[0].wusername
+               }
+               else
+               {
+                src='./'+this.state.data[0].teatouxiang
+                username=this.state.data[0].wusername
+               }
+            })
+}
+
     render() {
         return (
             <div className="cteall" >
