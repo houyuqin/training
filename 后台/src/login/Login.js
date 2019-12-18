@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 
-
 export default class Todolist extends Component {
     constructor(){
         super();
@@ -19,7 +18,7 @@ export default class Todolist extends Component {
     }
     componentDidMount(){     
         
-        fetch('http://148.70.183.184:8003/login')
+        fetch('http://148.70.183.184:8003/logon')
             .then((res)=>res.json())
             .then((res)=>{                
                 for(var i=0;i<res.length;i++){
@@ -73,19 +72,19 @@ export default class Todolist extends Component {
         
     }
     show(e){
-          
+        
         var ccm = 0;
         this.setState({
             inputValue:''
         })
-        console.log(this.state.code);
+        console.log(this.state.std);
         var mm = this.state.n.n1*1000+this.state.n.n2*100+this.state.n.n3*10+this.state.n.n4
        
         for(var i=0;i<this.state.std.length;i++)
         {
             
-            console.log(this.state.std[i].num);
-            if(this.state.num === this.state.std[i].num && this.state.pwd === this.state.std[i].pwd && this.state.code === mm)
+            console.log(this.state.std[i].wphonenumber);
+            if(this.state.num === this.state.std[i].wphonenumber && this.state.pwd === this.state.std[i].pwd && this.state.code === mm)
             {
                 console.log(window.location);
                 console.log("登录成功");
@@ -128,7 +127,7 @@ export default class Todolist extends Component {
                         onChange={(e) => this.handleChange2(e) }
                                 className="c2" />
                         <p
-                                style={{paddingLeft:'3px',borderRadius:'5px',fontSize:'15px',color:'red',border:'none',height:'23px',width:'240px',marginLeft:'160px',marginTop:'8px',float:'left'}}>
+                                style={{paddingLeft:'3px',borderRadius:'5px',fontSize:'15px',color:'red',border:'none',height:'23px',width:'240px',marginLeft:'160px',marginRight:100,marginTop:'8px',float:'left'}}>
                             {this.state.inputValue}</p>
                         <div className="c33">验证码:</div>
                         <input type="password" placeholder="请输入验证码" name='pwd'
