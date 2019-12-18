@@ -52,17 +52,20 @@ export default class Ques extends Component {
         });
     }
     render(){
+        // let data = this.state.data;
         return(
-               <div style={{width:'80%',height:'100%',backgroundColor:'#eee',float:'left'}}>{
+               <div style={{width:'80%',height:'100%',backgroundColor:'#eee',float:'left'}}>
+                   {
                     this.state.data.map((item,idx)=>(
                             <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18}}>
                                 <p>{item.had}
-                                <span>{item.side}</span>
-                                <span>{item.request}</span>
-                                <span>{item.hadclass}</span>
-                                <span>{item.require}</span>
+                                <span style={{marginLeft:10}}>{item.side}</span>
+                                <span style={{marginLeft:10}}>{item.request}</span>
+                                <span style={{marginLeft:10}}>{item.hadclass}</span>
+                                <span style={{marginLeft:10}}>{item.require}</span>
+                                <span style={{marginLeft:10}}>{item.disadvans}</span>
                                 <button 
-                                style={{width:70,height:30,backgroundColor:'rgb(142, 193, 255)',float:'right',marginRight:50}}
+                                style={{width:70,height:30,backgroundColor:'rgb(31, 138, 238)',float:'right',marginRight:50,color:'white'}}
                                 onClick={()=>this.del(item.pid)}
                                 >
                                     删除
@@ -73,6 +76,7 @@ export default class Ques extends Component {
                             
                         ))
                     }
+                    
                 </div> 
         )
     }

@@ -59,9 +59,9 @@ export default class Vediorcm extends Component {
                <div style={{width:'80%',height:'100%',backgroundColor:'#eee',float:'left'}}>{
                     this.state.data.map((item,idx)=>(
                             <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18}}>
-                                <p>{item.name}
-                                <span>{item.price}</span>
-                                <span>{item.vedio}</span>
+                                <p>视频名：{item.name}
+                                <span style={{marginLeft:10}}>视频价格：{item.price}</span>
+                                <span style={{marginLeft:10}}>视频存储路径：{item.vedio}</span>
                                 <button 
                                 style={{width:70,height:30,backgroundColor:'rgb(31, 138, 238)',float:'right',marginRight:50,color:'white'}}
                                 onClick={()=>this.del(item.id)}

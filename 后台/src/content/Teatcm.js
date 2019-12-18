@@ -56,7 +56,7 @@ export default class Teatcm extends Component {
     }
     render(){
         return(
-               <div style={{width:'80%',height:'100%',backgroundColor:'#eee',float:'left'}}>
+               <div>
                    <h2 style={{height:50,borderBottom:'1px solid black',marginTop:10}}>教师信息：</h2>
                    {
                     this.state.data.map((item,idx)=>(
@@ -68,7 +68,7 @@ export default class Teatcm extends Component {
                                 <span style={{marginLeft:10}}>{item.position}</span>
 
                                 <button 
-                                style={{width:70,height:30,backgroundColor:'rgb(31, 138, 238)',float:'right',marginRight:50}}
+                                style={{width:70,height:30,backgroundColor:'rgb(31, 138, 238)',float:'right',marginRight:50,color:'white'}}
                                 onClick={()=>this.del(item.name)}
                                 >
                                     删除
