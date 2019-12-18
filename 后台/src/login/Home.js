@@ -14,7 +14,7 @@ export default class Todoinput extends Component {
             <Router>
 
             
-            <div style={{width:'100%',height:'100%'}}>
+            <div style={{width:'100%',height:'100%',overflow:'scroll'}}>
                 <div style={{width:'20%',height:'100%',backgroundColor:'#ff9900',float:'left'}}>
                     <ul>
                     <li style={{height:50,borderBottom:'1px solid blue',fontSize:30}}></li>
@@ -54,7 +54,7 @@ export default class Todoinput extends Component {
                 </div>
                 
                     
-                    <div style={{width:'80%',height:10000,backgroundColor:'#eee',float:'left',overFlow:'scroll'}}>
+                    <div style={{width:'80%',height:'100%',backgroundColor:'#eee',float:'left',overflow:'scroll'}}>
                         <Switch>
                             <Route exact path='/' component={Teatcm}/>
                             <Route path='/vedio' component={Vediorcm}/>
