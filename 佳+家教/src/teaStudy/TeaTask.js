@@ -45,9 +45,9 @@ export default class TeaTask extends Component {
                 <div style={{margin:'15px',padding:'0px 20px',borderStyle:'dotted ' ,overflow:'scroll'}}>
                {this.state.data.map((item,idx)=>(
                    
-                       <div className="cgaii">
+                       <div className="cgaii" style={{height:'250px',}}>
 
-                           <div className="cgai1">
+                           <div className="cgai1" style={{width:'80%'}} >
                            <h4>任务编号：{item.id}</h4>
                                  <h4>任务题目：{item.title}</h4>
                                  <h4>发布时间：{item.time}</h4>

@@ -63,7 +63,7 @@ add=()=>{
                 >查看全文</NavBar>
    {
       this.state.data.map((item,idx)=>(
-        <div style={{border:'5px dotted  rgb(177, 174, 174)',fontSize:'25px'}}><p>{item.content}</p>
+        <div style={{border:'5px dotted  rgb(177, 174, 174)',fontSize:'25px'}}><h2>{item.title}</h2><p>{item.content}</p>
        <div style={{color:'blue',fontWeight:'bolder'}}><p>我的答案:{item.zuoye} </p></div>
         </div>
        
@@ -75,6 +75,7 @@ add=()=>{
                        <p style={{color:'blue',fontWeight:'bolder'}}>重新提交答案:</p> 
                         <textarea name="task" cols="40" rows="5" className="cren2" ref={i=>this.daan=i}></textarea>      
                     </div>
+            
                     <input type="submit" value="提交" className="cbuan" onClick={()=>this.add()}/>
         </div>
         

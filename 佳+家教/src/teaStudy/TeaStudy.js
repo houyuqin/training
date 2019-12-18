@@ -6,6 +6,7 @@ import TeaTask from './TeaTask';
 import TeaReal from './TeaReal';
 import complete from './complete';
 import Content from './Content'
+import Video from './Video'
 
 export default class TeaStudy extends Component {
 
@@ -20,6 +21,7 @@ export default class TeaStudy extends Component {
                             <Route path="/teareal" component={TeaReal}></Route>
                             <Route path='/complete' component={complete}></Route>
                             <Route path='/tasks/:id' component={Content}></Route>
+                            <Route path='/video' component={Video}></Route>
                         </Switch>             
                 </div>            
             </Router>

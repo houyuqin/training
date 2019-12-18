@@ -22,6 +22,7 @@ export default class TeaStudy extends Component {
                 
                 <Link to="ctebuzhi"><div className="ctezuo">布置作业</div></Link>
                 <Link to="ctebigai"><div className="cteyou">作业批改</div></Link>
+                <Link to='video'><div style={{width:'350px',height:'100px',backgroundColor:'red',marginTop:'340px',marginLeft:'30px',borderRadius:'8px',boxShadow:'5px 5px 5px rgb(129, 125, 125)',fontSize:'22px',zIndex:100,textAlign:'center',lineHeight:'100px',color:'black'}}>上传视频</div></Link>
             </div>
         )
     }
