@@ -79,7 +79,7 @@ export default class Question extends Component{
                 alert('提交成功！');
                 return res.json();
             }else{
-                return Promise.reject(res.json())
+                alert('提交字段过长，请简述！');
             }
         }).then((data)=>{
             console.log(data);
@@ -134,18 +134,19 @@ export default class Question extends Component{
                     <input type='radio' id='10' name='ac' value='没有'
                     onChange={(e)=>this.getValue4(e)}/>没有
                 </div>
-                <h2>5.关于家教，您还有何需求？</h2>
+                <h2>5.关于家教，您还有何需求？<span style={{fontSize:16}}>20字内</span></h2>
                 <textarea rows='3' style={{width:'90%',marginLeft:15}}
                 onChange={(e)=>this.getValue5(e)}></textarea>
-                <h2>6.您觉得佳+家教还有何不足之处？</h2>
+                <h2>6.您觉得佳+家教还有何不足？<span style={{fontSize:16}}>20字内</span></h2>
                 <textarea rows='3' style={{width:'90%',marginLeft:15}}
                 onChange={(e)=>this.getValue6(e)}></textarea>
                 
                 <Button 
                 onClick={()=>this.submit()}
-                style={{backgroundColor:'#2a55b1',color:'white',width:200,marginLeft:90}}>
+                style={{backgroundColor:'#2a55b1',color:'white',width:200,marginLeft:90,marginTop:10}}>
                     提交
                 </Button>
+                <div style={{height:30}}></div>
             </div>
             </WingBlank>
 
