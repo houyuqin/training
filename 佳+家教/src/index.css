@@ -284,7 +284,7 @@ p{
     margin-top: 15px;
     margin-left: 2%;
     width: 95%;
-    height: 100px;
+    height: 200px;
     font-size: 18px;
     border-radius:7px;
     border: 1px solid rgb(177, 174, 174);
@@ -294,7 +294,7 @@ p{
     color: black;
 }
 .cgai1{
-    width: 50%;
+    width: 80%;
     float: left;
 }
 .cgai11{
@@ -341,10 +341,10 @@ p{
 .stdminetopdiv0{
     width: 60px;
     height: 60px;
-    background-color: white;
     margin: 25px;
     float: left;
     border-radius:30px;
+    overflow: hidden;
 }
 .stdminetopdiv0 img{
     width: 60px;
@@ -377,14 +377,14 @@ p{
 
 
 .stdmineshezhidiv{
-    padding: 50px 30px;
+    padding: 20px 30px;
 }
 .stdmineshezhidiv img{
     width: 40px;
     height: 40px;
 }
 .stdmineshezhidiv li{
-    height: 60px;
+    height: 65px;
 }
 .stdminetopdiv2{
     float: left;
@@ -401,12 +401,6 @@ p{
     float: right;
     font-size: 16px;
     margin: 25px 10px 0px 0px;
-    color: rgb(153, 147, 147);
-}
-.stdminetopdiv5{
-    float: right;
-    font-size: 16px;
-    margin: 20px 10px 0px 0px;
     color: rgb(153, 147, 147);
 }
 .stdmineshezhibutton{
@@ -445,10 +439,13 @@ p{
     color: black;
 }
 .wodeshoucangdiv{
-    width: 90%;
+    width: 370px;
+    height: 200px;
+    background-color: white;
     border-radius: 10px;
     opacity: 0.8;
-    margin: 5px 0px 5px 20px;
+    margin:20px 0px 0px 25px;
+    padding: 10px;
 }
 .wodedingdandiv{
     width: 370px;
@@ -527,14 +524,3 @@ p{
 .zheader{
     background: url('./img/15.png') center center / cover no-repeat ;
 }
-.zupload upload-list-inline ant-upload-list-item {
-    float: left;
-    width: 200px;
-    margin-right: 8px;
-  }
-  .zupload upload-list-inline  ant-upload-animate-enter {
-    animation-name: uploadAnimateInlineIn;
-  }
-  .zupload upload-list-inline ant-upload-animate-leave {
-    animation-name: uploadAnimateInlineOut;
-  }

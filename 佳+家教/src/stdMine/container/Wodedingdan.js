@@ -9,8 +9,15 @@ const tabs = [
 ];
 
 export default class Wodedingdan extends Component {
+    constructor(){
+        super();
+        this.state = {
+            data:[],
+            data1:[]
+        }
+    }
     componentDidMount(){   
-        fetch('http://148.70.183.184:8000/mylove', {
+        fetch('http://148.70.183.184:8000/tobuy', {
             method: 'GET',
             headers: {
                 'Content-Type': 'text/plain; charset=UTF-8'
@@ -20,6 +27,16 @@ export default class Wodedingdan extends Component {
             .then((res) => {
                 this.setState({data:res.data})
             })
+        fetch('http://148.70.183.184:8000/bought', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'text/plain; charset=UTF-8'
+                },
+                })
+                .then((res) => res.json())
+                .then((res) => {
+                    this.setState({data1:res.data})
+                })
     }
     render() {
         return (
@@ -32,21 +49,32 @@ export default class Wodedingdan extends Component {
                 style={{height:'100%'}}
                 >
                     <div style={{overflowY:'scroll',height:'100%',paddingTop:'10px'}}>
-                        <div className='wodedingdandiv'>
-                            <p style={{fontSize:'15px',color:'black'}}>未支付订单一</p>
-                            <p>购买数学视频--函数与极限</p>
-                        </div>
-                        <div className='wodedingdandiv'>
-                            <p style={{fontSize:'15px',color:'black'}}>未支付订单二</p>
-                            <p>购买数学视频--微积分</p>
-                        </div>
+                        {
+                                this.state.data.map((item)=>(
+                                    <div className='wodedingdandiv'>
+                                        <p style={{fontSize:'15px',color:'black'}}>{item.class}</p>
+                                        <p>{item.price}</p>
+                                        <p>{item.time}</p>
+
+                                    </div>
+                                  
+                                ))
+                        }
                     </div>
-                    <div style={{overflow:'scroll', height:'100%', paddingTop:'10px'}}>
-                        <div className='wodedingdandiv'>
-                            <p style={{fontSize:'15px',color:'black'}}>已支付订单一</p>
-                            <p>购买数学视频--基础知识过关</p>
-                        </div>
+                    <div style={{overflowY:'scroll',height:'100%',paddingTop:'10px'}}>
+                        {
+                                this.state.data1.map((item)=>(
+                                    <div className='wodedingdandiv'>
+                                        <p style={{fontSize:'15px',color:'black'}}>{item.class}</p>
+                                        <p>{item.price}</p>
+                                        <p>{item.time}</p>
+                                        
+                                    </div>
+                                  
+                                ))
+                        }
                     </div>
+                
                 </Tabs>
             </div>
         )

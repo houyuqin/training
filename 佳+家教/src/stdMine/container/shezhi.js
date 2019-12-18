@@ -3,7 +3,8 @@ import { NavBar ,Icon} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import { HashRouter,Route } from 'react-router-dom/cjs/react-router-dom.min';
 import { Modal, List} from 'antd-mobile';
-import Item from 'antd-mobile/lib/popover/Item';
+import { ImagePicker  } from 'antd-mobile';
+import { NoticeBar} from 'antd-mobile';
 
 export default class shezhi extends Component {
     constructor(){
@@ -11,7 +12,7 @@ export default class shezhi extends Component {
         this.state = {
             inputValue:'',
             data:[],
-            modal2: false,
+            files: [],
         }
     }
     
@@ -20,11 +21,7 @@ export default class shezhi extends Component {
             inputValue:e.target.value,
         })
     }
-    onClose = key => () => {
-        this.setState({
-          [key]: false,
-        });
-    }
+  
     baocun=()=>{
         var a={};
         a.wusername=this.wujinya1.value;
@@ -32,7 +29,7 @@ export default class shezhi extends Component {
         a.weixinnumber=this.wujinya4.value;
         a.wclass=this.wujinya5.value;
         a.wschool=this.wujinya6.value;
-        a.stdtouxiang=this.wujinyagenghuantouxiang.value;
+        a.stdtouxiang='img/'+this.state.files[0].file.name;
        console.log(JSON.stringify(a))
 
        let usr=window.location.search.split('=')[1];
@@ -44,17 +41,10 @@ export default class shezhi extends Component {
             },
             body: JSON.stringify(a)
           }).then(function(response) {
-            // do sth
           });    
           
     }
-    showModal = key => (e) => {
-        e.preventDefault(); // 修复 Android 上点击穿透
-        this.setState({
-          [key]: true,
-        });
-       
-    }
+  
     componentDidMount(){
       
         let id=window.location.search.split('=')[1];
@@ -69,19 +59,23 @@ export default class shezhi extends Component {
             .then((res) => {
                 this.setState({data:res.data})
                 console.log(this.state.data)
-            })
-
-        console.log(window.location.href.split('/'))
-       
+            })       
     }
     wujinyatiaozhuan = ()=>{
         window.location.href = 'http://'+window.location.href.split('/')[2]
         console.log(window.location.href)
     }
+    onChange = (files, type) => {
+        this.setState({
+          files,
+        });
+      }
     render() {
+        const { files } = this.state;
         return (
             <HashRouter>
             <div style={{width:'100%',height:'100%',backgroundColor:'#a3c6d9',position:'relative'}}>
+               
                 <NavBar
                 style={{backgroundColor:'white',color:'black'}}
                 icon={<Link to='/'><Icon style={{color:'black'}} type="left" /></Link>}
@@ -89,14 +83,22 @@ export default class shezhi extends Component {
                     <Link to='/'><div style={{color:'black'}} onClick={()=>this.baocun()}>保存</div></Link>,
                 ]}
                 >设置</NavBar>
+                 <NoticeBar marqueeProps={{ loop: true, style: { padding: '0 7.5px' } }}>
+                    通知 ： 同学，为了您有更好的体验，以下每条信息必填哦.
+                </NoticeBar>
                 <div className='stdmineshezhidiv'>
                     {
                          this.state.data.map(item=>(
                             <ul>
                                 <li>
                                     <div className='stdminetopdiv2'>头像</div>
-                                    <div className='stdminetopdiv5' onClick={this.showModal('modal2')}>
-                                       <img src={item.stdtouxiang}/>
+                                    <div style={{width:'45px',height:'45px',float:'right',marginTop:'20px',overflow:'hidden'}}>
+                                    <ImagePicker
+                                        style={{width:'220px',float:'right',margin:'-10px -166px 0px 0px'}}
+                                        files={files}
+                                        onChange={this.onChange}
+                                        accept="image/gif,image/jpeg,image/jpg,image/png"
+                                    />
                                     </div>
                                 </li>
                                 <li>
@@ -129,12 +131,7 @@ export default class shezhi extends Component {
                     
                 </div>
                 <button className='stdmineshezhibutton' onClick={()=>this.wujinyatiaozhuan()}>退出登录</button>
-                <Modal popup visible={this.state.modal2} animationType="slide-up" onClose={this.onClose('modal2')}>
-                    <List style={{height:'100%',paddingTop:'10px',}}>
-                        <input ref={i=>this.wujinyagenghuantouxiang=i} type='file'/>
-                        
-                    </List>
-                </Modal>  
+               
             </div>
             </HashRouter>
         )

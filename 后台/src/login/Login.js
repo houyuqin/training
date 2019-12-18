@@ -58,7 +58,7 @@ export default class Todolist extends Component {
                 stdcode:'验证码输入错误'
             })
         }
-        else if(this.state.code == '')
+        else if(this.state.code === '')
         {
             this.setState({
                 stdcode:'验证码不能为空'
@@ -83,7 +83,8 @@ export default class Todolist extends Component {
         for(var i=0;i<this.state.std.length;i++)
         {
             
-            console.log(this.state.std[i].wphonenumber);
+            console.log(this.state.num);
+            console.log(this.state.pwd);
             if(this.state.num == this.state.std[i].wphonenumber && this.state.pwd == this.state.std[i].pwd && this.state.code == mm)
             {
                 console.log(window.location);
@@ -93,10 +94,10 @@ export default class Todolist extends Component {
 
             }
         }
-        if(ccm == 0 ){
-            this.setState({url:'/loginn'})
+        if(ccm === 0 ){
+           
             console.log("登录 失败");           
-            console.log(this.state.url);
+            
             this.setState({
                 inputValue:'手机号或密码错误'
             })

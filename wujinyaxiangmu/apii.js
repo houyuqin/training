@@ -29,7 +29,12 @@ app.get('/stdmine',async c=>{
     c.res.body=ret.rows
   
 })
-
+app.get('/teamine',async c=>{
+    let sql='SELECT * FROM teainfo';
+    let ret=await pgdb.query(sql);
+    c.res.body=ret.rows
+  
+})
 app.get('/stdmine/:id',async c=>{
     let sql='select * FROM stdinfo WHERE wphonenumber=$1'; 
     let ret=await pgdb.query(sql,[
@@ -48,9 +53,31 @@ app.get('/stdmine/:id',async c=>{
        }
     }    
 })
-
+app.get('/teamine/:id',async c=>{
+    let sql='select * FROM teainfo WHERE wphonenumber=$1'; 
+    let ret=await pgdb.query(sql,[
+        c.param.id
+    ])
+    if(ret.rowCount<=0)
+    {
+        c.res.body={
+            status:-1,
+            errmsg:'can not delete user'
+        }
+    }else{
+       c.res.body={
+           status:0,
+           data:ret.rows
+       }
+    }    
+})
 app.get('/stdmine/:usr',async c=>{
     let sql='SELECT wusername,wsex,wphonenumber,wclass,wschool,weixinnumber,code,pwd,coo,stdtouxiang FROM stdinfo WHERE usr=$1';
+    let ret=await pgdb.query(sql,[c.param.usr]);
+    c.res.body=ret.rows  
+})
+app.get('/teamine/:usr',async c=>{
+    let sql='SELECT * FROM teainfo WHERE usr=$1';
     let ret=await pgdb.query(sql,[c.param.usr]);
     c.res.body=ret.rows  
 })
@@ -79,6 +106,29 @@ app.post('/stdmine',async (ctx,next)=>{
 
 })
 
+app.post('/teamine',async (ctx,next)=>{
+    ctx.setHeader('Content-Type','text/plain ');
+    var body=JSON.parse(ctx.body);
+    let sql ='INSERT INTO teainfo(wusername,wsex,xueli,wsubject,weixinnumber,pwd,wphonenumber,code,coo)'
+            +'VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)';
+    console.log(body.wphonenumber);
+    let ret=await pgdb.query(sql,[
+        body.wusername,body.wsex,body.xueli,body.wsubject,body.weixinnumber,body.pwd,body.wphonenumber,body.code,body.coo
+    ]);
+    if (ret.rowCount<=0)
+    {
+        ctx.res.body={
+            status:-1,
+            errmsg:'create user failed'
+        }
+    }else{
+        ctx.res.body={
+            status:0,
+            data:'ok'
+        }
+    }
+
+})
 app.post('/stdmine/:usr',async (ctx,next)=>{
     ctx.setHeader('Content-Type','text/plain ');
     var body=JSON.parse(ctx.body);
@@ -86,6 +136,28 @@ app.post('/stdmine/:usr',async (ctx,next)=>{
     let sql ='UPDATE stdinfo set wusername=$1,wsex=$2,wclass=$3,wschool=$4,weixinnumber=$5,code=$6,coo=$7,stdtouxiang=$8 where wphonenumber=$9';
     let ret=await pgdb.query(sql,[
         body.wusername,body.wsex,body.wclass,body.wschool,body.weixinnumber,body.code,body.coo,body.stdtouxiang,ctx.param.usr
+    ]);
+    if (ret.rowCount<=0)
+    {
+        ctx.res.body={
+            status:-1,
+            errmsg:'create user failed'
+        }
+    }else{
+        ctx.res.body={
+            status:0,
+            data:'ok'
+        }
+    }
+})
+
+app.post('/teamine/:usr',async (ctx,next)=>{
+    ctx.setHeader('Content-Type','text/plain ');
+    var body=JSON.parse(ctx.body);
+    console.log(body);
+    let sql ='UPDATE teainfo set wusername=$1,wsex=$2,xueli=$3,wsubject=$4,weixinnumber=$5,code=$6,coo=$7,teatouxiang=$8 where wphonenumber=$9';
+    let ret=await pgdb.query(sql,[
+        body.wusername,body.wsex,body.xueli,body.wsubject,body.weixinnumber,body.code,body.coo,body.teatouxiang,ctx.param.usr
     ]);
     if (ret.rowCount<=0)
     {
@@ -110,6 +182,13 @@ app.get('/nicheng/:usr',async c=>{
     }
 })
 
+app.get('/return',async c=>{
+    let sql='SELECT * FROM return';
+    let ret=await pgdb.query(sql);
+    c.res.body=ret.rows
+  
+})
+
 app.post('/return',async (ctx,next)=>{
     ctx.setHeader('Content-Type','text/plain ');
     var body=JSON.parse(ctx.body);
@@ -131,16 +210,6 @@ app.post('/return',async (ctx,next)=>{
         }
     }
 })
-
-
-
-
-
-
-
-
-
-
 
 
 

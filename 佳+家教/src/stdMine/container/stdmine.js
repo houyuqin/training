@@ -25,6 +25,7 @@ export default class stdmine extends Component {
             .then((res) => res.json())
             .then((res) => {
                 this.setState({data:res.data})
+                console.log(this.state.data);
             })
     }
     render() {
@@ -46,15 +47,17 @@ export default class stdmine extends Component {
                                 <div>
                                     <div className='stdminetopdiv'>
                                         <div>
-                                            <div className='stdminetopdiv0'></div>
-                                            <div className='stdminetopdiv1'>{item.wusername}</div>
+                                            <div className='stdminetopdiv0'><img src={'./'+item.stdtouxiang}/></div>
+                                            <div className='stdminetopdiv1'>
+                                                {item.wusername}
+                                            </div>
+                                            <Link to='/gerenziliao'><div style={{color:'gray',margin:'30px 20px 0px 0px',fontSize:'30px',float:'right'}}>></div></Link>
+                                            <Link to='/stdmineshezhi'><div style={{margin:'45px 30px 0px 0px',color:'gray',fontSize:'15px',float:'right',border:'1px solid gray',borderRadius:'5px'}}>编辑资料</div></Link>
                                         </div>                 
                                     </div>
                                     <div className='stdminebody'>
                                         <ul>
-                                            <li>
-                                            <Link to='/gerenziliao'><img src={require(`../../img/w个人资料.png`)}/><span>个人资料</span></Link>
-                                            </li>
+                                         
                                             <li>
                                             <Link to='/wodeshoucang'><img src={require(`../../img/w我的收藏.png`)}/><span>我的收藏</span></Link>
                                             </li>

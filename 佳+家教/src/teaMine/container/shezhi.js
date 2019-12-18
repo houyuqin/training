@@ -1,53 +1,139 @@
 import React, { Component } from 'react'
 import { NavBar ,Icon} from 'antd-mobile';
 import { Link } from 'react-router-dom';
+import { HashRouter,Route } from 'react-router-dom/cjs/react-router-dom.min';
+import { Modal, List} from 'antd-mobile';
+import { ImagePicker  } from 'antd-mobile';
+import { NoticeBar} from 'antd-mobile';
 
 export default class shezhi extends Component {
     constructor(){
         super();
         this.state = {
-            data:[
-                <img src={require(`../../img/w头像女孩.png`)}/>,
-                '我的昵称',
-                '15230821745',
-                '1111111'
-            ]
+            inputValue:'',
+            data:[],
+            files: [],
         }
     }
+    
+    handelChange(e){
+        this.setState({
+            inputValue:e.target.value,
+        })
+    }
+  
+    baocun=()=>{
+        var a={};
+        a.wusername=this.wujinya1.value;
+        a.wsex=this.wujinya2.value;
+        a.weixinnumber=this.wujinya4.value;
+        a.xueli=this.wujinya5.value;
+        a.wsubject=this.wujinya6.value;
+        a.teatouxiang='img/'+this.state.files[0].file.name;
+       console.log(JSON.stringify(a))
+
+       let usr=window.location.search.split('=')[1];
+     
+        fetch(`http://148.70.183.184:8006/teamine/${usr}`, {
+            method: "POST",
+            headers: {
+               'Content-Type': 'text/plain; charset=UTF-8'
+            },
+            body: JSON.stringify(a)
+          }).then(function(response) {
+          });    
+          
+    }
+  
+    componentDidMount(){
+      
+        let id=window.location.search.split('=')[1];
+   
+        fetch(`http://148.70.183.184:8006/teamine/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+            })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({data:res.data})
+                console.log(this.state.data)
+            })       
+    }
+    wujinyatiaozhuan = ()=>{
+        window.location.href = 'http://'+window.location.href.split('/')[2]
+        console.log(window.location.href)
+    }
+    onChange = (files, type) => {
+        this.setState({
+          files,
+        });
+      }
     render() {
+        const { files } = this.state;
         return (
+            <HashRouter>
             <div style={{width:'100%',height:'100%',backgroundColor:'#a3c6d9',position:'relative'}}>
+               
                 <NavBar
                 style={{backgroundColor:'white',color:'black'}}
                 icon={<Link to='/'><Icon style={{color:'black'}} type="left" /></Link>}
+                rightContent={[
+                    <Link to='/'><div style={{color:'black'}} onClick={()=>this.baocun()}>保存</div></Link>,
+                ]}
                 >设置</NavBar>
+                 <NoticeBar marqueeProps={{ loop: true, style: { padding: '0 7.5px' } }}>
+                    通知 ： 老师，您好！为了您有更好的体验，以下每条信息必填哦.
+                </NoticeBar>
                 <div className='stdmineshezhidiv'>
-                    <ul>
-                        <li>
-                            <div className='stdminetopdiv2'>头像</div>
-                            <div className='stdminetopdiv4'>></div>
-                            <div className='stdminetopdiv5'>{this.state.data[0]}</div>
-                        </li>
-                        <li>
-                            <div className='stdminetopdiv2'>昵称</div>
-                            <div className='stdminetopdiv4'>></div>
-                            <div className='stdminetopdiv3'>{this.state.data[1]}</div>
-                        </li>
-                        <li>
-                            <div className='stdminetopdiv2'>手机号</div>
-                            <div className='stdminetopdiv4'>></div>
-                            <div className='stdminetopdiv3'>{this.state.data[2]}</div>
-                        </li>
-                        <li>
-                            <div className='stdminetopdiv2'>微信</div>
-                            <div className='stdminetopdiv4'>></div>
-                            <div className='stdminetopdiv3'>{this.state.data[3]}</div>
-                            
-                        </li>
-                    </ul>
+                    {
+                         this.state.data.map(item=>(
+                            <ul>
+                                <li>
+                                    <div className='stdminetopdiv2'>头像</div>
+                                    <div style={{width:'45px',height:'45px',float:'right',marginTop:'20px',overflow:'hidden'}}>
+                                    <ImagePicker
+                                        style={{width:'220px',float:'right',margin:'-10px -166px 0px 0px'}}
+                                        files={files}
+                                        onChange={this.onChange}
+                                        accept="image/gif,image/jpeg,image/jpg,image/png"
+                                    />
+                                    </div>
+                                </li>
+                                <li>
+                                    <div className='stdminetopdiv2'>昵称</div>
+                                    <div className='stdminetopdiv3'><input type='text' ref={i=>this.wujinya1=i} style={{width:'80px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='我的昵称'/></div>
+                                </li>
+                                <li>
+                                    <div className='stdminetopdiv2'>性别</div>
+                                    <div className='stdminetopdiv3'><input type='text' ref={i=>this.wujinya2=i} style={{width:'80px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='女'/></div>
+                                </li>
+                               
+                                <li>
+                                    <div className='stdminetopdiv2'>微信</div>
+                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya4=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='111111'/></div>
+                                    
+                                </li>
+                                <li>
+                                    <div className='stdminetopdiv2'>学历</div>
+                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya5=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='本科'/></div>
+                                    
+                                </li>
+                                <li>
+                                    <div className='stdminetopdiv2'>科目</div>
+                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya6=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='语文'/></div>
+                                    
+                                </li>
+                            </ul>
+                       ))
+                    } 
+                    
                 </div>
-                <Link to='/'><button className='stdmineshezhibutton'>退出登录</button></Link>
+                <button className='stdmineshezhibutton' onClick={()=>this.wujinyatiaozhuan()}>退出登录</button>
+               
             </div>
+            </HashRouter>
         )
     }
 }

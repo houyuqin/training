@@ -55,8 +55,8 @@ export default class Jiaoshipingjia extends Component {
                                     <p style={{marginLeft:'0px'}}>{item.pingjia}</p>
                                     <div style={{borderLeftStyle:'solid',paddingLeft:'5px'}}>
                                     <p style={{color:'red'}}>@{wusername}</p>
-                                    <p >提交了 <span style={{color:'red'}}>{item.title}</span> 的任务作业</p>
-                                    <p style={{float:'right',color:'gray'}}>{item.time}</p>
+                                    <p style={{fontSize:'15px'}}>提交了 <span style={{color:'red',fontSize:'15px'}}>{item.title}</span> 的任务作业</p>
+                                    <p style={{float:'right',color:'gray',fontSize:'15px'}}>{item.time}</p>
                                     </div>
                                 </div>
                             ))

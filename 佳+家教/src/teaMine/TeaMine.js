@@ -19,8 +19,7 @@ export default class tiaozhuan extends Component {
                         <Route path='/gerenziliao' component={Gerenziliao}></Route>
                         <Route path='/wodeshouyi' component={Wodeshouyi}></Route>
                         <Route path='/jiaoshipingjia' component={Jiaoshipingjia}></Route>
-                        <Route path='/yonghufankui' component={Yonghufankui}></Route>
-            
+                        <Route path='/yonghufankui/:id' component={Yonghufankui}></Route>           
                     </Switch>
                 </div>
             </Router>
