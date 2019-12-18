@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { TabBar } from 'antd-mobile';
-import Home from './home/Home';
+// import Home from './home/Home';
 import TeaStudy from './teaStudy/TeaStudy';
 import TeaMine from './teaMine/TeaMine';
+import Apphome from './home/Apphome';
 
 export default class Tab extends Component {
     constructor(props) {
@@ -48,7 +49,9 @@ export default class Tab extends Component {
                 });
             }}
             >
-            <Home/>
+            {/* <Home/> */}
+
+            <Apphome/>
             </TabBar.Item>
             <TabBar.Item
             icon={
