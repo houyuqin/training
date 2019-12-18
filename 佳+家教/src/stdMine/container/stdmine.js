@@ -28,11 +28,9 @@ export default class stdmine extends Component {
             .then((res) => res.json())
             .then((res) => {
                 this.setState({data:res.data})
-                console.log(this.state.data[0])
                 if(!this.state.data[0].stdtouxiang && !this.state.data[0].wusername){
                     src='./img/w头像女孩.png'
                     username='我的昵称'
-                    console.log(src);
                 }
                 else if(this.state.data[0].stdtouxiang&&!this.state.data[0].wusername)
                    {
