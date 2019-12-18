@@ -4,7 +4,6 @@ import TabStd from './TabStd'
 import Llogin from './login/Llogin'
 import Login from './login/Login'
 import Logon from './login/Logon'
-import tongzhi from './stdMine/container/tongzhi'
 
 export default class AppStd extends Component {
     render() {

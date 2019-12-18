@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { TabBar } from 'antd-mobile';
-import Home from './home/Home';
+// import Home from './home/Home';
+import Apphome from './home/Apphome';
 import StdStudy from './stdStudy/StdStudy';
 import StdMine from './stdMine/StdMine';
 
@@ -48,7 +49,11 @@ export default class Tab extends Component {
                   });
               }}
               >
-              <Home/>
+              {/* <Home/> */}
+
+
+
+              <Apphome/>
               </TabBar.Item>
               <TabBar.Item
               icon={
