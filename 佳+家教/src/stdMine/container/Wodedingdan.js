@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Tabs, Badge } from 'antd-mobile';
 
 const tabs = [
-    { title: <Badge text={'2'}>未支付</Badge> },
+    { title: <Badge>未支付</Badge> },
     { title: <Badge>已支付</Badge> },
 ];
 

@@ -30,6 +30,9 @@ export default class shezhi extends Component {
         a.xueli=this.wujinya5.value;
         a.wsubject=this.wujinya6.value;
         a.teatouxiang='img/'+this.state.files[0].file.name;
+        a.age=this.wujinya9.value;
+        a.biyexuexiao=this.wujinya11.value;
+        a.zhiwei=this.wujinya13.value;
        console.log(JSON.stringify(a))
 
        let usr=window.location.search.split('=')[1];
@@ -92,9 +95,9 @@ export default class shezhi extends Component {
                             <ul>
                                 <li>
                                     <div className='stdminetopdiv2'>头像</div>
-                                    <div style={{width:'45px',height:'45px',float:'right',marginTop:'20px',overflow:'hidden'}}>
+                                    <div style={{width:'40px',height:'40px',float:'right',marginTop:'20px',overflow:'hidden'}}>
                                     <ImagePicker
-                                        style={{width:'220px',float:'right',margin:'-10px -166px 0px 0px'}}
+                                        style={{width:'180px',float:'right',margin:'-7px -133px 0px 0px'}}
                                         files={files}
                                         onChange={this.onChange}
                                         accept="image/gif,image/jpeg,image/jpg,image/png"
@@ -103,26 +106,39 @@ export default class shezhi extends Component {
                                 </li>
                                 <li>
                                     <div className='stdminetopdiv2'>昵称</div>
-                                    <div className='stdminetopdiv3'><input type='text' ref={i=>this.wujinya1=i} style={{width:'80px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='我的昵称'/></div>
+                                    <div className='stdminetopdiv3'><input type='text' ref={i=>this.wujinya1=i} style={{width:'80px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='请输入昵称'/></div>
                                 </li>
                                 <li>
                                     <div className='stdminetopdiv2'>性别</div>
-                                    <div className='stdminetopdiv3'><input type='text' ref={i=>this.wujinya2=i} style={{width:'80px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='女'/></div>
+                                    <div className='stdminetopdiv3'><input type='text' ref={i=>this.wujinya2=i} style={{width:'80px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='请输入性别'/></div>
                                 </li>
-                               
+                                <li>
+                                    <div className='stdminetopdiv2'>年龄</div>
+                                    <div className='stdminetopdiv3'><input type='text' ref={i=>this.wujinya9=i} style={{width:'80px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='请输入年龄'/></div>
+                                </li>
                                 <li>
                                     <div className='stdminetopdiv2'>微信</div>
-                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya4=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='111111'/></div>
+                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya4=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='请输入微信号'/></div>
                                     
                                 </li>
                                 <li>
                                     <div className='stdminetopdiv2'>学历</div>
-                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya5=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='本科'/></div>
+                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya5=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='请输入学历'/></div>
                                     
                                 </li>
                                 <li>
                                     <div className='stdminetopdiv2'>科目</div>
-                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya6=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='语文'/></div>
+                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya6=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='请输入科目'/></div>
+                                    
+                                </li>
+                                <li>
+                                    <div className='stdminetopdiv2'>毕业学校</div>
+                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya11=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='输入毕业学校'/></div>
+                                    
+                                </li>
+                                <li>
+                                    <div className='stdminetopdiv2'>职位</div>
+                                    <div className='stdminetopdiv3'><input type='text'  ref={i=>this.wujinya13=i}  style={{width:'100px',textAlign:'right',backgroundColor:'#a3c6d9',border:'1px solid #a3c6d9'}} onClick={this.handelChange.bind(this)} placeholder='请输入职位'/></div>
                                     
                                 </li>
                             </ul>

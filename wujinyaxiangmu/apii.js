@@ -2,8 +2,8 @@ const titbit=require('titbit');
 const pg=require('pg'); 
 
 var app=new titbit({
-    //debug:true
-    daemon:true
+    debug:true
+    //daemon:true
 });
 var pgdb=new pg.Pool({
     host:'127.0.0.1',
@@ -189,6 +189,26 @@ app.get('/return',async c=>{
   
 })
 
+app.delete('/return',async c=>{
+    c.body=JSON.parse(c.body);
+    console.log(c.body);
+    let sql = 'DELETE FROM return WHERE wphonenumber=$1';
+    let ret = await pgdb.query(sql,[
+        c.body.wphonenumber
+    ])
+    if(ret.rowCount<=0){
+        c.res.body = {
+            status:-1,
+            errmsg:'can not delete teacher'
+        }
+    }else{
+        c.res.body = {
+            status:0,
+            data:'ok'
+        }; 
+    }      
+})
+
 app.post('/return',async (ctx,next)=>{
     ctx.setHeader('Content-Type','text/plain ');
     var body=JSON.parse(ctx.body);
@@ -211,4 +231,4 @@ app.post('/return',async (ctx,next)=>{
     }
 })
 
-app.daemon(8006);
+app.run(8006);

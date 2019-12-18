@@ -63,7 +63,6 @@ export default class stdmine extends Component {
             .then((res) => res.json())
             .then((res) => {
                 this.setState({data:res.data})
-                console.log(this.state.data[0])
                 if(!this.state.data[0].stdtouxiang && !this.state.data[0].wusername){
                     src='./img/w头像女孩.png'
                     username='我的昵称'
@@ -109,7 +108,7 @@ export default class stdmine extends Component {
                                                 {username}
                                             </div>
                                             <Link to='/gerenziliao'><div style={{color:'gray',margin:'30px 20px 0px 0px',fontSize:'30px',float:'right'}}>></div></Link>
-                                            <Link to='/stdmineshezhi'><div style={{margin:'45px 30px 0px 0px',color:'gray',fontSize:'15px',float:'right',border:'1px solid gray',borderRadius:'5px'}}>编辑资料</div></Link>
+                                            <Link to='/stdmineshezhi'><div style={{margin:'45px 30px 0px 0px',color:'gray',fontSize:'15px',float:'right',border:'1px solid gray',borderRadius:'5px',padding:'0px 5px'}}>编辑资料</div></Link>
                                         </div>                 
                                     </div>
                                     <div className='stdminebody'>

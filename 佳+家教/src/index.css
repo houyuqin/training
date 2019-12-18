@@ -377,14 +377,14 @@ p{
 
 
 .stdmineshezhidiv{
-    padding: 20px 30px;
+    padding: 0px 30px;
 }
 .stdmineshezhidiv img{
     width: 40px;
     height: 40px;
 }
 .stdmineshezhidiv li{
-    height: 65px;
+    height: 60px;
 }
 .stdminetopdiv2{
     float: left;
