@@ -45,6 +45,39 @@ export default class TeaTask extends Component {
         })    
  
     }
+    // componentDidUpdate() {
+    //     var teap=window.location.search.split('=')[1];
+    //     fetch(`http://148.70.183.184:8000/selectstd/${teap}`,{
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'text/plain; charset=UTF-8'
+    //         },
+    //     })
+    //         .then((res) => res.json())
+    //         .then((res) => {
+    //             this.setState({ stdp: res.data });
+    //             for (var index in this.state.stdp){
+                  
+    //                  num[index]=this.state.stdp[index]
+    //             }
+    //             for(var index in num){
+    //                 fetch(`http://148.70.183.184:8005/judge/${num[index].stdphone}`, {
+    //                             method: 'GET',
+    //                             headers: {
+    //                                 'Content-Type': 'text/plain; charset=UTF-8'
+    //                             },
+    //                         })
+    //                             .then((res) => res.json())
+    //                             .then((res) => {
+    //                                for(var index in res.data)
+    //                                {
+    //                                 this.setState({ data: [...this.state.data, res.data[index]] })
+    //                                }
+    //                             })
+    //             }
+    //     })    
+ 
+    // }
    
     render() {
         return (

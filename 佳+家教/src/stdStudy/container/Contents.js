@@ -27,6 +27,22 @@ export default class Content extends Component {
         })
  
 }
+componentDidUpdate(){
+  let id = this.props.match.params.id
+
+  fetch(`http://148.70.183.184:8005/chakan/${id}`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'text/plain; charset=UTF-8'
+      },
+  })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res.data)
+          this.setState({ data: res.data.splice(res.data.length-1,1)})
+          
+      })
+}
     render() {
     
         return (

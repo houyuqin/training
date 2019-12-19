@@ -28,6 +28,24 @@ export default class Content extends Component {
         })
 
 }
+componentDidUpdate(){
+  let id = this.props.match.params.id
+  
+   
+  fetch(`http://148.70.183.184:8005/taskt/${id}`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'text/plain; charset=UTF-8'
+      },
+  })
+      .then((res) => res.json())
+      .then((res) => {
+          this.setState({ data:res.data.splice(res.data.length-1,1) })
+       console.log(res.data.splice(res.data.length-1,1))
+      })
+
+
+}
 add=()=>{
   var aa=this.daan.value;
   var id1=this.props.match.params.id;

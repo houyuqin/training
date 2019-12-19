@@ -8,7 +8,6 @@ export default class Message extends Component {
            data:[],
            data1:[]
        }
-       console.log(<a href={this.state.data[0]}></a>)
       
    }
    componentDidMount() {
@@ -27,6 +26,22 @@ export default class Message extends Component {
         console.log();
       })
 
+  }
+  componentDidUpdate(){
+    let id = this.props.match.params.id
+
+
+    fetch(`http://148.70.183.184:8005/lianxi`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'text/plain; charset=UTF-8'
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        this.setState({ data: res.data })
+        console.log();
+      })
   }
     render() {
         return (

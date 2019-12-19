@@ -25,7 +25,7 @@ export default class Vedio extends Component{
             })  
         });
     }
-    comeponentDidUpdate(){
+    componentDidUpdate(){
         fetch("http://148.70.183.184:8000/mylove")
         .then(res=>res.json())
         .then(res=>{
@@ -35,9 +35,7 @@ export default class Vedio extends Component{
         });
     }
     del=(idx)=>{
-     console.log(idx)
-   
-     
+     console.log(idx)  
      fetch(`http://148.70.183.184:8000/mylove/${idx}`,{
         method: 'DELETE',
            
