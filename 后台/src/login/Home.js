@@ -18,7 +18,9 @@ export default class Todoinput extends Component {
             <div style={{width:'100%',height:'100%',overflow:'scroll'}}>
                 <div style={{width:'20%',height:'100%',backgroundColor:'#ff9900',float:'left'}}>
                     <ul>
-                    <li style={{height:50,borderBottom:'1px solid blue',fontSize:30}}></li>
+                    <li style={{height:100,borderBottom:'1px solid blue',fontSize:50,textAlign:'center',paddingTop:30}}>
+                        佳+家教
+                    </li>
                         
                         <Link to='/'>
                         <li style={{height:50,borderBottom:'1px solid blue',fontSize:30,textAlign:'center'}}>

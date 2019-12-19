@@ -31,7 +31,7 @@ export default class Ques extends Component {
                <div>
                    {
                     this.state.data.map((item,idx)=>(
-                            <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18}}>
+                            <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18,paddingLeft:15}}>
                                 <p>账号：{item.wphonenumber}
                                 <span style={{marginLeft:10}}>姓名：{item.wusername}</span>
                                 <span style={{marginLeft:10}}>性别：{item.wsex}</span>

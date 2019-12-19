@@ -53,7 +53,7 @@ export default class Info extends Component {
         return(
                <div>
                    
-                    <div style={{marginTop:20,width:'50%',paddingLeft:10}}>
+                    <div style={{marginTop:20,width:'50%',paddingLeft:15}}>
                         <h2>推送消息给用户</h2><br/>
                         <p>请输入要发布的消息内容：</p><br/>
                         <textarea cols='50' rows='4'

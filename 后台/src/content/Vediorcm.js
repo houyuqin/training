@@ -58,7 +58,7 @@ export default class Vediorcm extends Component {
         return(
                <div style={{width:'80%',height:'100%',backgroundColor:'#eee',float:'left'}}>{
                     this.state.data.map((item,idx)=>(
-                            <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18}}>
+                            <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18,paddingLeft:15}}>
                                 <p>视频名：{item.name}
                                 <span style={{marginLeft:10}}>视频价格：{item.price}</span>
                                 <span style={{marginLeft:10}}>视频存储路径：{item.vedio}</span>

@@ -57,7 +57,7 @@ export default class Ques extends Component {
                <div style={{width:'80%',height:'100%',backgroundColor:'#eee',float:'left'}}>
                    {
                     this.state.data.map((item,idx)=>(
-                            <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18}}>
+                            <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18,paddingLeft:15}}>
                                 <p>{item.had}
                                 <span style={{marginLeft:10}}>{item.side}</span>
                                 <span style={{marginLeft:10}}>{item.request}</span>

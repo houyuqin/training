@@ -84,7 +84,7 @@ export default class Infohistory extends Component {
                         </div>
                     {
                         this.state.data.map((item,idx)=>(
-                        <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18,oveflow:'scroll'}}>
+                        <div key={idx} style={{height:40,borderBottom:'1px solid black',paddingTop:15,fontSize:18,oveflow:'scroll',paddingLeft:15}}>
                         {item.content}
 
                             <button 
