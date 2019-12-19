@@ -7,7 +7,8 @@ export default class Vedio extends Component{
     constructor(){
         super();
         this.state={
-            data:[]
+            data:[],
+            id:[]
         }
     }
 
@@ -24,11 +25,24 @@ export default class Vedio extends Component{
             })  
         });
     }
+    comeponentDidUpdate(){
+        fetch("http://148.70.183.184:8000/mylove")
+        .then(res=>res.json())
+        .then(res=>{
+            this.setState({
+                data:res.data
+            })  
+        });
+    }
     del=(idx)=>{
      console.log(idx)
+   
+     
      fetch(`http://148.70.183.184:8000/mylove/${idx}`,{
         method: 'DELETE',
            
+     }).then(res=>{
+         alert('删除成功!')
      })
      
     }
@@ -52,7 +66,7 @@ render(){
                     <Player ref="player" videoId="video-1">
                         <source src={item.vedio}/>
                     </Player>      
-                    <div style={{float:'right'}}><Button style={{}} onClick={()=>this.del(idx)}>删除</Button></div>
+                    <div style={{float:'right'}}><Button style={{}} onClick={()=>this.del(item.id)}>删除</Button></div>
             
                 </div>
              

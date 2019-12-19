@@ -40,7 +40,7 @@ export default class TeaStudy extends Component {
       }).then(function(response) {
         // do sth
         
-        
+        alert('视频上传成功!')
       });    
       
     }
