@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import '../index.css'
 import {HashRouter as Router,Route,Switch,Link} from 'react-router-dom'
-import Teatcm from '../content/Teatcm'
 import Vediorcm from '../content/Vediorcm'
 import Ques from '../content/Ques'
+import Info from '../content/Info'
 import Returnu from '../content/Returnu'
 import Teauser from '../content/Teauser'
 import Stduser from '../content/Stduser'
+import Infohis from '../content/Infohistory'
 
 export default class Todoinput extends Component {
     render() {
@@ -21,9 +22,14 @@ export default class Todoinput extends Component {
                         
                         <Link to='/'>
                         <li style={{height:50,borderBottom:'1px solid blue',fontSize:30,textAlign:'center'}}>
-                            教师推荐
+                            教师列表
                         </li></Link>
                         
+                        <Link to='/std'>
+                        <li style={{height:50,borderBottom:'1px solid blue',fontSize:30,textAlign:'center'}}>
+                            学生列表
+                        </li></Link>
+
                         <Link to='/vedio'>
                         <li style={{height:50,borderBottom:'1px solid blue',fontSize:30,textAlign:'center'}}>
                             视频推荐
@@ -39,29 +45,29 @@ export default class Todoinput extends Component {
                             用户反馈
                         </li></Link>
 
-                        <Link to='/tea'>
+                        <Link to='/infohis'>
                         <li style={{height:50,borderBottom:'1px solid blue',fontSize:30,textAlign:'center'}}>
-                            教师列表
+                            消息历史
                         </li></Link>
 
-                        <Link to='/std'>
+                        <Link to='/info'>
                         <li style={{height:50,borderBottom:'1px solid blue',fontSize:30,textAlign:'center'}}>
-                            学生列表
+                            消息推送
                         </li></Link>
 
-                        
                     </ul>
                 </div>
                 
                     
                     <div style={{width:'80%',height:'100%',backgroundColor:'#eee',float:'left',overflow:'scroll'}}>
                         <Switch>
-                            <Route exact path='/' component={Teatcm}/>
+                            <Route exact path='/' component={Teauser}/>
                             <Route path='/vedio' component={Vediorcm}/>
                             <Route path='/question' component={Ques}/>
                             <Route path='/returnu' component={Returnu}/>
-                            <Route path='/tea' component={Teauser}/>
                             <Route path='/std' component={Stduser}/>
+                            <Route exact path='/info' component={Info}/>
+                            <Route exact path='/infohis' component={Infohis}/>
                         </Switch>
                         
                     </div>
