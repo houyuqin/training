@@ -76,29 +76,6 @@ export default class Infohistory extends Component {
             console.log(err);
         });
     }
-    alldel=()=>{
-        fetch('http://148.70.183.184:8000/inforuserdel',{
-            method:"DELETE",
-            headers:{
-                'Accept':'application/json',
-                'Content-Type': 'text/plain',
-            },
-            body:JSON.stringify()
-        })
-        .then((res)=>{ 
-            if(res.status === 200){
-                alert('删除成功！');
-                return res.json();
-            }else{
-                alert('删除失败！');
-            }
-        })
-        .then((data)=>{
-            console.log(data);
-        }).catch((err)=>{
-            console.log(err);
-        });
-    }
     render(){
         return(
                <div>
