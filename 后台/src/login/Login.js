@@ -119,7 +119,7 @@ export default class Todolist extends Component {
                     <div className="cc2">欢迎登录 佳 + 后台管理</div>
                     <div className="cc4">
                         <div className="c1">手机号:</div>
-                        <input type='text' placeholder="请输入学生手机号" name='user'
+                        <input type='text' placeholder="请输入管理员账号" name='user'
                         onChange={(e) => this.handleChange1(e) } 
                             className="c2">
                         </input>
