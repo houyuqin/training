@@ -8,6 +8,8 @@ import Wodeshouyi from './container/Wodeshouyi';
 import Jiaoshipingjia from './container/Jiaoshipingjia';
 import Yonghufankui from './container/Yonghufankui';
 import Wodelaoshi from './container/Wodelaoshi'
+import Fabuzuoye from './container/Fabuzuoye'
+import Content from './container/Content'
 
 export default class tiaozhuan extends Component {
     render() {
@@ -22,7 +24,9 @@ export default class tiaozhuan extends Component {
                         <Route path='/wodeshouyi' component={Wodeshouyi}></Route>
                         <Route path='/wodelaoshi' component={Wodelaoshi}></Route>
                         <Route path='/jiaoshipingjia' component={Jiaoshipingjia}></Route>
-                        <Route path='/yonghufankui/:id' component={Yonghufankui}></Route>           
+                        <Route path='/yonghufankui/:id' component={Yonghufankui}></Route>
+                        <Route path='/fabuzuoye' component={Fabuzuoye}></Route>  
+                        <Route path='/fabu/:id' component={Content}></Route>        
                     </Switch>
                 </div>
             </Router>
