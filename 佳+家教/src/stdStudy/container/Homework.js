@@ -109,17 +109,17 @@ export default class AppHome extends Component {
         }).then((res) => {
             alert('此任务已完成并提交！')
         });
-        var id = this.state.data[msg].id
-        fetch(`http://148.70.183.184:8005/taskt/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            },
-        })
-            .then((res) => res.json())
-            .then((res) => {
+        // var id = this.state.data[msg].id
+        // fetch(`http://148.70.183.184:8005/taskt/${stdp}`, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'Content-Type': 'text/plain; charset=UTF-8'
+        //     },
+        // })
+        //     .then((res) => res.json())
+        //     .then((res) => {
 
-            })
+        //     })
 
     }
     display = () => {

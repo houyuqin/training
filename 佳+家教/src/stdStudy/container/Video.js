@@ -24,6 +24,14 @@ export default class Vedio extends Component{
             })  
         });
     }
+    del=(idx)=>{
+     console.log(idx)
+     fetch(`http://148.70.183.184:8000/mylove/${idx}`,{
+        method: 'DELETE',
+           
+     })
+     
+    }
 
 //  
 render(){
@@ -38,17 +46,16 @@ render(){
 
         <div style={{display: 'flex',justifyContent:'space-between',flexWrap:' wrap'}}>
         {
-            this.state.data.map(item=>(
+            this.state.data.map((item,idx)=>(
                 <div key={item.id}
                 style={{width:'98%',marginLeft:5,border:'1px dotted black',marginTop:5,fontWeight:'bold'}}>
                     <Player ref="player" videoId="video-1">
                         <source src={item.vedio}/>
-                    </Player>
-                   
-                   
-                  
-                </div>
+                    </Player>      
+                    <div style={{float:'right'}}><Button style={{}} onClick={()=>this.del(idx)}>删除</Button></div>
             
+                </div>
+             
             ))
         }
         </div>
