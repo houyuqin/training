@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Tabs, Badge } from 'antd-mobile';
 import { NavBar ,Icon} from 'antd-mobile';
 import { Link } from 'react-router-dom';
+import { Player } from 'video-react';
 
 const tabs = [
     { title: <Badge >我的视频</Badge> },
@@ -53,10 +54,12 @@ export default class Wodeshouyi extends Component {
                     <div style={{overflow:'scroll',height:'100%'}}>
                         {
                             this.state.data.map((item)=>(
-                                <div className='wodeshoucangdiv'>
-                                    <p style={{fontSize:'15px',color:'black'}}>{item.name}</p>
-                                    <img style={{width:'90%',height:'150px'}} src={require('../../img/11.jpg')}/>
-                                    <p>{'￥'+item.price}</p>
+                                <div style={{marginBottom:'15px'}}>
+                                    <p style={{marginLeft:'20px',fontSize:'20px',color:'black'}}>{item.name}<span style={{float:'right',marginRight:'10px'}}>{'￥'+item.price}</span></p>
+                                    <Player ref="player" videoId="video-1">
+                                        <source src={item.vedio}/>
+                                    </Player>  
+                                    
                                 </div>
                             ))
                         }       

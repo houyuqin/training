@@ -9,7 +9,8 @@ export default class Wodelaoshi extends Component {
         super();
         this.state = {
             data:[],
-            data1:[]
+            data1:[],
+            data2:[]
         }
     }
     componentDidMount(){
@@ -46,9 +47,35 @@ export default class Wodelaoshi extends Component {
                 })
         })    
 
-        
+        fetch(`http://148.70.183.184:8005/fabu/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({ data2: res.data });
+                console.log(this.state.data2)
+            })
+
         
     }
+    deleteshipin=(idx)=>{
+        var id=window.location.search.split('=')[1];
+        
+        fetch(`http://148.70.183.184:8000/deltea/${id}`,{
+           method: 'DELETE',
+           headers: {
+            'Content-Type': 'text/plain; charset=UTF-8'
+            },
+
+        })
+        .then((res) => res.json())
+        .then((res) => {
+            alert('任务删除成功!')
+        })
+    } 
     render() {
         return (
             <div>
@@ -59,14 +86,15 @@ export default class Wodelaoshi extends Component {
                 <div>
                     {
                         this.state.data.map((item)=>(
-                                <div className='wodeshoucangdiv' key={item.wphonenumber}>
+                                <div style={{width: '390px',height: '100px',backgroundColor: 'white', borderRadius: '10px',opacity:' 0.8',margin:'10px 0px 10px 10px'}} key={item.wphonenumber}>
                                     <div style={{width:'250px',height:'50px',margin:'0px 0px 0px 10px'}}>
-                                        <img style={{width:'50px',height:'50px',backgroundColor:'blue',float:'left'}} src={'./'+item.teatouxiang}></img>
-                                        <span style={{padding:'12px 0px 0px 12px',fontSize:'15px',color:'black',float:'left'}}>{item.wusername}</span>
+                                        <img style={{width:'50px',height:'60px',margin:'20px 0px 0px 0px',float:'left'}} src={'./'+item.teatouxiang}></img>
+                                        <span style={{padding:'20px 0px 0px 12px',fontSize:'18px',color:'black',float:'left'}}>{item.wusername}</span>
+                                        <span style={{padding:'22px 0px 0px 12px',fontSize:'15px',color:'black',float:'left'}}>{item.zhiwei}</span>
+                                        <span style={{margin:'0px 0px 0px 10px',fontSize:'15px',color:'black',float:'left'}}>手机号：{item.wphonenumber}</span>
+                                        <span style={{margin:'0px 0px 0px 10px',fontSize:'15px',color:'black',float:'left'}}>毕业于：{item.biyexuexiao}</span>
                                     </div>
-                                    <p style={{fontSize:'15px',color:'black'}}>{item.wphonenumber}</p>
-                                    <p style={{fontSize:'15px',color:'black'}}>{item.zhiwei}</p>
-                                    <p style={{fontSize:'15px',color:'black'}}>{item.biyexuexiao}</p>
+                                    <button onClick={()=>this.deleteshipin()} style={{width:'50px',height:'30px',backgroundColor:'white',border:'1px solid gray',borderRadius:'5px',float:'right',margin:'0px 10px 10px 0px'}}>移除</button>
                                 </div>
                         ))
                     }

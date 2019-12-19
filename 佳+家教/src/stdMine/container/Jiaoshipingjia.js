@@ -3,7 +3,6 @@ import { NavBar ,Icon} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 
 let wusername='';
-
 export default class Jiaoshipingjia extends Component {
     constructor(){
         super();
@@ -22,6 +21,7 @@ export default class Jiaoshipingjia extends Component {
             .then((res) => res.json())
             .then((res) => {
                 this.setState({data:res.data})
+              
             })    
 
 
@@ -51,11 +51,11 @@ export default class Jiaoshipingjia extends Component {
                         {
                             this.state.data.map((item)=>(
                                 <div style={{fontSize:'18px',padding:'20px'}} key={item.wphonenumber}>
-                                    <p style={{marginLeft:'0px'}}>{item.author}</p>
-                                    <p style={{marginLeft:'0px'}}>{item.pingjia}</p>
+                                    <p style={{marginLeft:'0px'}}>教师：{item.author}</p>
+                                    <p style={{marginLeft:'0px'}}>评价内容：{item.pingjia}</p>
                                     <div style={{borderLeftStyle:'solid',paddingLeft:'5px'}}>
                                     <p style={{color:'red'}}>@{wusername}</p>
-                                    <p style={{fontSize:'15px'}}>提交了 <span style={{color:'red',fontSize:'15px'}}>{item.title}</span> 的任务作业</p>
+                                    <p style={{fontSize:'15px'}}>提交了任务名为 <span style={{color:'red',fontSize:'15px'}}>{item.title}</span> 的任务作业</p>
                                     <p style={{float:'right',color:'gray',fontSize:'15px'}}>{item.time}</p>
                                     </div>
                                 </div>

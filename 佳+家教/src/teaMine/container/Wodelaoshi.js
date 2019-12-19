@@ -58,15 +58,16 @@ export default class Wodelaoshi extends Component {
                 <div>
                     {
                         this.state.data.map((item)=>(
-                                <div className='wodeshoucangdiv'>
+                                <div style={{width: '390px',height: '100px',backgroundColor: 'white', borderRadius: '10px',opacity:' 0.8',margin:'10px 0px 10px 10px'}} key={item.wphonenumber}>
                                     <div style={{width:'250px',height:'50px',margin:'0px 0px 0px 10px'}}>
-                                        <img style={{width:'50px',height:'50px',backgroundColor:'blue',float:'left'}} src={'./'+item.stdtouxiang}></img>
-                                        <span style={{padding:'12px 0px 0px 12px',fontSize:'15px',color:'black',float:'left'}}>{item.wusername}</span>
+                                        <img style={{width:'50px',height:'60px',margin:'20px 0px 0px 0px',float:'left'}} src={'./'+item.stdtouxiang}></img>
+                                        <span style={{padding:'20px 0px 0px 12px',fontSize:'18px',color:'black',float:'left'}}>{item.wusername}</span>
+                                        <span style={{padding:'22px 0px 0px 12px',fontSize:'15px',color:'black',float:'left'}}>{item.wclass}</span>
+                                        <span style={{margin:'0px 0px 0px 10px',fontSize:'15px',color:'black',float:'left'}}>手机号：{item.wphonenumber}</span>
+                                        <span style={{margin:'0px 0px 0px 10px',fontSize:'15px',color:'black',float:'left'}}>学校：{item.wschool}</span>
                                     </div>
-                                    <p style={{fontSize:'15px',color:'black'}}>{item.wphonenumber}</p>
-                                    <p style={{fontSize:'15px',color:'black'}}>{item.wclass}</p>
-                                    <p style={{fontSize:'15px',color:'black'}}>{item.wschool}</p>
                                 </div>
+                                
                         ))
                     }
                 </div>

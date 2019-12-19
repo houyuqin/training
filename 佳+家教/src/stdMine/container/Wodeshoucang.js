@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Tabs, Badge ,Button} from 'antd-mobile';
 import { NavBar ,Icon} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 import { Player } from 'video-react';
@@ -24,7 +23,6 @@ export default class Wodeshoucang extends Component {
             .then((res) => res.json())
             .then((res) => {
                 this.setState({data:res.data})
-                console.log(this.state.data)
             })
     }
     deleteshipin=(idx)=>{
