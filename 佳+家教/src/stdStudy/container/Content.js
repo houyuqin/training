@@ -63,7 +63,7 @@ add=()=>{
                 >查看全文</NavBar>
    {
       this.state.data.map((item,idx)=>(
-        <div style={{border:'5px dotted  rgb(177, 174, 174)',fontSize:'25px'}}><h2>{item.title}</h2><p>{item.content}</p>
+        <div style={{border:'5px dotted  rgb(177, 174, 174)',fontSize:'25px'}}><h2>题目:{item.title}</h2><p>内容:{item.content}</p>
        <div style={{color:'blue',fontWeight:'bolder'}}><p>我的答案:{item.zuoye} </p></div>
         </div>
        

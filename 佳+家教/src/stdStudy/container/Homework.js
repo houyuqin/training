@@ -9,17 +9,31 @@ const tabs2 = [
 ];
 const id1 = 1;
 let ni = ''
+const num=[]
 export default class AppHome extends Component {
     constructor() {
         super();
         this.state = {
             data: [],
             data1: [],
-            nicheng: []
+            nicheng: [],
+            teap:[]
         }
     }
     componentDidMount() {
-        fetch('http://148.70.183.184:8005/taskt', {
+        var stdp=window.location.search.split('=')[1];
+        fetch(`http://148.70.183.184:8006/stdmine/${stdp}`,{
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+        }).then((res)=>res.json())
+        .then((res)=>{
+            this.setState({nicheng:res.data})
+            ni=this.state.nicheng[0].wusername
+        })
+      
+        fetch(`http://148.70.183.184:8000/selecttea/${stdp}`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'text/plain; charset=UTF-8'
@@ -27,9 +41,28 @@ export default class AppHome extends Component {
         })
             .then((res) => res.json())
             .then((res) => {
-                this.setState({ data: res.data });
-            })
-        fetch('http://148.70.183.184:8005/tasks', {
+                this.setState({ teap: res.data });
+                for (var index in this.state.teap){
+                  
+                     num[index]=this.state.teap[index]
+                }
+                for(var index in num){
+                    fetch(`http://148.70.183.184:8005/taskfabu/${num[index].teaphone}`, {
+                                method: 'GET',
+                                headers: {
+                                    'Content-Type': 'text/plain; charset=UTF-8'
+                                },
+                            })
+                                .then((res) => res.json())
+                                .then((res) => {
+                                   for(var index in res.data)
+                                   {
+                                    this.setState({ data: [...this.state.data, res.data[index]] })
+                                   }
+                                })
+                }
+        })    
+        fetch(`http://148.70.183.184:8005/tasks/${stdp}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'text/plain; charset=UTF-8'
@@ -50,40 +83,24 @@ export default class AppHome extends Component {
         })
             .then((res) => res.json())
             .then((res) => {
-                this.setState({
-                    nicheng: res.data
-                })
+                this.setState({nicheng: res.data})
+              
             })
 
     }
-    componentDidUpdate() {
-        fetch('http://148.70.183.184:8005/taskt', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            },
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                this.setState({ data: res.data });
-            })
-        fetch('http://148.70.183.184:8005/tasks', {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            },
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                this.setState({ data1: res.data });
-            })
-
-
-
-    }
+    
     addCom = (msg) => {
-
-        fetch("http://148.70.183.184:8005/tasks", {
+        var stdp=window.location.search.split('=')[1];
+        fetch(`http://148.70.183.184:8005/wanchengren/${stdp}`, {
+            method: "POST",
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+            body: JSON.stringify(ni)
+        }).then((res) => {
+           
+        });
+        fetch(`http://148.70.183.184:8005/taskwancheng/${stdp}`, {
             method: "POST",
             headers: {
                 'Content-Type': 'text/plain; charset=UTF-8'
@@ -91,16 +108,6 @@ export default class AppHome extends Component {
             body: JSON.stringify(this.state.data[msg])
         }).then((res) => {
             alert('此任务已完成并提交！')
-        });
-
-        ni = this.state.nicheng[0].wusername;
-        fetch(`http://148.70.183.184:8005/usr/${ni}`, {
-            method: "POST",
-            headers: {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            },
-
-        }).then((res) => {
         });
         var id = this.state.data[msg].id
         fetch(`http://148.70.183.184:8005/taskt/${id}`, {
@@ -158,9 +165,6 @@ export default class AppHome extends Component {
 
         });
         id1 = this.state.data1[msg].content;
-        console.log(id1)
-
-
     }
     render() {
         return (
@@ -181,6 +185,7 @@ export default class AppHome extends Component {
                             <div style={{ height: '240px', width: '100%', borderBottom: '2px solid white' }}>
                                 <div style={{ width: '75%', height: '210px', float: 'left', overflow: 'auto' }} className='zho'>
                                     <h2>任务{idx + 1}&nbsp;&nbsp; <h4>{item.title}</h4> </h2>
+                                    <p style={{ fontSize: '20px', color: 'green' }}>科目类型：{item.kemu}</p>
                                     <p style={{ fontSize: '20px', color: 'green' }}>完成时间：{item.time}</p>
                                     <p style={{ fontSize: '20px', color: 'green' }}>发布教师:{item.author}</p>
                                     <Button style={{ backgroundColor: '	#FFC0CB' }}><Link to={'/taskt/' + item.id} style={{ color: 'green' }}>查看全文</Link></Button>
