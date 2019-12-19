@@ -173,6 +173,7 @@ app.post('/teamine/:usr',async (ctx,next)=>{
     }
 })
 
+
 app.get('/nicheng/:usr',async c=>{
     let sql='SELECT * FROM stdinfo';
     let ret=await pgdb.query(sql);
@@ -191,7 +192,6 @@ app.get('/return',async c=>{
 
 app.delete('/return',async c=>{
     c.body=JSON.parse(c.body);
-    console.log(c.body);
     let sql = 'DELETE FROM return WHERE wphonenumber=$1';
     let ret = await pgdb.query(sql,[
         c.body.wphonenumber

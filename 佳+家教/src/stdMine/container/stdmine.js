@@ -98,7 +98,7 @@ export default class stdmine extends Component {
                     <div>
                         {
                             this.state.data.map(item=>(
-                                <div>
+                                <div key={item.wusername}>
                                     <div className='stdminetopdiv'>
                                         <div>
                                             <div className='stdminetopdiv0'><img src={src}></img></div>
