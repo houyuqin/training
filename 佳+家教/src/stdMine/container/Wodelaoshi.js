@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import {HashRouter as Router,Route,Link} from 'react-router-dom';
 import { NavBar,Icon } from 'antd-mobile';
 
-var num= []
+var num= [];
 
 export default class Wodelaoshi extends Component {
     constructor(){
@@ -15,7 +15,6 @@ export default class Wodelaoshi extends Component {
     }
     componentDidMount(){
         var id=window.location.search.split('=')[1];
-        
         fetch(`http://148.70.183.184:8000/selecttea/${id}`,{
             method: 'GET',
             headers: {
@@ -41,41 +40,65 @@ export default class Wodelaoshi extends Component {
                         .then((res) => {
                             res.data.forEach((val,idx)=>{        
                                 this.setState({data:[...this.state.data,val]})
-                                
+                              
                             })
                         })
                 })
-        })    
-
-        fetch(`http://148.70.183.184:8005/fabu/${id}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'text/plain; charset=UTF-8'
-            },
-        })
-            .then((res) => res.json())
-            .then((res) => {
-                this.setState({ data2: res.data });
-                console.log(this.state.data2)
-            })
-
-        
+        })  
     }
+    // componentDidUpdate(){
+    //     var id=window.location.search.split('=')[1];
+
+    //     fetch(`http://148.70.183.184:8000/selecttea/${id}`,{
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'text/plain; charset=UTF-8'
+    //         },
+    //     })
+    //         .then((res) => res.json())
+    //         .then((res) => {
+    //             this.setState({
+    //                 data1: res.data 
+    //             });
+    //             this.state.data1.forEach((val,index)=>{
+    //                 num[index]=val.teaphone
+    //                 return num
+    //             })
+                
+    //             num.forEach((val,idx)=>{
+                  
+    //                 fetch(`http://148.70.183.184:8006/teamine/${val}`, {
+    //                     method: 'GET',
+    //                     headers: {
+    //                         'Content-Type': 'text/plain; charset=UTF-8'
+    //                     },
+    //                 })
+    //                     .then((res) => res.json())
+    //                     .then((res) => {
+    //                         res.data.forEach((val,idx)=>{      
+    //                             this.setState({data:[...this.state.data,val]})
+                              
+    //                         })
+    //                     })
+    //             })
+    //     })  
+    // }
     deleteshipin=(idx)=>{
         var id=window.location.search.split('=')[1];
-        
         fetch(`http://148.70.183.184:8000/deltea/${id}`,{
            method: 'DELETE',
            headers: {
             'Content-Type': 'text/plain; charset=UTF-8'
             },
-
+            body:JSON.stringify({teaphone:idx})
         })
         .then((res) => res.json())
         .then((res) => {
             alert('任务删除成功!')
         })
+       
     } 
+ 
     render() {
         return (
             <div>
@@ -94,7 +117,7 @@ export default class Wodelaoshi extends Component {
                                         <span style={{margin:'0px 0px 0px 10px',fontSize:'15px',color:'black',float:'left'}}>手机号：{item.wphonenumber}</span>
                                         <span style={{margin:'0px 0px 0px 10px',fontSize:'15px',color:'black',float:'left'}}>毕业于：{item.biyexuexiao}</span>
                                     </div>
-                                    <button onClick={()=>this.deleteshipin()} style={{width:'50px',height:'30px',backgroundColor:'white',border:'1px solid gray',borderRadius:'5px',float:'right',margin:'0px 10px 10px 0px'}}>移除</button>
+                                    <button onClick={()=>this.deleteshipin(item.wphonenumber)} style={{width:'50px',height:'30px',backgroundColor:'white',border:'1px solid gray',borderRadius:'5px',float:'right',margin:'0px 10px 10px 0px'}}>移除</button>
                                 </div>
                         ))
                     }
