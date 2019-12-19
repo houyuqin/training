@@ -51,10 +51,10 @@ export default class Wodedingdan extends Component {
                     <div style={{overflowY:'scroll',height:'100%',paddingTop:'10px'}}>
                         {
                                 this.state.data.map((item)=>(
-                                    <div className='wodedingdandiv'>
-                                        <p style={{fontSize:'15px',color:'black'}}>{item.class}</p>
-                                        <p>{item.price}</p>
-                                        <p>{item.time}</p>
+                                    <div className='wodedingdandiv' key={item.class}>
+                                        <p style={{fontSize:'15px',color:'black'}}>科目：{item.class}</p>
+                                        <p>价格：{'￥'+item.price}</p>
+                                        <p>订单时间：{item.time}</p>
 
                                     </div>
                                   
@@ -64,10 +64,10 @@ export default class Wodedingdan extends Component {
                     <div style={{overflowY:'scroll',height:'100%',paddingTop:'10px'}}>
                         {
                                 this.state.data1.map((item)=>(
-                                    <div className='wodedingdandiv'>
-                                        <p style={{fontSize:'15px',color:'black'}}>{item.class}</p>
-                                        <p>{item.price}</p>
-                                        <p>{item.time}</p>
+                                    <div className='wodedingdandiv' key={item.class}>
+                                        <p style={{fontSize:'15px',color:'black'}}>科目：{item.class}</p>
+                                        <p>价格：{'￥'+item.price}</p>
+                                        <p>订单时间：{item.time}</p>
                                         
                                     </div>
                                   

@@ -439,6 +439,14 @@ p{
     color: black;
 }
 .wodeshoucangdiv{
+    width: 390px;
+    height: 250px;
+    background-color: white;
+    border-radius: 10px;
+    opacity: 0.8;
+    margin:10px 0px 10px 10px;
+}
+.wodeshoucangdiv1{
     width: 370px;
     height: 200px;
     background-color: white;

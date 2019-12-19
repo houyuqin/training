@@ -119,6 +119,9 @@ export default class stdmine extends Component {
                                             <Link to='/wodedingdan'><img src={require(`../../img/w我的订单.png`)}/><span>我的订单</span></Link>
                                             </li>
                                             <li>
+                                            <Link to='/wodelaoshi'><img src={require(`../../img/教师.png`)}/><span>我的教师</span></Link>
+                                            </li>
+                                            <li>
                                             <Link to='/jiaoshipingjia'><img src={require(`../../img/w评价.png`)}/><span>作业评价情况</span></Link>
                                             </li>
                                             <li>

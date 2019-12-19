@@ -50,7 +50,7 @@ export default class Jiaoshipingjia extends Component {
                 <div style={{height:'640px',overflow:'scroll'}}>
                         {
                             this.state.data.map((item)=>(
-                                <div style={{fontSize:'18px',padding:'20px'}}>
+                                <div style={{fontSize:'18px',padding:'20px'}} key={item.wphonenumber}>
                                     <p style={{marginLeft:'0px'}}>{item.author}</p>
                                     <p style={{marginLeft:'0px'}}>{item.pingjia}</p>
                                     <div style={{borderLeftStyle:'solid',paddingLeft:'5px'}}>

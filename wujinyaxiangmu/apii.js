@@ -2,8 +2,8 @@ const titbit=require('titbit');
 const pg=require('pg'); 
 
 var app=new titbit({
-    debug:true
-    //daemon:true
+    //debug:true
+    daemon:true
 });
 var pgdb=new pg.Pool({
     host:'127.0.0.1',
@@ -231,4 +231,4 @@ app.post('/return',async (ctx,next)=>{
     }
 })
 
-app.run(8006);
+app.daemon(8006);

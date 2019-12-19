@@ -70,6 +70,3 @@ export default class Yonghufankui extends Component {
         )
     }
 }
-
-
-// onClick={()=>this.handleSubmit()}

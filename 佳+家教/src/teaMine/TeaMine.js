@@ -7,6 +7,8 @@ import Gerenziliao from './container/Gerenziliao';
 import Wodeshouyi from './container/Wodeshouyi';
 import Jiaoshipingjia from './container/Jiaoshipingjia';
 import Yonghufankui from './container/Yonghufankui';
+import Wodelaoshi from './container/Wodelaoshi'
+
 export default class tiaozhuan extends Component {
     render() {
         return (
@@ -18,6 +20,7 @@ export default class tiaozhuan extends Component {
                         <Route path='/tongzhi' component={Tongzhi}></Route>
                         <Route path='/gerenziliao' component={Gerenziliao}></Route>
                         <Route path='/wodeshouyi' component={Wodeshouyi}></Route>
+                        <Route path='/wodelaoshi' component={Wodelaoshi}></Route>
                         <Route path='/jiaoshipingjia' component={Jiaoshipingjia}></Route>
                         <Route path='/yonghufankui/:id' component={Yonghufankui}></Route>           
                     </Switch>

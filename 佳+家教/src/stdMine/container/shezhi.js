@@ -89,17 +89,20 @@ export default class shezhi extends Component {
                 <div className='stdmineshezhidiv'>
                     {
                          this.state.data.map(item=>(
-                            <ul>
+                            <ul key='0'>
                                 <li>
                                     <div className='stdminetopdiv2'>头像</div>
-                                    <div style={{width:'45px',height:'45px',float:'right',marginTop:'20px',overflow:'hidden'}}>
+                                    <div style={{width:'40px',height:'40px',float:'right',marginTop:'20px',overflow:'hidden'}}>
                                     <ImagePicker
-                                        style={{width:'220px',float:'right',margin:'-10px -166px 0px 0px'}}
+                                        style={{width:'180px',float:'right',margin:'-7px -133px 0px 0px'}}
                                         files={files}
                                         onChange={this.onChange}
                                         accept="image/gif,image/jpeg,image/jpg,image/png"
                                     />
                                     </div>
+
+
+                                   
                                 </li>
                                 <li>
                                     <div className='stdminetopdiv2'>昵称</div>

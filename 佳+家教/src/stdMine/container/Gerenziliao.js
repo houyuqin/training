@@ -96,7 +96,7 @@ export default class Gerenziliao extends Component {
                     <div className='stdminebody'>
                         {
                             this.state.data.map((item)=>(
-                                <ul>
+                                <ul key={item.wphonenumber}>
                                     <li>
                                         <span>用户名：{wusername}</span>
                                     </li>
