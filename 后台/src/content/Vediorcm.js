@@ -59,6 +59,7 @@ export default class Vediorcm extends Component {
        
         video.price=this.cren3.value;
         video.name=this.cren2.value;
+        video.class=this.cren4.value;
         video.vedio=`./vedio/${this.state.files}`
         video.userphone=this.cren1.value
     
@@ -103,10 +104,14 @@ export default class Vediorcm extends Component {
                             
                         ))
                     }
-                      <div style={{margin:'15px',height:'300px',padding:'0px 20px',borderStyle:'dotted ' ,overflow:'scroll',width:'102%'}}>            
+                      <div style={{margin:'15px',height:'400px',padding:'0px 20px',borderStyle:'dotted ' ,overflow:'scroll',width:'102%'}}>            
                 <div className="cbu4">   
                     <h4>视频名称:</h4>
                     <input type="text" name="task" className="cren1" ref={i=>this.cren2=i}></input>
+                </div>
+                <div className="cbu4">   
+                    <h4>所属科目:</h4>
+                    <input type="text" name="task" className="cren1" ref={i=>this.cren4=i}></input>
                 </div>
                 <div className="cbu4">   
                     <h4>价格:</h4>
