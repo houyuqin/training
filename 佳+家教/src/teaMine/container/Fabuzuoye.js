@@ -22,7 +22,8 @@ export default class Wodelaoshi extends Component {
         })
             .then((res) => res.json())
             .then((res) => {
-                this.setState({ data1: res.data });
+                    this.setState({ data1: res.data });
+                
             })
         
     }
@@ -36,7 +37,8 @@ export default class Wodelaoshi extends Component {
        })
            .then((res) => res.json())
            .then((res) => {
-               this.setState({ data1: res.data });
+             
+                this.setState({ data1: res.data });
            })
        
     }
@@ -48,10 +50,12 @@ export default class Wodelaoshi extends Component {
                 'Content-Type': 'text/plain; charset=UTF-8'
             },
         })
-            .then((res) => res.json())
+            
             .then((res) => {
                 alert('任务删除成功!')
             })
+        
+           
     }
     render() {
         return (
