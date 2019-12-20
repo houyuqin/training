@@ -10,6 +10,7 @@ const tabs2 = [
 const id1 = 1;
 let ni = ''
 const num=[]
+let aaa;
 export default class AppHome extends Component {
     constructor() {
         super();
@@ -88,75 +89,21 @@ export default class AppHome extends Component {
             })
 
     }
-    // componentDidUpdate(){
+    componentDidUpdate(){
+        var stdp=window.location.search.split('=')[1];
+        fetch(`http://148.70.183.184:8005/tasks/${stdp}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'text/plain; charset=UTF-8'
+            },
+        })
+            .then((res) => res.json())
+            .then((res) => {
+                this.setState({ data1: res.data });
+            })
+          
+}
 
-    //     var stdp=window.location.search.split('=')[1];
-    //     fetch(`http://148.70.183.184:8006/stdmine/${stdp}`,{
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'text/plain; charset=UTF-8'
-    //         },
-    //     }).then((res)=>res.json())
-    //     .then((res)=>{
-    //         this.setState({nicheng:res.data})
-    //         ni=this.state.nicheng[0].wusername
-    //     })
-      
-    //     fetch(`http://148.70.183.184:8000/selecttea/${stdp}`,{
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'text/plain; charset=UTF-8'
-    //         },
-    //     })
-    //         .then((res) => res.json())
-    //         .then((res) => {
-    //             this.setState({ teap: res.data });
-    //             for (var index in this.state.teap){
-                  
-    //                  num[index]=this.state.teap[index]
-    //             }
-    //             for(var index in num){
-    //                 fetch(`http://148.70.183.184:8005/taskfabu/${num[index].teaphone}`, {
-    //                             method: 'GET',
-    //                             headers: {
-    //                                 'Content-Type': 'text/plain; charset=UTF-8'
-    //                             },
-    //                         })
-    //                             .then((res) => res.json())
-    //                             .then((res) => {
-    //                                for(var index in res.data)
-    //                                {
-    //                                 this.setState({ data: [...this.state.data, res.data[index]] })
-    //                                }
-    //                             })
-    //             }
-    //     })    
-    //     fetch(`http://148.70.183.184:8005/tasks/${stdp}`, {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'text/plain; charset=UTF-8'
-    //         },
-    //     })
-    //         .then((res) => res.json())
-    //         .then((res) => {
-    //             this.setState({ data1: res.data });
-    //         })
-
-
-    //     var usr = window.location.search.split('=')[1];
-    //     fetch(`http://148.70.183.184:8006/stdmine/${usr}`, {
-    //         method: 'GET',
-    //         headers: {
-    //             'Content-Type': 'text/plain; charset=UTF-8'
-    //         },
-    //     })
-    //         .then((res) => res.json())
-    //         .then((res) => {
-    //             this.setState({nicheng: res.data})
-              
-    //         })
-     
-    // }
     addCom = (msg) => {
         var stdp=window.location.search.split('=')[1];
         fetch(`http://148.70.183.184:8005/wanchengren/${stdp}`, {
@@ -212,7 +159,7 @@ export default class AppHome extends Component {
     }
     show = (msg) => {
         var id1 = this.state.data1[msg].id
-
+aaa=id1;
         fetch(`http://148.70.183.184:8005/tasks/${id1}`, {
             method: "GET",
             headers: {
