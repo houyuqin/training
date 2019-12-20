@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { NavBar ,Icon} from 'antd-mobile';
 import { Link } from 'react-router-dom';
 
-let wusername='';
+var num= [];
 export default class Jiaoshipingjia extends Component {
     constructor(){
         super();
@@ -12,33 +12,50 @@ export default class Jiaoshipingjia extends Component {
         }
     }
     componentDidMount(){
-        fetch('http://148.70.183.184:8005/tasks', {
+        // fetch('http://148.70.183.184:8005/tasks', {
+        //     method: 'GET',
+        //     headers: {
+        //         'Content-Type': 'text/plain; charset=UTF-8'
+        //     },
+        //     })
+        //     .then((res) => res.json())
+        //     .then((res) => {
+        //         this.setState({data:res.data})
+              
+        //     })    
+
+
+        let id=window.location.search.split('=')[1];
+        fetch(`http://148.70.183.184:8000/selecttea/${id}`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'text/plain; charset=UTF-8'
             },
-            })
+        })
             .then((res) => res.json())
             .then((res) => {
-                this.setState({data:res.data})
-              
-            })    
-
-
-        let id=window.location.search.split('=')[1];
-           
-        fetch(`http://148.70.183.184:8006/stdmine/${id}`, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'text/plain; charset=UTF-8'
-                    },
+                this.setState({ data1: res.data });
+                this.state.data1.forEach((val,index)=>{
+                    num[index]=val.teaphone
+                    return num
+                })
+                num.forEach((val,idx)=>{
+                  
+                    fetch(`http://148.70.183.184:8005/taskss/${val}`, {
+                        method: 'GET',
+                        headers: {
+                            'Content-Type': 'text/plain; charset=UTF-8'
+                        },
                     })
-                    .then((res) => res.json())
-                    .then((res) => {
-                        this.setState({data1:res.data})
-                        wusername= this.state.data1[0].wusername;
-                    })
-        
+                        .then((res) => res.json())
+                        .then((res) => {
+                            res.data.forEach((val,idx)=>{        
+                                this.setState({data:[...this.state.data,val]})
+                                console.log(this.state.data)
+                            })
+                        })
+                })
+        })  
     }
     render() {
         return (
@@ -54,7 +71,6 @@ export default class Jiaoshipingjia extends Component {
                                     <p style={{marginLeft:'0px'}}>教师：{item.author}</p>
                                     <p style={{marginLeft:'0px'}}>评价内容：{item.pingjia}</p>
                                     <div style={{borderLeftStyle:'solid',paddingLeft:'5px'}}>
-                                    <p style={{color:'red'}}>@{wusername}</p>
                                     <p style={{fontSize:'15px'}}>提交了任务名为 <span style={{color:'red',fontSize:'15px'}}>{item.title}</span> 的任务作业</p>
                                     <p style={{float:'right',color:'gray',fontSize:'15px'}}>{item.time}</p>
                                     </div>
