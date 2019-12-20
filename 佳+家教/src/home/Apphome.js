@@ -6,7 +6,6 @@ import Course from './container/Course'
 import Vedio from './container/Vedio'
 import Question from './container/Question'
 import Buy from './container/Buy'
-import Play from './container/Myplay'
 import Home from './Home'
 
 export default class Apphome extends Component {
@@ -19,7 +18,6 @@ export default class Apphome extends Component {
                     <Route path='/ad' component={Ad}></Route> 
                     <Route path='/course' component={Course}></Route> 
                     <Route path='/buy' component={Buy}></Route> 
-                    <Route path='/paly' component={Play}></Route> 
                     <Route path='/vedio' component={Vedio}></Route> 
                     <Route path='/question' component={Question}></Route> 
                 </Switch>

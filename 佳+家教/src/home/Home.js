@@ -103,24 +103,24 @@ export default class Home extends Component {
                                     style={{width:'70%',height:'150px'}}/>
                                 </div>
                                 <div style={{paddingTop:'15px',paddingLeft:'30px',height:'150px',color:'rgb(50, 84, 107)',fontWeight:'bold'}}>
-                                        <p style={{fontSize:'20px',marginRight:'60px',float:'left'}}>姓名：张娇</p>
-                                        <p style={{fontSize:'20px',float:'left'}}>年龄：29</p>
-                                        <p style={{fontSize:'20px',float:'left'}}>毕业院校：河北工程大学</p>
-                                        <p style={{fontSize:'20px',float:'left'}}>目前职业：**高中教师</p>
+                                        <p style={{fontSize:'20px',marginRight:'60px',float:'left'}}>姓名：吴金雅</p>
+                                        <p style={{fontSize:'20px',float:'left'}}>年龄：23</p>
+                                        <p style={{fontSize:'20px',float:'left'}}>毕业院校：河北师范大学</p>
+                                        <p style={{fontSize:'20px',float:'left'}}>目前职业：物理教师</p>
                                 </div>
                             </div>
                             <div style={{marginTop:'7px',marginBottom:'7px',width:'90%',height:'2px',border:'1px solid rgb(223, 224, 224)'}}></div>
                             <div style={{color:'rgb(198, 223, 243)',marginLeft:'17px'}}>
                             <div style={{width:'3px',height:'30px',border:'3px solid #5d93c0',marginRight:'6px',float:'left'}}></div>
                                 <div style={{width:'40%',height:'150px',float:'left'}}>
-                                    <img src='./img/111.jpg' alt=''
+                                    <img src='./img/222.jpg' alt=''
                                     style={{width:'70%',height:'150px'}}/>
                                 </div>
                                 <div style={{paddingTop:'15px',paddingLeft:'30px',height:'150px',color:'rgb(50, 84, 107)',fontWeight:'bold'}}>
-                                        <p style={{fontSize:'20px',marginRight:'60px',float:'left'}}>姓名：张娇</p>
-                                        <p style={{fontSize:'20px',float:'left'}}>年龄：29</p>
-                                        <p style={{fontSize:'20px',float:'left'}}>毕业院校：河北工程大学</p>
-                                        <p style={{fontSize:'20px',float:'left'}}>目前职业：**高中教师</p>
+                                        <p style={{fontSize:'20px',marginRight:'60px',float:'left'}}>姓名：陈永达</p>
+                                        <p style={{fontSize:'20px',float:'left'}}>年龄：30</p>
+                                        <p style={{fontSize:'20px',float:'left'}}>毕业院校：师范大学</p>
+                                        <p style={{fontSize:'20px',float:'left'}}>目前职业：化学教师</p>
                                 </div>
                                 
                             </div>
@@ -146,16 +146,10 @@ export default class Home extends Component {
                 </Tabs>
 
                 <div style={{width:'99%',height:35}}>
-                    {/* <h2 style={{color:'#000',float:'left'}}>
-                        来都来了，填个问卷再走呗！
-                    </h2> */}
                     <Link to='/question'
                     style={{fontSize:18,float:'left'}}>
                         <img src='./img/wenjuan.jpg' alt="" style={{width:'100%',height:'80px'}}/>
-                        {/* <button
-                        style={{backgroundColor:'#2a89b1',color:'white',width:100,marginTop:5}}>
-                            填写问卷
-                        </button> */}
+
                     </Link>
                 </div>
 

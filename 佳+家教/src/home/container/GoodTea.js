@@ -71,16 +71,11 @@ export default class GoodTea extends Component{
                                 style={{width:140,height:165}}/> */}
                                 </div>
                                 <div style={{paddingTop:4,color:'rgb(26, 63, 87)',fontSize:'16px',}}>
-                                    <p>姓名：{item.wsubject} </p>
+                                    <p>姓名：{item.wusername} </p>
                                     <p>性别：{item.wsex}</p>
                                     <p>年龄：{item.wage}岁</p>
                                     <p>毕业学院：{item.biyexuexiao}</p>
                                     <p>目前职位：{item.zhiwei}</p>
-                                    {/* <p>姓名：{item.name} </p>
-                                    <p>性别：{item.sex}</p>
-                                    <p>年龄：{item.age}岁</p>
-                                    <p>毕业学院：{item.graduation}</p>
-                                    <p>目前职位：{item.position}</p> */}
                                 </div>
                                 <button 
                                 onClick={()=>this.selecttea(item.wphonenumber)}

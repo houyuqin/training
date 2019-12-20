@@ -14,7 +14,31 @@ export default class Vedio extends Component{
     rtn=()=>{
         this.props.history.go(-1);
     }
-
+    love=(vedio0,price0)=>{
+        let class0 =this.props.location.search.split('=')[1];
+        let usernum0 = window.location.search.split('=')[1];
+        console.log(vedio0,class0,price0,usernum0);
+        // let name0 = 'usr';
+        let a = {vedio:vedio0,class:class0,price:price0,usernum:usernum0}
+        fetch(`http://148.70.183.184:8000/mylove`,{
+            method:"POST",
+            headers:{
+                'Content-Type': 'text/plain; charset=UTF-8',
+            },
+            body:JSON.stringify(a)
+        }).then((res)=>{ 
+            if(res.status === 200){
+                alert('收藏成功！');
+                return res.json(a);
+            }else{
+                alert('该视频已在收藏列表！');
+            }
+        }).then((data)=>{
+            console.log(data);
+        }).catch((err)=>{
+            console.log(err);
+        });
+    }
     componentDidMount(){
         fetch("http://148.70.183.184:8000/vedio")
         .then(res=>res.json())
@@ -25,7 +49,7 @@ export default class Vedio extends Component{
         });
     }
 
-//  
+ 
 render(){
     return (
         <div 
@@ -34,7 +58,7 @@ render(){
             style={{backgroundColor:'rgb(50, 84, 107)'}}
             icon={<Icon type="left" />}
             onLeftClick={this.rtn}
-            >课程推荐</NavBar>
+            >视频推荐</NavBar>
 
         <div style={{display: 'flex',justifyContent:'space-between',flexWrap:' wrap'}}>
         {
@@ -48,10 +72,14 @@ render(){
                     style={{marginLeft:20,marginTop:'15px',marginBottom:'10px',paddingTop:10,width:100,height:50,float:'left',backgroundColor:'rgb(110, 157, 204)',color:'rgb(25, 48, 77)',borderRadius:5,fontSize:20,textAlign:'center'}}
                     >￥{item.price}</div>
                     <Button 
-                    style={{marginLeft:30,marginTop:'15px',marginBottom:'10px',width:100,height:50,float:'left',backgroundColor:'rgb(221, 225, 230)'}}
-                    onClick={()=>{this.love(item.vedio)}}>
+                    style={{marginTop:'15px',marginBottom:'10px',marginLeft:30,width:100,height:50,float:'left',backgroundColor:'rgb(221, 225, 230)'}}
+                    onClick={()=>{this.love(item.vedio,item.price)}}>
                     收藏</Button> 
-                    <Button style={{marginTop:'15px',marginBottom:'10px',marginLeft:30,width:100,height:50,float:'left'}}><Link to='buy'><div style={{backgroundColor:'rgb(110, 157, 204)',color:'rgb(25, 48, 77)',borderRadius:5,}}>购买</div></Link></Button> 
+                    <Button style={{marginTop:'15px',marginBottom:'10px',marginLeft:30,width:100,height:50,float:'left',fontSize:20,textAlign:'center'}}>
+                            <Link to={'/buy?'+item.price+'?'+item.name+'?'+item.vedio+'?'+item.class}>
+                                <div style={{backgroundColor:'rgb(110, 157, 204)',color:'rgb(25, 48, 77)',borderRadius:5,}}>购买</div>
+                            </Link>
+                        </Button> 
                 </div>
             
             ))
