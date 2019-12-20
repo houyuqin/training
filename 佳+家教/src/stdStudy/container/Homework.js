@@ -10,7 +10,6 @@ const tabs2 = [
 const id1 = 1;
 let ni = ''
 const num=[]
-let aaa;
 export default class AppHome extends Component {
     constructor() {
         super();
@@ -103,7 +102,6 @@ export default class AppHome extends Component {
             })
           
 }
-
     addCom = (msg) => {
         var stdp=window.location.search.split('=')[1];
         fetch(`http://148.70.183.184:8005/wanchengren/${stdp}`, {
@@ -124,7 +122,17 @@ export default class AppHome extends Component {
         }).then((res) => {
             alert('此任务已完成并提交！')
         });
+        // var id = this.state.data[msg].id
+        // fetch(`http://148.70.183.184:8005/taskt/${stdp}`, {
+        //     method: 'DELETE',
+        //     headers: {
+        //         'Content-Type': 'text/plain; charset=UTF-8'
+        //     },
+        // })
+        //     .then((res) => res.json())
+        //     .then((res) => {
 
+        //     })
 
     }
     display = () => {
@@ -159,7 +167,7 @@ export default class AppHome extends Component {
     }
     show = (msg) => {
         var id1 = this.state.data1[msg].id
-aaa=id1;
+
         fetch(`http://148.70.183.184:8005/tasks/${id1}`, {
             method: "GET",
             headers: {
@@ -183,27 +191,28 @@ aaa=id1;
                 >我的作业</NavBar>
                 <Tabs tabs={tabs2}
                     initialPage={0}
-                    tabBarUnderlineStyle={{ border: '2px solid #ffdb2c' }}
+                    tabBarActiveTextColor='rgb(63, 204, 203)'
+                    tabBarUnderlineStyle={{ border: '2px solid rgb(63, 204, 203)' }}
                 >
                     <div className='zheader'>
                         {this.state.data.map((item, idx) => (
-                            <div style={{ height: '240px', width: '100%', borderBottom: '2px solid white' }}>
-                                <div style={{ width: '75%', height: '210px', float: 'left', overflow: 'auto' }} className='zho'>
-                                    <h2>任务{idx + 1}&nbsp;&nbsp; <h4>{item.title}</h4> </h2>
-                                    <p style={{ fontSize: '20px', color: 'green' }}>科目类型：{item.kemu}</p>
-                                    <p style={{ fontSize: '20px', color: 'green' }}>完成时间：{item.time}</p>
-                                    <p style={{ fontSize: '20px', color: 'green' }}>发布教师:{item.author}</p>
-                                    <Button style={{ backgroundColor: '	#FFC0CB' }}><Link to={'/taskt/' + item.id} style={{ color: 'green' }}>查看全文</Link></Button>
-
+                            <div style={{ height: '270px', width: '96%', marginLeft:'6px',marginTop:'18px',paddingTop:'3px',paddingLeft:'5px',border:'1px solid #3fcccb',borderRadius:'8px',boxShadow: '3px 3px 2px rgb(174, 177, 179)'}}>
+                                <div style={{ width: '97%', height: '253px', float: 'left', overflow: 'auto' }} className='zho'>
+                                    <h2 style={{fontSize:'25px'}}>任务{idx + 1}&nbsp;&nbsp; <h4 style={{fontSize:'21px',marginTop:'20px',marginLeft:'5px',color:'rgb(128, 124, 124)'}}>题目:&nbsp;{item.title}</h4> </h2>
+                                    <p style={{ marginTop:'-7px',marginLeft:'5px',marginBottom:'5px',fontSize: '20px', color: 'rgb(128, 124, 124)' }}>科目类型：{item.kemu}</p>
+                                    <p style={{ marginTop:'-5px',marginLeft:'5px',marginBottom:'5px',fontSize: '20px', color: 'rgb(128, 124, 124)' }}>完成时间：{item.time}</p>
+                                    <p style={{ fontSize: '20px',marginLeft:'5px', color: 'rgb(128, 124, 124)' }}>发布教师：{item.author}</p>
+                                    <Button style={{ width:'130px',height:'40px',marginLeft:'60%',marginTop:'10px',border:"1px solid rgb(243, 241, 241)",float:'left'}}><Link to={'/taskt/' + item.id} style={{ color: 'rgb(43, 41, 41)',backgroudColor:'#3fcccb'}}>查看详情>></Link></Button>
+                                    <div style={{ float: "left", marginTop:'-25px',height: '40px', width: '70px', marginLeft: 30 }}><img src={require('../../img/z5.png')} style={{ height: 25, width: 25 ,float:'left'}} onClick={() => this.addCom(idx)}></img><p style={{float:'left',marginLeft:'5px'}}>完成</p></div>
+                                    <div style={{ float: "left", marginTop:'-25px',height: '40px', width: '70px', marginLeft: 10 }}><img src={require('../../img/z7.png')} style={{ height: 25, width: 25 ,float:'left'}} onClick={() => this.dele(idx)}></img><p style={{float:'left',marginLeft:'5px'}}>删除</p></div>
                                 </div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '170px', marginLeft: 30 }}><img src={require('../../img/z5.png')} style={{ height: 25, width: 25 }} onClick={() => this.addCom(idx)}></img></div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '170px', marginLeft: 10 }}><img src={require('../../img/z7.png')} style={{ height: 25, width: 25 }} onClick={() => this.dele(idx)}></img></div>
+                                
                             </div>
                         ))}
                     </div>
                     <div >
                         {this.state.data1.map((item, idx) => (
-                            <div style={{ height: '50px', width: '100%', borderBottom: '2px solid white' }}>
+                            <div style={{ height: '50px',  width: '96%', marginLeft:'6px',marginTop:'10px',border:'1px solid #3fcccb',borderRadius:'8px',boxShadow: '3px 3px 2px rgb(174, 177, 179)'}}>
                                 <div style={{ width: '45%', height: '40px', float: 'left', overflow: 'hidden', color: 'black' }} >
                                     <p style={{ fontSize: '25px', color: 'black' }}>{item.id}----{item.title}</p>
 
@@ -211,7 +220,7 @@ aaa=id1;
                                 <div style={{ width: '30%', height: '60px', float: 'left' }}>
                                     <Button style={{}}><Link to={'/tasks/' + item.id} style={{ color: 'green' }}>查看全文</Link></Button>
                                 </div>
-                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 30 }}><img src={require('../../img/z6.png')} style={{ height: 25, width: 25 }} onClick={() => this.display()}></img></div>
+                                <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 20 }}><img src={require('../../img/z6.png')} style={{ height: 25, width: 25 }} onClick={() => this.display()}></img></div>
                                 <div style={{ float: "left", height: '40px', width: '30px', paddingTop: '17px', marginLeft: 10 }}><img src={require('../../img/z7.png')} style={{ height: 25, width: 25 }} onClick={() => this.dele1(idx)}></img></div>
                             </div>
                         ))}

@@ -145,9 +145,9 @@ export default class Message extends Component {
                             <div><h2>需完成的计划：</h2></div>
                             {
                       this.state.task1.map((item,idx)=>(
-                          <div style={{height:50,width:'100%',border:'1px solid #3fcccb'}}>
-                              <div style={{height:50,width:'90%',float:'left', overflow:'hidden',lineHeight:5}}><p>{item}</p></div>
-                          <div style={{float:'right' ,height:40,width:40,marginTop:5}}><img src={require('../../img/z9.png')} style={{ height: 25, width: 25, float:'right' }} onClick={() => this.dell(idx)}></img></div></div>
+                          <div style={{height:80,width:'96%',marginLeft:'10px',marginTop:'8px',paddingLeft:'10px',paddingTop:'5px',border:'1px solid #3fcccb',borderRadius:'8px',boxShadow: '3px 3px 2px rgb(174, 177, 179)'}}>
+                              <div style={{height:50,width:'90%',float:'left',fontSize:'18px', overflow:'hidden'}}><p>{item}</p></div>
+                          <div style={{height:40,width:40,marginLeft:'88%',marginTop:'-35px',float:'left' ,}}><img src={require('../../img/z9.png')} style={{ height: 25, width: 25, float:'right' }} onClick={() => this.dell(idx)}></img></div></div>
                       ))
                   }
                         </div>

@@ -63,7 +63,7 @@ export default class Buy extends Component {
         +'   '+today.getHours()+':'+today.getMinutes()+':'+today.getSeconds();
         return (
             <div 
-            style={{width:'100%',background:'url(./img/2.jpg) center center / contain repeat-y'}}>
+            style={{width:'100%'}}>
                 <NavBar
                 mode="dark"
                 icon={<Icon type="left" />}
@@ -71,29 +71,28 @@ export default class Buy extends Component {
                 >课程购买</NavBar>
 
             <div style={{display: 'flex',justifyContent:'space-between',flexWrap:' wrap'}}> 
-                <h1 style={{color:'blue'}}>购买此课程</h1>
-
+            
                 <div style={{width:'100%'}}>
                 <Player ref="player" videoId="video-1">
                             <source src={src}/>
                 </Player>
-                <h2>课程科目：{class0}</h2>
-                <h2>订单生成时间：<span ref={i=>this.time=i}>{time}</span></h2>
-                <h2>此课程价值￥<span style={{color:'red',fontSize:30}}>{price}</span>元</h2>
+                <h2 style={{marginTop:'10px',marginLeft:'5px',fontSize:20}}>课程科目：{class0}</h2>
+                <h2 style={{marginTop:'10px',marginLeft:'5px',fontSize:20}}>订单生成时间：<span ref={i=>this.time=i}>{time}</span></h2>
+                <h2 style={{marginTop:'10px',marginLeft:'5px',fontSize:20}}>价钱：￥<span style={{color:'red',fontSize:30}}>{price}</span>元</h2>
 
                 <Button onClick={()=>this.tobuy(time,class0,src,price)}
-                style={{width:'40%',backgroundColor:'#2a89b1',color:'white',fontWeight:'bold',float:'left',marginLeft:25}}>
+                style={{width:'40%',marginTop:'120px',backgroundColor:'#2a89b1',color:'white',fontWeight:'bold',float:'left',marginLeft:25}}>
                     加入购物车
                 </Button>
                 <Button onClick={()=>this.bought(time,class0,src,price)}
-                style={{width:'40%',backgroundColor:'#2a89b1',color:'white',fontWeight:'bold',float:'left',marginLeft:30,marginRight:25}}>
+                style={{width:'40%',marginTop:'120px',marginBottom:'40px',backgroundColor:'#2a89b1',color:'white',fontWeight:'bold',float:'left',marginLeft:30,marginRight:25}}>
                     直接付款
                 </Button>
 
-                <h3>第三方支付</h3>
-                <img src='./img/qq.jpg' alt='' style={{width:'20%',marginLeft:50}}/>
-                <img src='./img/wechat.jpg' alt='' style={{width:'20%',marginLeft:30}}/>
-                <img src='./img/zhifubao.jpg' alt='' style={{width:'20%',marginLeft:30}}/>
+                <h3 style={{marginLeft:'20px',marginTop:'20px',float:'left'}}>第三方支付</h3>
+                <img src='./img/qq.jpg' alt='' style={{width:'8%',marginLeft:100,marginTop:'10px',float:'left'}}/>
+                <img src='./img/wechat.jpg' alt='' style={{width:'8%',marginLeft:30,marginTop:'10px',float:'left'}}/>
+                <img src='./img/zhifubao.jpg' alt='' style={{width:'8%',marginLeft:30,marginTop:'10px',float:'left'}}/>
                 </div>
                 
             </div>

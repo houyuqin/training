@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavBar ,Icon} from 'antd-mobile';
 import {HashRouter as Router,Route,Link} from 'react-router-dom';
+import logo2 from "../../img/cao2.jpg";
 
 var wusername='';
 var wsex='';
@@ -87,30 +88,49 @@ export default class Gerenziliao extends Component {
     }
     render() {
         return (
-            <div style={{width:'100%',height:'100%',backgroundColor:'#fafaf8'}}>
-                <NavBar
-                style={{backgroundColor:'#708090',color:'white'}}
-                icon={<Link to='/'><Icon style={{color:'black'}} type="left" /></Link>}
+            <div style={{width:'100%',height:'100%'}}>
+                
+                {/* <Link to='/'><div style={{fontSize: '30px',border:'none',color:'black'}} type="left" ></div></Link> */}
+                <div style={{width:'100%',marginTop:'-2px',paddingLeft:'20px',height:'100px',border:'none',color:'white',backgroundImage:'rgb(115, 176, 211)'}}>
+                    <Link to='/' style={{fontSize:'30px',color:'white'}}><p>&lt;</p></Link>
+                    <p style={{fontSize:'40px',marginTop:'-15px',marginLeft:'90px',float:'left'}}>个</p>
+                    <p style={{fontSize:'35px',marginTop:'-15px',marginLeft:'10px',float:'left'}}>人</p>
+                    <p style={{fontSize:'36px',marginTop:'-15px',marginLeft:'20px',float:'left'}}>资</p>
+                    <p style={{fontSize:'45px',marginTop:'-15px',marginLeft:'10px',float:'left'}}>料</p>
+                </div>
+                
+                
+                {/* <div style={{height:'40px',backgroundColor:'#708090',color:'white'}}>
+                    <Link to='/'>></Link>
+                </div>
+                
+                icon={<Link to='/'><Icon style={{height:'40px',color:'black'}} type="left" /></Link>}
                 >个人资料</NavBar>
+                */}
                <Router>
                     <div className='stdminebody'>
                         {
                             this.state.data.map((item)=>(
                                 <ul key={item.wphonenumber}>
                                     <li>
-                                        <span>用户名：{wusername}</span>
+                                        <span style={{marginLeft:'-20px',marginBottom:'30px',marginTop:'50px',fontSize:'23px',color:'rgb(57, 83, 122)'}}>用户名：{wusername}</span>
+                                       
                                     </li>
                                     <li>
-                                        <span>性别：{wsex}</span>
+                                        <span  style={{marginLeft:'-20px',marginTop:'-10px',fontSize:'23px',color:'rgb(57, 83, 122)'}}>性别：{wsex}</span>
+                                       
                                     </li>
                                     <li>
-                                        <span>手机号：{item.wphonenumber}</span>
+                                        <span  style={{marginLeft:'-20px',marginTop:'-10px',fontSize:'23px',color:'rgb(57, 83, 122)'}}>手机号：{item.wphonenumber}</span>
+                                        
                                     </li>
                                     <li>
-                                        <span>年级：{wclass}</span>
+                                        <span  style={{marginLeft:'-20px',marginTop:'-10px',fontSize:'23px',color:'rgb(57, 83, 122)'}}>年级：{wclass}</span>
+                                        
                                     </li>
                                     <li>
-                                        <span>学校：{wschool}</span>
+                                        <span  style={{marginLeft:'-20px',marginTop:'-10px',fontSize:'23px',color:'rgb(57, 83, 122)'}}>学校：{wschool}</span>
+                                        
                                     </li>
                                 </ul>
                             ))

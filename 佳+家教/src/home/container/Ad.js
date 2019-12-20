@@ -9,24 +9,32 @@ export default class Ad extends Component{
     render(){
     return (
         <div 
-        style={{width:'100%',height:736,background:'url(./img/3.png) center center / cover no-repeat'}}>
+        style={{width:'100%',height:736,}}>
             <NavBar
-                mode="dark"
+                
+                style={{backgroundColor:'rgb(50, 84, 107)'}}
                 icon={<Icon type="left" />}
                 onLeftClick={this.rtn}
             >广告</NavBar>
 
-            <div style={{textAlign:'center'}}>
-            <img src='./img/ad1.jpg' 
+            <div style={{textAlign:'center',paddingTop:'10px'}}>
+            <img src='./img/guanggao1.jpg' 
                 alt=''
-                style={{width:'100%'}}
+                style={{width:'100%',float:'left'}}
             />
-                <h1><b>天猫双十二盛大来袭</b></h1>
-                <h2><b>继双十一盛典后的又一次活动</b></h2>
-                <h2><b>天猫双十二回归</b></h2>
-                <h2><b>打破底价</b></h2>
-                <h2><b>没有最省，只有更省</b></h2>
-                <h2><b>快快来吧！</b></h2>
+            <img src='./img/guanggao2.jpg' 
+                alt=''
+                style={{width:'100%',marginTop:'10px',float:'left'}}
+            />
+            <img src='./img/guanggao3.jpg' 
+                alt=''
+                style={{width:'100%',marginTop:'10px',float:'left'}}
+            />
+            <img src='./img/guanggao4.jpg' 
+                alt=''
+                style={{width:'100%',marginTop:'10px',float:'left'}}
+            />
+                
             </div>
 
 

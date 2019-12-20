@@ -27,22 +27,6 @@ export default class Content extends Component {
         })
  
 }
-componentDidUpdate(){
-  let id = this.props.match.params.id
-
-  fetch(`http://148.70.183.184:8005/chakan/${id}`, {
-      method: 'GET',
-      headers: {
-          'Content-Type': 'text/plain; charset=UTF-8'
-      },
-  })
-      .then((res) => res.json())
-      .then((res) => {
-        console.log(res.data)
-          this.setState({ data: res.data.splice(res.data.length-1,1)})
-          
-      })
-}
     render() {
     
         return (
@@ -55,8 +39,8 @@ componentDidUpdate(){
                 >查看全文</NavBar>
    {
       this.state.data.map((item,idx)=>(
-        <div style={{border:'5px dotted  rgb(177, 174, 174)',fontSize:'25px'}}><p>{item.content}</p>
-         <div style={{color:'blue',fontWeight:'bolder'}}>我的答案：<p>{item.zuoye}</p></div></div>
+        <div style={{width:'96%',marginLeft:'7px',marginTop:'15px',paddingLeft:'4px',borderRadius:'8px',boxShadow: '3px 3px 2px rgb(174, 177, 179)',border:'1px solid rgb(177, 174, 174)',fontSize:'25px'}}><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.content}</p>
+         <div style={{color:'grey',marginTop:'30px',fontWeight:'bolder',marginBottom:'20px'}}>我的答案：<p style={{marginLeft:'25px',fontWeight:'200'}}>{item.zuoye}</p></div></div>
        
       ))
     }

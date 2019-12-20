@@ -35,7 +35,7 @@ export default class GoodTea extends Component{
         }).then((res)=>{ 
             if(res.status === 200){
                 // return res.json();
-                alert('已选择该教师！');
+                alert('选择教师成功！');
                 return res.json();
             }else{
                 alert('这有些错误！');
@@ -50,18 +50,19 @@ export default class GoodTea extends Component{
     render(){
     return (
         <div 
-        style={{width:'100%',background:'url(./img/3.png) center center / contain repeat-y'}}
+        style={{width:'100%'}}
         >
             <NavBar
-            mode="dark"
+            style={{backgroundColor:'rgb(50, 84, 107)'}}
             icon={<Icon type="left" />}
             onLeftClick={this.rtn}
             >名师推荐</NavBar>
 
-            <div style={{paddingLeft:30,paddingTop:5}}>
+            <div style={{paddingLeft:10}}>
                 {
                     this.state.data.map(item=>(
-                        <div key={item} style={{height:175}}>
+                        <div key={item} style={{width:'97%',height:195,paddingTop:'14px',paddingLeft:'15px',marginTop:'25px',borderRadius:'10px',border:'1px solid rgb(174, 177, 179)',boxShadow: '3px 3px 2px rgb(174, 177, 179)'}}>
+                            
                             <div style={{height:170}}>
                                 <div style={{width:'45%',float:'left'}}>
                                 <img src={item.teatouxiang} alt=''
@@ -69,7 +70,7 @@ export default class GoodTea extends Component{
                                 {/* <img src={item.head} alt=''
                                 style={{width:140,height:165}}/> */}
                                 </div>
-                                <div style={{paddingTop:15,color:'#4b4b8b',fontWeight:'bold'}}>
+                                <div style={{paddingTop:4,color:'rgb(26, 63, 87)',fontSize:'16px',}}>
                                     <p>姓名：{item.wsubject} </p>
                                     <p>性别：{item.wsex}</p>
                                     <p>年龄：{item.wage}岁</p>
@@ -83,7 +84,7 @@ export default class GoodTea extends Component{
                                 </div>
                                 <button 
                                 onClick={()=>this.selecttea(item.wphonenumber)}
-                                style={{width:100,height:40,backgroundColor:'#5d93d0',color:'white'}}>选择教师</button>
+                                style={{width:120,height:40,marginTop:'5px',border:'none',borderRadius:'7px',backgroundColor:'#5d93d0',fontSize:'16px',color:'white'}}>选择教师</button>
                              </div>
                         </div>
                     ))

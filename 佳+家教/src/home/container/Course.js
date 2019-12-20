@@ -52,9 +52,9 @@ export default class Course extends Component{
     render(){
         return (
             <div 
-            style={{width:'100%',height:'100%',background:'url(./img/2.jpg) center center / contain repeat-y'}}>
+            style={{width:'100%',height:'100%'}}>
                 <NavBar
-                mode="dark"
+                style={{backgroundColor:'rgb(50, 84, 107)'}}
                 icon={<Icon type="left" />}
                 onLeftClick={this.rtn}
                 >课程推荐</NavBar>
@@ -63,8 +63,8 @@ export default class Course extends Component{
             {
                 this.state.data.map(item=>(
                     <div key={item.id}
-                    style={{width:'98%',marginLeft:5,border:'1px dotted blue',fontWeight:'bold'}}>
-                        <div style={{width:'100%',fontSize:18,color:'red'}}>{item.name}</div>
+                    style={{width:'98%',paddingTop:'7px',marginTop:'15px',marginLeft:5,borderRadius:'10px',border:'1px solid rgb(174, 177, 179)',boxShadow: '3px 3px 2px rgb(174, 177, 179)',fontWeight:'bold'}}>
+                        <div style={{width:'100%',height:'40px',marginLeft:'10px',fontSize:19,color:'rgb(50, 84, 107)'}}>{item.name}</div>
                         {/* <Link to={'/play?'+item.vedio}> */}
                             <Player ref="player" videoId="video-1">
                                 <source src={item.vedio}/>
@@ -73,16 +73,16 @@ export default class Course extends Component{
 
                         
                         <div
-                        style={{marginLeft:20,paddingTop:10,width:100,height:50,float:'left',backgroundColor:'white',color:'blue',borderRadius:5,fontSize:20,textAlign:'center'}}
+                        style={{marginLeft:20,marginTop:'15px',marginBottom:'10px',paddingTop:10,width:100,height:50,float:'left',backgroundColor:'rgb(110, 157, 204)',color:'rgb(25, 48, 77)',borderRadius:5,fontSize:20,textAlign:'center'}}
                         >￥{item.price}</div>
 
                         <Button 
-                        style={{marginLeft:30,width:100,height:50,float:'left'}}
+                        style={{marginTop:'15px',marginBottom:'10px',marginLeft:30,width:100,height:50,float:'left',backgroundColor:'rgb(221, 225, 230)'}}
                         onClick={()=>{this.love(item.vedio,item.price)}}>
                         收藏</Button> 
-                        <Button style={{marginLeft:30,width:100,height:50,float:'left'}}>
+                        <Button style={{marginTop:'15px',marginBottom:'10px',marginLeft:30,width:100,height:50,float:'left',fontSize:20,textAlign:'center'}}>
                             <Link to={'/buy?'+item.price+'?'+item.name+'?'+item.vedio+'?'+this.props.location.search.split('=')[1]}>
-                                购买
+                                <div style={{backgroundColor:'rgb(110, 157, 204)',color:'rgb(25, 48, 77)',borderRadius:5,}}>购买</div>
                             </Link>
                         </Button> 
                     </div>

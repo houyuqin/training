@@ -28,24 +28,6 @@ export default class Content extends Component {
         })
 
 }
-componentDidUpdate(){
-  let id = this.props.match.params.id
-  
-   
-  fetch(`http://148.70.183.184:8005/taskt/${id}`, {
-      method: 'GET',
-      headers: {
-          'Content-Type': 'text/plain; charset=UTF-8'
-      },
-  })
-      .then((res) => res.json())
-      .then((res) => {
-          this.setState({ data:res.data.splice(res.data.length-1,1) })
-       console.log(res.data.splice(res.data.length-1,1))
-      })
-
-
-}
 add=()=>{
   var aa=this.daan.value;
   var id1=this.props.match.params.id;
@@ -81,8 +63,8 @@ add=()=>{
                 >查看全文</NavBar>
    {
       this.state.data.map((item,idx)=>(
-        <div style={{border:'5px dotted  rgb(177, 174, 174)',fontSize:'25px'}}><h2>题目:{item.title}</h2><p>内容:{item.content}</p>
-       <div style={{color:'blue',fontWeight:'bolder'}}><p>我的答案:{item.zuoye} </p></div>
+        <div style={{border:'2px solid  rgb(177, 174, 174)',borderRadius:'7px',fontSize:'25px',paddingLeft:'5px',color:'grey',}}><p style={{fontSize:'27px'}}>题目：{item.title}</p><p style={{fontSize:'25px'}}>内容：<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{item.content}</p>
+       <div style={{color:'grey',marginTop:'20px',marginBottom:'5px',fontWeight:'bolder'}}><p>我的答案：{item.zuoye} </p></div>
         </div>
        
       ))
@@ -90,7 +72,7 @@ add=()=>{
     
           
     <div className="cbu44">   
-                       <p style={{color:'blue',fontWeight:'bolder'}}>重新提交答案:</p> 
+                       <p style={{color:'grey',fontSize:'24px',marginTop:'27px',marginLeft:'7px',marginBottom:'8px',fontWeight:'bolder'}}>重新提交答案:</p> 
                         <textarea name="task" cols="40" rows="5" className="cren2" ref={i=>this.daan=i}></textarea>      
                     </div>
             

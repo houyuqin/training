@@ -439,14 +439,6 @@ p{
     color: black;
 }
 .wodeshoucangdiv{
-    width: 390px;
-    height: 250px;
-    background-color: white;
-    border-radius: 10px;
-    opacity: 0.8;
-    margin:10px 0px 10px 10px;
-}
-.wodeshoucangdiv1{
     width: 370px;
     height: 200px;
     background-color: white;
@@ -490,17 +482,27 @@ p{
     margin:15px 0px 0px 80px;
     background-color:rgb(250, 198, 101);
     font-size: 18px;
-    color: white;
+    color: rgb(250, 248, 248);
 }
 .zba
 {
     height: 680px;
     width: 100%;
-   
-    background: url('./img/zhouzhou.png') center center / cover no-repeat ;
+    padding-top: 20px;
+    padding-left: 30px;
+    background-color: rgb(120, 163, 192); 
+   /* background: url('./img/.jpg') center center / cover no-repeat ; */
+}
+.zzba{
+    height: 620px;
+    width: 90%;
+    background-color: rgb(255, 255, 255);
+    padding-top: 20px;
+    padding-left: 8px;
 }
 .zaa
 {
+    margin-top: 60px;
     background: url('./img/z2.gif') center center / cover no-repeat ;
 }
 
@@ -508,12 +510,14 @@ p{
     border: 2px blue solid;
 }
 .zfont{
+    
     font-size: 23px;
     margin-left: 20px;
   line-height: 120px;
 }
 .zfont a{
     color: 	#5d93c0;
+    
 
 }
 /* //消息框 */
@@ -526,9 +530,9 @@ p{
 /* 我的练习 */
 
 .zit a{
-    color: black;
+    color: rgb(143, 138, 138);
 }
 /* 我的作业 */
 .zheader{
-    background: url('./img/15.png') center center / cover no-repeat ;
+    /* background: url('./img/15.png') center center / cover no-repeat ; */
 }

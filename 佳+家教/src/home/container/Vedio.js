@@ -29,9 +29,9 @@ export default class Vedio extends Component{
 render(){
     return (
         <div 
-        style={{width:'100%',height:'100%',background:'url(./img/2.jpg) center center / contain repeat-y'}}>
+        style={{width:'100%',height:'100%'}}>
             <NavBar
-            mode="dark"
+            style={{backgroundColor:'rgb(50, 84, 107)'}}
             icon={<Icon type="left" />}
             onLeftClick={this.rtn}
             >课程推荐</NavBar>
@@ -40,18 +40,18 @@ render(){
         {
             this.state.data.map(item=>(
                 <div key={item.id}
-                style={{width:'98%',marginLeft:5,border:'1px dotted black',fontWeight:'bold'}}>
-                    <Player ref="player" videoId="video-1">
+                style={{width:'98%',paddingTop:'7px',marginTop:'15px',marginLeft:5,borderRadius:'10px',border:'1px solid rgb(174, 177, 179)',boxShadow: '3px 3px 2px rgb(174, 177, 179)',fontWeight:'bold'}}>
+                    <Player ref="player" videoId="video-1" >
                         <source src={item.vedio}/>
                     </Player>
                     <div
-                    style={{marginLeft:20,paddingTop:10,width:100,height:50,float:'left',backgroundColor:'white',color:'blue',borderRadius:5,fontSize:20,textAlign:'center'}}
+                    style={{marginLeft:20,marginTop:'15px',marginBottom:'10px',paddingTop:10,width:100,height:50,float:'left',backgroundColor:'rgb(110, 157, 204)',color:'rgb(25, 48, 77)',borderRadius:5,fontSize:20,textAlign:'center'}}
                     >￥{item.price}</div>
                     <Button 
-                    style={{marginLeft:30,width:100,height:50,float:'left'}}
+                    style={{marginLeft:30,marginTop:'15px',marginBottom:'10px',width:100,height:50,float:'left',backgroundColor:'rgb(221, 225, 230)'}}
                     onClick={()=>{this.love(item.vedio)}}>
                     收藏</Button> 
-                    <Button style={{marginLeft:30,width:100,height:50,float:'left'}}><Link to='buy'>购买</Link></Button> 
+                    <Button style={{marginTop:'15px',marginBottom:'10px',marginLeft:30,width:100,height:50,float:'left'}}><Link to='buy'><div style={{backgroundColor:'rgb(110, 157, 204)',color:'rgb(25, 48, 77)',borderRadius:5,}}>购买</div></Link></Button> 
                 </div>
             
             ))

@@ -38,6 +38,7 @@ export default class Login extends Component {
             .then((res)=>{     
                 
                 for(var i=0;i<res.length;i++){
+                    console.log(res[i]);
                         this.setState({
                             std:[...this.state.std,res[i]]
                             
@@ -90,15 +91,23 @@ export default class Login extends Component {
         })
         for(var i=0;i<this.state.std.length;i++)
         {
+            
+            console.log(this.state.std[i].wphonenumber);
             if(this.state.std0num == this.state.std[i].wphonenumber && this.state.std0pwd == this.state.std[i].pwd)
             {
+                console.log("登录成功");
                 window.location.href="/tabs?num="+this.state.std0num;
                 ccm ++;
+                console.log(ccm);
+                console.log(this.state.url); 
+                
             }
             
         }
         if(ccm == 0 ){
             this.setState({url:'/loginn'})
+            console.log("登录 失败");           
+            console.log(this.state.url);
             this.setState({
                 inputValue:'手机号或密码错误'
             })
@@ -114,14 +123,21 @@ export default class Login extends Component {
         
         for(var i=0;i<this.state.tea.length;i++)
         {
+            console.log(this.state.tea[i].wphonenumber);
             if(this.state.tea0num == this.state.tea[i].wphonenumber && this.state.tea0pwd == this.state.tea[i].pwd)
             {
+                console.log("登录成功");
                 window.location.href="/tabt?num="+this.state.tea0num;
                 ccm ++;
+                console.log(ccm);
+                console.log(this.state.url); 
+
             }
         }
         if(ccm == 0 ){
-            this.setState({url:'/loginn'})            
+            this.setState({url:'/loginn'})
+            console.log("登录 失败");           
+            
             this.setState({
                 inputValue1:'手机号或密码错误'
             })
