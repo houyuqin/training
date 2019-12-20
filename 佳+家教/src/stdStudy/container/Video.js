@@ -24,6 +24,15 @@ export default class Vedio extends Component{
             })  
         });
     }
+    componentDidUpdate(){
+        fetch("http://148.70.183.184:8000/mylove")
+        .then(res=>res.json())
+        .then(res=>{
+            this.setState({
+                data:res.data
+            })  
+        });
+    }
     del=(idx)=>{
      console.log(idx)
      fetch(`http://148.70.183.184:8000/mylove/${idx}`,{
@@ -33,7 +42,7 @@ export default class Vedio extends Component{
      
     }
 
-//  
+ 
 render(){
     return (
         <div 
@@ -52,7 +61,7 @@ render(){
                     <Player ref="player" videoId="video-1">
                         <source src={item.vedio}/>
                     </Player>      
-                    <div style={{width:'30%',height:'50px',float:'right',marinTop:'10px',marginTop:'10px',marginBottom:'20px',marginRight:'10px',backgoundColor:'blue'}}><Button style={{width:'100%',height:'50px',border:'1px solid grey',backgoundColor:'blue'}} onClick={()=>this.del(idx)}>删除</Button></div>
+                    <div style={{width:'30%',height:'50px',float:'right',marinTop:'10px',marginTop:'10px',marginBottom:'20px',marginRight:'10px',backgoundColor:'blue'}}><Button style={{width:'100%',height:'50px',border:'1px solid grey',backgoundColor:'blue'}} onClick={()=>this.del(item.id)}>删除</Button></div>
             
                 </div>
              
