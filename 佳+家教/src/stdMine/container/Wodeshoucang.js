@@ -62,14 +62,14 @@ export default class Wodeshoucang extends Component {
                             {
                                 this.state.data.map((item,idx)=>(
                                   
-                                    <div key={idx}>
-                                            <p style={{fontSize:'20px',color:'black',marginLeft:'10px'}}>
+                                    <div key={idx} style={{marginTop:'30px',marginLeft:'10px',width:'96%',height:'250px',marginBottom:'10px',border:'1px solid gray'}}>
+                                            <p style={{fontSize:'24px',color:'black',marginLeft:'10px',marginTop:'7px',marginBottom:'7px'}}>
                                                 {item.class} vedio
-                                                <button style={{height:'20px',fontSize:'15px',float:'right',marginRight:'10px',marginTop:'5px',border:'1px solid black',backgroundColor:'#fafaf8'}} onClick={()=>this.deleteshipin(item.id)}>删除</button>
+                                                <button style={{width:'80px',height:'30px',fontSize:'17px',float:'right',marginRight:'10px',marginBottom:'7px',marginTop:'5px',border:'1px solid black',color:'white',borderRadius:'5px',backgroundColor:'#5d93c0',border:'none'}} onClick={()=>this.deleteshipin(item.id)}>删除</button>
 
-                                                <span style={{float:'right',marginRight:'10px'}}>{'￥'+item.price}</span>
+                                                <span style={{float:'right',marginRight:'15px'}}>{'￥'+item.price}</span>
                                             </p>
-                                            <Player ref="player" videoId="video-1">
+                                            <Player sref="player" videoId="video-1">
                                                 <source src={item.vedio}/>
                                             </Player>                                  
                                     </div>
