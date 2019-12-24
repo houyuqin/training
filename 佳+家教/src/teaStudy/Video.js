@@ -68,27 +68,37 @@ export default class TeaStudy extends Component {
                     <div className="cbu4">   
                         
                         <h4>视频科目：</h4>
-                <div style={{fontSize:18,fontWeight:'bold',paddingLeft:15,color:'#0025ff'}}>
+                <div style={{fontSize:18,paddingLeft:10,color:'black'}}>
                     <input type='radio' id='1' name='a0' value='bios'
+                    style={{marginLeft:'9px'}}
                     onChange={(e)=>this.getValue1(e)}/>bios
                     <input type='radio' id='2' name='a0' value='chemistry'
+                    style={{marginLeft:'9px'}}
                     onChange={(e)=>this.getValue1(e)}/>chemistry
                      <input type='radio' id='1' name='a0' value='chinese'
+                     style={{marginLeft:'9px'}}
                     onChange={(e)=>this.getValue1(e)}/>chinese
                     <input type='radio' id='2' name='a0' value='english'
+                    style={{marginLeft:'9px'}}
                     onChange={(e)=>this.getValue1(e)}/>english<br/>
                      <input type='radio' id='1' name='a0' value='geography'
+                     style={{marginLeft:'9px'}}
                     onChange={(e)=>this.getValue1(e)}/>geography
                     <input type='radio' id='2' name='a0' value='history'
+                    style={{marginLeft:'9px'}}
                     onChange={(e)=>this.getValue1(e)}/>history
                                
                     <input type='radio' id='2' name='a0' value='math'
+                    style={{marginLeft:'9px'}}
                     onChange={(e)=>this.getValue1(e)}/>math
                      <input type='radio' id='1' name='a0' value='painting'
+                     style={{marginLeft:'9px'}}
                     onChange={(e)=>this.getValue1(e)}/>painting
                     <input type='radio' id='2' name='a0' value='physical'
+                    style={{marginLeft:'9px'}}
                     onChange={(e)=>this.getValue1(e)}/>physical
                      <input type='radio' id='1' name='a0' value='political'
+                     style={{marginLeft:'9px'}}
                     onChange={(e)=>this.getValue1(e)}/>political
                    
                 </div>

@@ -82,20 +82,21 @@ export default class TeaStudy extends Component {
             <div className="cteall" >
                 <NavBar
                     className='stdminenavbar'
-                    mode='dark'
+                    style={{backgroundColor:'rgb(110, 138, 199)'}}
                     rightContent={[
                     ]}z
                     >教学</NavBar>
                 <div className="cshang">
                    
-                <img src={src} style={{width:'70px',height:'70px' }} ></img>
-                    <p className="cteuser1">{username}</p>
-                    <p className="ctexing">星级:★★★</p>
-                </div>
+                    <img src={src} style={{width:'90px',height:'90px',marginLeft:'10px',borderRadius:'45px'}} ></img>
+                    <p className="cteuser1">教师姓名:{username}</p>
+                    <p className="ctexing">星级等级:★★★</p>
                 
-                <Link to="ctebuzhi"><div className="ctezuo">布置作业</div></Link>
-                <Link to="ctebigai"><div className="cteyou">作业批改</div></Link>
-                <Link to='video'><div style={{width:'350px',height:'100px',backgroundColor:'red',marginTop:'340px',marginLeft:'30px',borderRadius:'8px',boxShadow:'5px 5px 5px rgb(129, 125, 125)',fontSize:'22px',zIndex:100,textAlign:'center',lineHeight:'100px',color:'black'}}>上传视频</div></Link>
+                
+                    <Link to="ctebuzhi"><div className="ctezuo" style={{marginTop:'150px',marginLeft:'-280px'}}>布置作业</div></Link>
+                    <Link to="ctebigai"><div className="cteyou">作业批改</div></Link>
+                    <Link to='video'><div style={{width:'370px',height:'110px',backgroundColor:'rgb(110, 138, 199)',marginTop:'440px',marginLeft:'20px',borderRadius:'8px',boxShadow:'5px 5px 5px rgb(129, 125, 125)',fontSize:'22px',zIndex:100,textAlign:'center',lineHeight:'100px',color:'black'}}>上传视频</div></Link>
+                </div>
             </div>
         )
     }

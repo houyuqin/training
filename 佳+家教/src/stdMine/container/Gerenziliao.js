@@ -91,7 +91,7 @@ export default class Gerenziliao extends Component {
             <div style={{width:'100%',height:'100%'}}>
                 
                 {/* <Link to='/'><div style={{fontSize: '30px',border:'none',color:'black'}} type="left" ></div></Link> */}
-                <div style={{width:'100%',marginTop:'-2px',paddingLeft:'20px',height:'100px',border:'none',color:'white',backgroundImage:'rgb(115, 176, 211)'}}>
+                <div style={{width:'100%',marginTop:'-2px',paddingLeft:'20px',height:'100px',border:'none',color:'white',backgroundColor:'rgb(115, 176, 211)'}}>
                     <Link to='/' style={{fontSize:'30px',color:'white'}}><p>&lt;</p></Link>
                     <p style={{fontSize:'40px',marginTop:'-15px',marginLeft:'90px',float:'left'}}>个</p>
                     <p style={{fontSize:'35px',marginTop:'-15px',marginLeft:'10px',float:'left'}}>人</p>

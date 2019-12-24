@@ -55,9 +55,9 @@ export default class tongzhi extends Component {
     }
     render() {
         return (
-            <div style={{width:'100%',height:'100%',background:`url(${logo}) center center / cover no-repeat`,overflow:'scroll'}}>
+            <div style={{width:'100%',height:'100%'}}>
                 <NavBar
-                mode="dark"
+                style={{backgroundColor:'#5d93c0'}}
                 icon={<Icon style={{color:'black'}} type="left" 
                 onClick={this.rtn}/>}
                 >消息通知</NavBar>
@@ -66,11 +66,11 @@ export default class tongzhi extends Component {
                     this.state.data.map((item)=>(
                         <div 
                         key={item}
-                        style={{width:'100%',borderBottom:'1px solid black',fontSize:20,float:'left'}}>
+                        style={{width:'100%',paddingLeft:'10px',height:'50px',marginTop:'10px',borderBottom:'1px solid #5d93c0',fontSize:20,float:'left'}}>
                             {item.content}
                             
                             <button onClick={()=>this.del(item.id)}
-                            style={{backgroundColor:'rgb(31, 138, 238)',color:'white',float:'right',marginRight:5}}
+                            style={{width:'120px',height:'40px',backgroundColor:'#5d93c0',border:'none',color:'white',borderRadius:'8px',float:'right',marginRight:5}}
                             >
                                 已读删除
                             </button>

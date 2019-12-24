@@ -88,7 +88,7 @@ export default class stdmine extends Component {
                     <NavBar
                     className='stdminenavbar'
                     // style={{backgroundColor:'white',color:'black'}}
-                    mode='dark'
+                    style={{backgroundColor:'rgb(110, 138, 199)'}}
                     rightContent={[
                         <Link to='/stdmineshezhi'><div><img key='0' src={require(`../../img/w设置.png`)}/></div></Link>,
                         <Link to='/tongzhi'><img key='1' src={require(`../../img/w通知.png`)}/></Link>
